@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily's — Miércoles 6 de mayo de 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --bg2: #F4F8FD;
+    --celeste: #75AADB;
+    --celeste-dark: #4A80B5;
+    --celeste-light: #C8DDEF;
+    --amarillo: #F6C94E;
+    --amarillo-dark: #C9960C;
+    --rojo: #E63946;
+    --verde: #2BAE66;
+    --gris-texto: #1a1a2e;
+    --gris-medio: #4a5568;
+    --gris-claro: #718096;
+    --borde: #C8DDEF;
+    --font-data: 'JetBrains Mono', monospace;
+    --font-prose: 'DM Sans', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--gris-texto);
+    font-family: var(--font-prose);
+    line-height: 1.6;
+    font-size: 14px;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: linear-gradient(135deg, var(--celeste) 0%, var(--celeste-dark) 100%);
+    color: white;
+    padding: 28px 40px 20px;
+    border-bottom: 4px solid var(--amarillo);
+  }
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .badge-mercados {
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 6px;
+    padding: 4px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: var(--font-data);
+  }
+  .header-title {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-top: 6px;
+  }
+  .header-date {
+    font-size: 14px;
+    opacity: 0.85;
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .btn-export {
+    background: var(--amarillo);
+    color: var(--gris-texto);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: var(--font-data);
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+  }
+  .btn-export:hover { background: var(--amarillo-dark); color: white; }
+  .btn-export.copied { background: var(--verde); color: white; }
+
+  /* ─── CONTAINER ─── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+  .section { padding: 24px 0 8px; }
+
+  /* ─── SNAPSHOT GRID ─── */
+  .snapshot-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 20px 0 0;
+  }
+  @media (max-width: 700px) { .snapshot-grid { grid-template-columns: 1fr; } }
+
+  .panel {
+    background: var(--bg2);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 18px;
+  }
+  .panel-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--celeste-dark);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--celeste-light);
+  }
+
+  .metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(200,221,239,0.4);
+  }
+  .metric-row:last-child { border-bottom: none; }
+  .metric-label {
+    font-size: 12px;
+    color: var(--gris-medio);
+    font-weight: 500;
+    flex: 1;
+  }
+  .metric-val {
+    font-family: var(--font-data);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gris-texto);
+    text-align: right;
+  }
+  .metric-chg {
+    font-family: var(--font-data);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+    white-space: nowrap;
+  }
+  .up { background: rgba(43,174,102,0.12); color: var(--verde); }
+  .down { background: rgba(230,57,70,0.12); color: var(--rojo); }
+  .warn { background: rgba(246,201,78,0.18); color: var(--amarillo-dark); font-size: 10px; }
+  .neutral { background: rgba(117,170,219,0.12); color: var(--celeste-dark); }
+
+  .metric-source {
+    font-size: 10px;
+    color: var(--gris-claro);
+    font-style: italic;
+    display: block;
+    text-align: right;
+    margin-top: 1px;
+  }
+
+  /* ─── SECTION TITLE ─── */
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gris-texto);
+    margin: 28px 0 4px;
+    padding-left: 12px;
+    border-left: 4px solid var(--celeste);
+  }
+  .section-sub {
+    font-size: 13px;
+    color: var(--gris-claro);
+    margin-bottom: 16px;
+    padding-left: 16px;
+  }
+
+  /* ─── BLOQUE TEMÁTICO ─── */
+  .bloque-card {
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    margin-bottom: 18px;
+    overflow: hidden;
+  }
+  .bloque-header {
+    background: var(--celeste);
+    color: white;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .bloque-body { padding: 16px 20px; }
+
+  .punto {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--borde);
+  }
+  .punto:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+  .punto-titulo {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gris-texto);
+    margin-bottom: 10px;
+  }
+
+  .badge-bloque {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 6px;
+  }
+  .badge-que { background: rgba(117,170,219,0.18); color: var(--celeste-dark); }
+  .badge-imp { background: rgba(246,201,78,0.25); color: var(--amarillo-dark); }
+  .badge-watch { background: rgba(27,31,45,0.07); color: var(--gris-medio); border: 1px solid var(--borde); }
+
+  .que-cambio, .implicancia, .watch-row {
+    margin: 6px 0;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .que-cambio { background: rgba(117,170,219,0.08); border-left: 3px solid var(--celeste); }
+  .implicancia { background: rgba(246,201,78,0.10); border-left: 3px solid var(--amarillo); }
+  .watch-row { background: var(--bg2); border-left: 3px solid var(--borde); }
+
+  .watch-pill {
+    display: inline-block;
+    background: white;
+    border: 1px solid var(--celeste-light);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--celeste-dark);
+    margin: 2px 4px 2px 0;
+  }
+
+  /* ─── TABLA CALENDARIO ─── */
+  .calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 12px 0;
+  }
+  .calendar-table th {
+    background: var(--celeste);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .calendar-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--borde);
+    vertical-align: top;
+  }
+  .calendar-table tr:nth-child(even) td { background: var(--bg2); }
+  .chip-ar {
+    background: rgba(117,170,219,0.20);
+    color: var(--celeste-dark);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: var(--font-data);
+  }
+  .chip-global {
+    background: rgba(43,174,102,0.15);
+    color: #1d7a47;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: var(--font-data);
+  }
+  .chip-key {
+    background: rgba(246,201,78,0.25);
+    color: var(--amarillo-dark);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: var(--font-data);
+  }
+
+  /* ─── TRADE IDEAS ─── */
+  .trade-card {
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .trade-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: linear-gradient(90deg, rgba(117,170,219,0.1) 0%, rgba(246,201,78,0.08) 100%);
+    border-bottom: 1px solid var(--borde);
+  }
+  .trade-inst {
+    font-size: 15px;
+    font-weight: 700;
+    font-family: var(--font-data);
+    color: var(--gris-texto);
+  }
+  .trade-dir {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .dir-long { background: rgba(43,174,102,0.15); color: var(--verde); }
+  .trade-body { padding: 16px 20px; }
+
+  .trade-params {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .param-box {
+    background: var(--bg2);
+    border-radius: 8px;
+    padding: 10px 12px;
+    text-align: center;
+  }
+  .param-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gris-claro); }
+  .param-val { font-size: 14px; font-weight: 700; font-family: var(--font-data); color: var(--gris-texto); margin-top: 2px; }
+  .param-horizonte { background: rgba(117,170,219,0.12); }
+  .param-horizonte .param-val { color: var(--celeste-dark); font-size: 12px; }
+
+  .trade-rationale {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--gris-medio);
+    margin-bottom: 10px;
+    padding: 10px 14px;
+    background: rgba(117,170,219,0.06);
+    border-radius: 6px;
+    border-left: 3px solid var(--celeste);
+  }
+  .trade-contra {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--gris-medio);
+    padding: 10px 14px;
+    background: rgba(230,57,70,0.05);
+    border-radius: 6px;
+    border-left: 3px solid var(--rojo);
+  }
+  .trade-contra strong { color: var(--rojo); }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--bg2);
+    border-top: 1px solid var(--borde);
+    margin-top: 40px;
+    padding: 24px 40px;
+    font-size: 11px;
+    color: var(--gris-claro);
+  }
+  .footer-sources { margin-bottom: 8px; }
+  .footer-disclaimer {
+    font-style: italic;
+    border-top: 1px solid var(--borde);
+    padding-top: 8px;
+    margin-top: 8px;
+  }
+
+  /* ─── WARN BOX ─── */
+  .warn-box {
+    background: rgba(246,201,78,0.12);
+    border: 1px solid rgba(246,201,78,0.4);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 11px;
+    color: var(--amarillo-dark);
+    margin: 4px 0;
+    font-family: var(--font-data);
+  }
+
+  /* ─── HIGHLIGHT NUMBER ─── */
+  .num { font-family: var(--font-data); }
+  .fitch-banner {
+    background: linear-gradient(135deg, #F6C94E22 0%, #75AADB22 100%);
+    border: 2px solid var(--amarillo);
+    border-radius: 10px;
+    padding: 14px 20px;
+    margin: 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .fitch-icon { font-size: 28px; }
+  .fitch-text strong { font-size: 15px; color: var(--gris-texto); }
+  .fitch-text p { font-size: 13px; color: var(--gris-medio); margin-top: 3px; }
+
+  /* ─── EARNINGS NEXT BANNER ─── */
+  .next-event-banner {
+    background: rgba(117,170,219,0.08);
+    border: 1px solid var(--celeste-light);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 12px 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .dot-pulse {
+    width: 12px; height: 12px;
+    background: var(--celeste);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+  .next-event-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--celeste-dark); }
+  .next-event-val { font-family: var(--font-data); font-size: 14px; font-weight: 700; color: var(--gris-texto); }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ HEADER ═══════════════════════════════════════ -->
+<div class="header">
+  <div class="container">
+    <div class="header-top">
+      <div>
+        <div class="badge-mercados">📊 Mercados</div>
+        <div class="header-title">Daily's</div>
+        <div class="header-date">Miércoles 6 de mayo de 2026</div>
+      </div>
+      <button class="btn-export" id="copyBtn" onclick="copyReport()">⎘ EXPORT REPORT</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ FITCH BANNER ═══════════════════════════════════════ -->
+<div class="container">
+  <div class="fitch-banner" style="margin-top:20px;">
+    <div class="fitch-icon">🏆</div>
+    <div class="fitch-text">
+      <strong>FITCH UPGRADES ARGENTINA: CCC+ → B− (perspectiva estable)</strong>
+      <p>Riesgo país cayó 27 bps a 526 pbs · Merval +2.5% · Bonos soberanos +2% · Bancos lideran +7.4%</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ SNAPSHOT ═══════════════════════════════════════ -->
+<div class="container">
+  <div class="section-title" style="margin-top:20px;">Snapshot ampliado</div>
+  <div class="section-sub">Cierres del día · fuentes indicadas por métrica</div>
+
+  <div class="snapshot-grid">
+
+    <!-- PANEL 1: AR Equity y Bonos -->
+    <div class="panel">
+      <div class="panel-title">🇦🇷 AR Equity &amp; Bonos</div>
+
+      <div class="metric-row">
+        <span class="metric-label">S&P Merval</span>
+        <div style="text-align:right">
+          <span class="metric-val">2.829.364</span>
+          <span class="metric-chg up">+2.50%</span>
+          <span class="metric-source">ByMA / Investing.com · 6 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">AL30 (ARS)</span>
+        <div style="text-align:right">
+          <span class="metric-val">91.090</span>
+          <span class="metric-chg up">+0.93%</span>
+          <span class="metric-source">Allaria · 6 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">GD30 (ARS)</span>
+        <div style="text-align:right">
+          <span class="metric-val">88.500</span>
+          <span class="metric-chg down">−0.33%</span>
+          <span class="metric-source">Allaria · 6 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">AL30 (USD est.)</span>
+        <div style="text-align:right">
+          <span class="metric-val">~USD 65.4</span>
+          <span class="metric-chg warn">⚠️ estimado</span>
+          <span class="metric-source">91.090 / TC A3500 est. ~$1.392</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">GD30 (USD est.)</span>
+        <div style="text-align:right">
+          <span class="metric-val">~USD 63.6</span>
+          <span class="metric-chg warn">⚠️ estimado</span>
+          <span class="metric-source">88.500 / TC A3500 est. ~$1.392</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">Riesgo País (EMBI+)</span>
+        <div style="text-align:right">
+          <span class="metric-val">526 bps</span>
+          <span class="metric-chg up">−27 bps −4.9%</span>
+          <span class="metric-source">JPM/Diario Uno · 6 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">MEP (AL30D)</span>
+        <div style="text-align:right">
+          <span class="metric-val">$1.432</span>
+          <span class="metric-chg neutral">brecha +2.8%</span>
+          <span class="metric-source">Múltiples fuentes · 6 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">CCL (AL30/AL30D)</span>
+        <div style="text-align:right">
+          <span class="metric-val">$1.480</span>
+          <span class="metric-chg neutral">brecha +6.8%</span>
+          <span class="metric-source">Múltiples fuentes · 6 may</span>
+        </div>
+      </div>
+
+      <!-- ADRs destacados -->
+      <div style="margin-top:12px; padding-top:10px; border-top:1px solid var(--borde);">
+        <div style="font-size:11px;font-weight:700;color:var(--celeste-dark);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;">ADRs líderes (ByMA en $)</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span style="background:rgba(43,174,102,0.1);color:var(--verde);border-radius:5px;padding:3px 8px;font-size:11px;font-family:var(--font-data);font-weight:700;">BMA +7.4%</span>
+          <span style="background:rgba(43,174,102,0.1);color:var(--verde);border-radius:5px;padding:3px 8px;font-size:11px;font-family:var(--font-data);font-weight:700;">SUPV +6.7%</span>
+          <span style="background:rgba(43,174,102,0.1);color:var(--verde);border-radius:5px;padding:3px 8px;font-size:11px;font-family:var(--font-data);font-weight:700;">BBAR +6.6%</span>
+          <span style="background:rgba(43,174,102,0.1);color:var(--verde);border-radius:5px;padding:3px 8px;font-size:11px;font-family:var(--font-data);font-weight:700;">GGAL +5.7%</span>
+          <span style="background:rgba(43,174,102,0.1);color:var(--verde);border-radius:5px;padding:3px 8px;font-size:11px;font-family:var(--font-data);font-weight:700;">TXAR +8.1%</span>
+        </div>
+        <div class="warn-box" style="margin-top:6px;">⚠️ ADRs en USD (NYSE cierre): GGAL $55.11 (−1.4%), YPF $43.26 (−1.6%) — divergencia vs ByMA posiblemente ya priceado el 5-may en premarket.</div>
+      </div>
+    </div>
+
+    <!-- PANEL 2: Tasas y Pesos -->
+    <div class="panel">
+      <div class="panel-title">💰 Tasas y Pesos</div>
+
+      <div class="metric-row">
+        <span class="metric-label">TC A3500 (oficial mayorista)</span>
+        <div style="text-align:right">
+          <span class="metric-val">~$1.392</span>
+          <span class="metric-chg warn">⚠️ estimado</span>
+          <span class="metric-source">BCRA IMD no accesible; estimado de brechas</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">Dólar Blue</span>
+        <div style="text-align:right">
+          <span class="metric-val">$1.415</span>
+          <span class="metric-chg neutral">+1.7% vs A3500 est.</span>
+          <span class="metric-source">Múltiples fuentes · 6 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">Brecha MEP/Oficial</span>
+        <div style="text-align:right">
+          <span class="metric-val">+2.8%</span>
+          <span class="metric-chg up">comprimida</span>
+          <span class="metric-source">Cronista/LN · 6 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">Brecha CCL/Oficial</span>
+        <div style="text-align:right">
+          <span class="metric-val">+6.8%</span>
+          <span class="metric-chg up">comprimida</span>
+          <span class="metric-source">Cronista/LN · 6 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">BADLAR</span>
+        <div style="text-align:right">
+          <span class="metric-val">22.00% TNA</span>
+          <span class="metric-chg neutral">datos recientes</span>
+          <span class="metric-source">BCRA / Ámbito</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">TAMAR</span>
+        <div style="text-align:right">
+          <span class="metric-val">22.50% TNA</span>
+          <span class="metric-chg neutral">datos recientes</span>
+          <span class="metric-source">BCRA</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">Call money</span>
+        <div style="text-align:right">
+          <span class="metric-val">—</span>
+          <span class="metric-chg warn">⚠️ sin cierre publicado</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">LECAP corta (próx. vto.)</span>
+        <div style="text-align:right">
+          <span class="metric-val">—</span>
+          <span class="metric-chg warn">⚠️ sin cierre del día</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">LECAP larga (+6m)</span>
+        <div style="text-align:right">
+          <span class="metric-val">—</span>
+          <span class="metric-chg warn">⚠️ sin cierre del día</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">Futuros A3 (jun/jul)</span>
+        <div style="text-align:right">
+          <span class="metric-val">—</span>
+          <span class="metric-chg warn">⚠️ sin datos confirmados hoy</span>
+          <span class="metric-source">ROFEX IMD no disponible</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 3: Macro AR -->
+    <div class="panel">
+      <div class="panel-title">📊 Macro AR</div>
+
+      <div class="metric-row">
+        <span class="metric-label">Reservas brutas BCRA</span>
+        <div style="text-align:right">
+          <span class="metric-val">USD 46.000M</span>
+          <span class="metric-chg up">máx 1.5 meses</span>
+          <span class="metric-source">BCRA / Ámbito · 6 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">Compras BCRA MULC (est.)</span>
+        <div style="text-align:right">
+          <span class="metric-val">~USD 149M/día</span>
+          <span class="metric-chg up">máx fase acum. 2026</span>
+          <span class="metric-source">Ámbito · datos recientes</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">IPC marzo 2026 (INDEC)</span>
+        <div style="text-align:right">
+          <span class="metric-val">3.4% m/m</span>
+          <span class="metric-chg down">máx 12m</span>
+          <span class="metric-source">INDEC · 2 abr</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">IPC abril 2026 (est. privadas)</span>
+        <div style="text-align:right">
+          <span class="metric-val">~2.4–2.8%</span>
+          <span class="metric-chg warn">pendiente 14 may</span>
+          <span class="metric-source">Equilibra / EcoGo / PxQ · 4 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">Recaud. ARCA abril 2026</span>
+        <div style="text-align:right">
+          <span class="metric-val">$17.4 B</span>
+          <span class="metric-chg down">−4.0% real i.a.</span>
+          <span class="metric-source">ARCA · 5 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">Recaud. nominal i.a.</span>
+        <div style="text-align:right">
+          <span class="metric-val">+27.2%</span>
+          <span class="metric-chg neutral">vs inflación acum. +32.6%</span>
+          <span class="metric-source">ARCA · 5 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">Retenciones (Expo. Derechos)</span>
+        <div style="text-align:right">
+          <span class="metric-val">$575 MM</span>
+          <span class="metric-chg down">−13.3% i.a.</span>
+          <span class="metric-source">ARCA · 5 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">IVA Neto</span>
+        <div style="text-align:right">
+          <span class="metric-val">$6.050 MM</span>
+          <span class="metric-chg up">+28.3% nominal</span>
+          <span class="metric-source">ARCA · 5 may</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 4: Global -->
+    <div class="panel">
+      <div class="panel-title">🌎 Global</div>
+
+      <div class="metric-row">
+        <span class="metric-label">S&P 500</span>
+        <div style="text-align:right">
+          <span class="metric-val">7.365</span>
+          <span class="metric-chg up">+1.46% 📈 Récord</span>
+          <span class="metric-source">NYSE cierre · 6 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">Nasdaq Composite</span>
+        <div style="text-align:right">
+          <span class="metric-val">25.838</span>
+          <span class="metric-chg up">+2.02% 📈 Récord</span>
+          <span class="metric-source">NYSE cierre · 6 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">Dow Jones</span>
+        <div style="text-align:right">
+          <span class="metric-val">49.910</span>
+          <span class="metric-chg up">+1.24%</span>
+          <span class="metric-source">NYSE cierre · 6 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">UST 10Y yield</span>
+        <div style="text-align:right">
+          <span class="metric-val">4.37%</span>
+          <span class="metric-chg up">−6 pb</span>
+          <span class="metric-source">Trading Economics · 6 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">DXY (Dollar Index)</span>
+        <div style="text-align:right">
+          <span class="metric-val">~98.0</span>
+          <span class="metric-chg down">baja</span>
+          <span class="metric-chg warn">⚠️ sin cierre exacto</span>
+          <span class="metric-source">Trading Economics · 6 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">Oro (XAU/USD)</span>
+        <div style="text-align:right">
+          <span class="metric-val">$4.697/oz</span>
+          <span class="metric-chg up">+3.11%</span>
+          <span class="metric-source">Trading Economics / RoboForex · 6 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">WTI (Jun'26)</span>
+        <div style="text-align:right">
+          <span class="metric-val">~$100/bbl</span>
+          <span class="metric-chg down">~−5 a −7%</span>
+          <span class="metric-chg warn">⚠️ fuentes discrepantes</span>
+          <span class="metric-source">Fortune ($100.05) vs otras ($95.18–$100.60) · 6 may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">Fed Funds (objetivo)</span>
+        <div style="text-align:right">
+          <span class="metric-val">3.50–3.75%</span>
+          <span class="metric-chg neutral">hold</span>
+          <span class="metric-source">FOMC 29 abr</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /snapshot-grid -->
+</div><!-- /container -->
+
+
+<!-- ═══════════════════════════════════════ BLOQUES TEMÁTICOS ═══════════════════════════════════════ -->
+<div class="container">
+  <div class="section-title">Bloques temáticos</div>
+  <div class="section-sub">Solo bloques con ≥2 items con material del día</div>
+
+  <!-- ── BLOQUE 1: RENTA FIJA ── -->
+  <div class="bloque-card">
+    <div class="bloque-header">🏛️ Renta Fija AR — Fitch upgrade: el catalizador más potente del año</div>
+    <div class="bloque-body">
+
+      <!-- Punto 1 -->
+      <div class="punto">
+        <div class="punto-titulo">1. Fitch eleva Argentina a B− · Riesgo país −27 bps a 526</div>
+
+        <div class="que-cambio">
+          <span class="badge-bloque badge-que">📖 Qué cambió</span>
+          Fitch Ratings subió la calificación soberana de Argentina de CCC+ a <strong>B−</strong> (perspectiva estable) el 5 de mayo tras el cierre de mercados, con reacción plena en rueda del 6/5. El riesgo país EMBI+ JPMorgan cayó <strong>27 bps (−4.9%)</strong> a <span class="num">526 bps</span>, acercándose a mínimos no vistos desde ~2018–2019. Los bonos soberanos subieron hasta <strong>2%</strong> en la jornada; AL30 +0.93%, GD30 −0.33% (divergencia comentada abajo). La mejora se fundamentó en superávit fiscal sostenido, acumulación de reservas y fortalecimiento de la agenda de reformas de Milei post-elecciones 2025.
+        </div>
+
+        <div class="implicancia">
+          <span class="badge-bloque badge-imp">🔗 Implicancia</span>
+          B− habilita que fondos con mandatos que excluyen el universo CCC puedan regresar al crédito argentino. El upgrade de Fitch históricamente precede en 2–4 meses a acciones de Moody's y S&P. Si se materializan esas acciones, el riesgo país tiene espacio para comprimir hacia 450–480 bps (zona B+ argentina de 2017). La <strong>divergencia AL30/GD30</strong> es relevante: AL30 outperformó (+0.93% vs −0.33%), posiblemente reflejando mayor liquidez y mejor estructura de holdouts. En carry trade, esto sugiere rotar hacia AL30.
+        </div>
+
+        <div class="watch-row">
+          <span class="badge-bloque badge-watch">🔍 Watch</span>
+          <span class="watch-pill">⚡ Moody's / S&P acción (2–4 meses)</span>
+          <span class="watch-pill">📉 Soporte técnico EMBI 500 bps</span>
+          <span class="watch-pill">📈 Flujos fondos EM post-upgrade</span>
+        </div>
+      </div>
+
+      <!-- Punto 2 -->
+      <div class="punto">
+        <div class="punto-titulo">2. Fitch advierte: reservas netas débiles y elecciones 2027 como riesgos</div>
+
+        <div class="que-cambio">
+          <span class="badge-bloque badge-que">📖 Qué cambió</span>
+          Fitch no pone un outlook positivo sino <strong>estable</strong>, señalando tres vulnerabilidades persistentes: (a) reservas netas internacionales aún débiles pese a acumulación, (b) inflación todavía elevada, (c) historial de inestabilidad macroeconómica. Proyectan reservas brutas a <span class="num">USD 52.700M</span> a fin de año (hoy ~$46.000M). El informe menciona explícitamente el riesgo electoral 2027 como fuente de incertidumbre de política económica.
+        </div>
+
+        <div class="implicancia">
+          <span class="badge-bloque badge-imp">🔗 Implicancia</span>
+          El upgrade es un piso narrativo, no un techo. La diferencia entre <strong>acumular USD 6.700M adicionales en reservas</strong> (para llegar al target Fitch) y estancarse es la línea entre más upgrades o una consolidación del spread. El BCRA compró ~$149M/día en las jornadas recientes —ritmo que, si se mantiene, alcanza la meta Fitch en septiembre. Cualquier señal de desaceleración en la acumulación (cosecha termina, mercado de cambios normaliza) va a generar ruido en el mercado secundario de bonos.
+        </div>
+
+        <div class="watch-row">
+          <span class="badge-bloque badge-watch">🔍 Watch</span>
+          <span class="watch-pill">📊 Reservas brutas BCRA (daily)</span>
+          <span class="watch-pill">🌾 Liquidación cosecha soja/maíz</span>
+          <span class="watch-pill">🗳️ Posicionamiento político pre-2027</span>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /bloque RF -->
+
+
+  <!-- ── BLOQUE 2: EQUITY AR ── -->
+  <div class="bloque-card">
+    <div class="bloque-header">📈 Equity AR — Bancos lideran la racha post-upgrade</div>
+    <div class="bloque-body">
+
+      <!-- Punto 1 -->
+      <div class="punto">
+        <div class="punto-titulo">1. Merval +2.5% · Sector bancario encabeza: BMA +7.4%</div>
+
+        <div class="que-cambio">
+          <span class="badge-bloque badge-que">📖 Qué cambió</span>
+          El S&P Merval cerró en <span class="num">2.829.364 puntos (+2.50%)</span>. El sector bancario fue el protagonista: Banco Macro (BMA) +7.4%, Banco Supervielle (SUPV) +6.7%, BBVA Argentina (BBAR) +6.6%, Grupo Financiero Galicia (GGAL) +5.7%, Central Puerto (CEPU) +5.1%. En ADRs de NYSE, Ternium (TEN) lideró con +8.1%. El movimiento fue broad-based, no selectivo: prácticamente todos los papeles del panel líder terminaron en verde.
+        </div>
+
+        <div class="implicancia">
+          <span class="badge-bloque badge-imp">🔗 Implicancia</span>
+          El rally bancario es el proxy más directo del upgrade soberano: menos riesgo soberano = mejor creditworthiness del sistema financiero = compresión del costo de fondeo y expansión de márgenes. Los bancos argentinos también tienen exposición directa a bonos soberanos en balance, lo que genera un doble efecto positivo (precios de bonos sube + outlook crediticio mejora). El mercado está re-rateando el sector desde un múltiplo de crisis hacia un múltiplo de país B.
+        </div>
+
+        <div class="watch-row">
+          <span class="badge-bloque badge-watch">🔍 Watch</span>
+          <span class="watch-pill">💼 P/BV bancos vs histórico</span>
+          <span class="watch-pill">📊 Cartera de bonos soberanos en balance bancario</span>
+          <span class="watch-pill">📈 Volumen operado en rueda siguiente</span>
+        </div>
+      </div>
+
+      <!-- Punto 2 -->
+      <div class="punto">
+        <div class="punto-titulo">2. Ternium +8.1% · El outsider del upgrade</div>
+
+        <div class="que-cambio">
+          <span class="badge-bloque badge-que">📖 Qué cambió</span>
+          Ternium (TEN) lideró los ADRs argentinos en NYSE con una suba de <span class="num">+8.1%</span> en la jornada. No es un banco ni tiene exposición directa a la deuda soberana. El driver es la combinación del upgrade + perspectiva de reformas (Ley de Glaciares, sectores minero/industrial). Ternium es uno de los mayores productores de acero en Latinoamérica y tiene operaciones integradas en Argentina.
+        </div>
+
+        <div class="implicancia">
+          <span class="badge-bloque badge-imp">🔗 Implicancia</span>
+          El mercado está comprando el "growth story" argentino, no solo el "riesgo-país story". Ternium sube porque el upgrade señala mejor estabilidad macroeconómica → mayor inversión industrial → mayor demanda de acero. Además, la flexibilización de la Ley de Glaciares (que Fitch menciona explícitamente como parte de la agenda de reformas) abriría proyectos mineros que consumen acero. El riesgo: precio del acero global sigue presionado por menor demanda china.
+        </div>
+
+        <div class="watch-row">
+          <span class="badge-bloque badge-watch">🔍 Watch</span>
+          <span class="watch-pill">🏭 Precio acero HRC global</span>
+          <span class="watch-pill">⚖️ Avance Ley Glaciares en Senado</span>
+          <span class="watch-pill">📦 PMI industrial Argentina</span>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /bloque equity -->
+
+
+  <!-- ── BLOQUE 3: MACRO AR ── -->
+  <div class="bloque-card">
+    <div class="bloque-header">🏛️ Macro AR — Reservas en alza, recaudación en baja</div>
+    <div class="bloque-body">
+
+      <!-- Punto 1 -->
+      <div class="punto">
+        <div class="punto-titulo">1. Reservas brutas en USD 46.000M · BCRA compra al ritmo más alto del año</div>
+
+        <div class="que-cambio">
+          <span class="badge-bloque badge-que">📖 Qué cambió</span>
+          Las reservas brutas del BCRA superaron los <span class="num">USD 46.000M</span>, máximos de un mes y medio. Las compras en el MULC alcanzaron ~USD 149M/día, el ritmo más alto desde el inicio de la fase acumuladora 2026. Fitch proyecta en su informe que las reservas brutas llegarán a <span class="num">USD 52.700M</span> a fin de año, con un crecimiento de USD 8.000M en reservas netas.
+        </div>
+
+        <div class="implicancia">
+          <span class="badge-bloque badge-imp">🔗 Implicancia</span>
+          La acumulación de reservas es el KPI más crítico para el próximo upgrade crediticio. Cada USD 1.000M adicional despeja riesgo cambiario y mejora la posición de liquidez externa, el principal punto débil señalado por Fitch. El ritmo actual sugiere que el target de $52.700M podría alcanzarse en septiembre si la cosecha sigue fluyendo bien. El riesgo: la cosecha es estacional y el ritmo de acumulación va a desacelerar naturalmente en el segundo semestre.
+        </div>
+
+        <div class="watch-row">
+          <span class="badge-bloque badge-watch">🔍 Watch</span>
+          <span class="watch-pill">📊 Reservas netas (neto de swaps)</span>
+          <span class="watch-pill">🌾 Estimación cosecha 2026</span>
+          <span class="watch-pill">🏦 Posición BCRA MULC semanal</span>
+        </div>
+      </div>
+
+      <!-- Punto 2 -->
+      <div class="punto">
+        <div class="punto-titulo">2. Recaudación ARCA −4% real en abril · Novena caída consecutiva</div>
+
+        <div class="que-cambio">
+          <span class="badge-bloque badge-que">📖 Qué cambió</span>
+          La recaudación tributaria de abril alcanzó <span class="num">$17.4 billones (+27.2% nominal)</span>, por debajo de la inflación acumulada (+32.6% i.a.), lo que implica una caída real del <strong>−4%</strong>. Es la novena caída real consecutiva. Las retenciones a exportaciones cayeron −13.3% interanual (pagan menos empresas o hay menor precio/volumen), mientras los derechos de importación se ajustaron. El IVA neto creció +28.3% nominal, señal de consumo que sostiene pero no compensa.
+        </div>
+
+        <div class="implicancia">
+          <span class="badge-bloque badge-imp">🔗 Implicancia</span>
+          Nueve caídas reales consecutivas son una señal de alerta fiscal que no se puede ignorar, aunque el ancla del presupuesto 2026 prevé compensaciones. Si la desinflación sigue (IPC abril ~2.4-2.8%), la base de comparación nominal se vuelve cada vez más difícil para la recaudación. El Gobierno necesita que la recuperación del empleo formal y el consumo empujen IVA y Ganancias, compensando la caída de retenciones. El riesgo de ver un dato fiscal negativo sorpresivo en el segundo semestre existe.
+        </div>
+
+        <div class="watch-row">
+          <span class="badge-bloque badge-watch">🔍 Watch</span>
+          <span class="watch-pill">📊 Resultado fiscal mensual vs meta IMF</span>
+          <span class="watch-pill">💼 Ganancias (próximo bimestre)</span>
+          <span class="watch-pill">📉 Retenciones acumuladas 2026</span>
+        </div>
+      </div>
+
+      <!-- Punto 3 -->
+      <div class="punto">
+        <div class="punto-titulo">3. IPC abril INDEC sale el 14 de mayo · Estimaciones: 2.4–2.8%</div>
+
+        <div class="que-cambio">
+          <span class="badge-bloque badge-que">📖 Qué cambió</span>
+          INDEC publicará el IPC de abril el <strong>14 de mayo a las 16hs</strong>. Las consultoras convergen en desaceleración respecto al 3.4% de marzo: Equilibra 2.5%, EcoGo 2.5%, PxQ 2.7–2.8%, Analytica 2.8%. Si el dato sale en el rango bajo (2.4–2.5%), sería la segunda desaceleración mensual consecutiva y reforzaría el sendero de desinflación. Hay presiones latentes en mayo por energía y servicios regulados.
+        </div>
+
+        <div class="implicancia">
+          <span class="badge-bloque badge-imp">🔗 Implicancia</span>
+          El IPC de abril es la siguiente lectura de mayor peso para la política monetaria. Con la tasa de política monetaria en el rango de BADLAR/TAMAR (~22-22.5%), un dato de 2.5% implica una tasa real positiva de ~0–1% mensual, zona donde la curva de pesos puede seguir funcionando. Si el dato supera 2.8%, aumenta la presión sobre la curva LECAP y obliga al mercado a repricear el carry. El Merval y los bonos CER serían los más sensibles.
+        </div>
+
+        <div class="watch-row">
+          <span class="badge-bloque badge-watch">🔍 Watch</span>
+          <span class="watch-pill">📅 IPC abril INDEC · 14 may 16hs</span>
+          <span class="watch-pill">📊 Curva LECAP reacción post-dato</span>
+          <span class="watch-pill">📈 BONCERes vs LECAP spreads</span>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /bloque macro -->
+
+
+  <!-- ── BLOQUE 4: GLOBAL ── -->
+  <div class="bloque-card">
+    <div class="bloque-header">🌎 Global — Wall Street en máximos, WTI cae, Oro sube</div>
+    <div class="bloque-body">
+
+      <!-- Punto 1 -->
+      <div class="punto">
+        <div class="punto-titulo">1. S&P 500 +1.46% a nuevos récords · US-Irán + AMD earnings</div>
+
+        <div class="que-cambio">
+          <span class="badge-bloque badge-que">📖 Qué cambió</span>
+          El S&P 500 cerró en <span class="num">7.365 (+1.46%)</span>, el Nasdaq en <span class="num">25.838 (+2.02%)</span> y el Dow en <span class="num">49.910 (+1.24%)</span>, todos en máximos históricos. Doble catalizador: (a) señales de de-escalación en el conflicto US-Irán que comprimieron la prima de riesgo geopolítico, (b) resultados sólidos de Advanced Micro Devices (AMD) que impulsaron toda la cadena semiconductores/IA. La Fed mantuvo tasas en 3.50–3.75% el 29 de abril; sin próximo FOMC hasta mid-junio.
+        </div>
+
+        <div class="implicancia">
+          <span class="badge-bloque badge-imp">🔗 Implicancia</span>
+          SPX en máximos con DXY débil es el backdrop externo ideal para activos emergentes, incluyendo Argentina. El riesgo es que si el acuerdo US-Irán no se materializa formalmente, la reversión puede ser tan rápida como el rally. La Fed con sesgo de hold y un disidente (Miran) que quería cortar da señal mixta: el mercado descuenta que los cortes en 2026 son posibles pero no urgentes. El contexto de SPX máximo + deuda AR en rally es temporalmente sincronizados hoy.
+        </div>
+
+        <div class="watch-row">
+          <span class="badge-bloque badge-watch">🔍 Watch</span>
+          <span class="watch-pill">🤝 Confirmación formal acuerdo US-Irán</span>
+          <span class="watch-pill">📊 CPI EEUU abril (~13-15 mayo)</span>
+          <span class="watch-pill">🏛️ FOMC siguiente mid-junio</span>
+        </div>
+      </div>
+
+      <!-- Punto 2 -->
+      <div class="punto">
+        <div class="punto-titulo">2. WTI baja ~5–7% · Geopolítica como driver, no fundamentos</div>
+
+        <div class="que-cambio">
+          <span class="badge-bloque badge-que">📖 Qué cambió</span>
+          El WTI (Jun'26) cayó aproximadamente un 5–7% en la jornada, ubicándose en el rango de <span class="num">~$100/bbl</span>. <span style="color:var(--amarillo-dark)">⚠️ Dato con discrepancia entre fuentes: Fortune reporta $100.05, otras fuentes citan $95.18–$100.60 con caídas de 5–7%.</span> El driver fue el mismo que impulsó a Wall Street: expectativas de acuerdo en el Estrecho de Ormuz que eliminaría el riesgo de cierre del estrecho para el flujo de crudo.
+        </div>
+
+        <div class="implicancia">
+          <span class="badge-bloque badge-imp">🔗 Implicancia</span>
+          Para Argentina el movimiento del WTI tiene impacto doble: (a) YPF y el sector Vaca Muerta pierden ingresos de exportación si el precio baja, (b) la factura de importación energética se alivia. Neto: leve negativo para el balance cambiario pero positivo para la desinflación de energía doméstica. Ternium subió +8.1% a pesar de esto, sugiriendo que el mercado ponderó más el upgrade que el oil move.
+        </div>
+
+        <div class="watch-row">
+          <span class="badge-bloque badge-watch">🔍 Watch</span>
+          <span class="watch-pill">⛽ WTI vs costo energético importación AR</span>
+          <span class="watch-pill">🛢️ OPEC+ respuesta a caída de precios</span>
+          <span class="watch-pill">📊 Exportaciones Vaca Muerta (mensuales)</span>
+        </div>
+      </div>
+
+      <!-- Punto 3 -->
+      <div class="punto">
+        <div class="punto-titulo">3. Oro +3.11% a $4.697/oz · DXY débil como amplificador</div>
+
+        <div class="que-cambio">
+          <span class="badge-bloque badge-que">📖 Qué cambió</span>
+          El oro spot (XAU/USD) subió <span class="num">+3.11%</span> a <span class="num">$4.697/oz</span>, segunda sesión consecutiva de alza. DXY cayó a ~98 (sin cierre exacto confirmado, ⚠️). El contexto: de-escalación en Oriente Medio redujo el atractivo por hedging geopolítico puro, pero la debilidad del dólar y las dudas sobre la posición fiscal de largo plazo de EEUU mantienen el bid estructural en oro.
+        </div>
+
+        <div class="implicancia">
+          <span class="badge-bloque badge-imp">🔗 Implicancia</span>
+          El oro sube a pesar de que la prima de riesgo geopolítico baja, lo que sugiere que el mercado está comprando una narrativa fiscal/monetaria: EEUU con deuda alta, Fed que no puede subir mucho más sin enfriar economía, y dólar que pierde tracción. Para Argentina, un DXY débil es generalmente favorable: mejora los terms of trade de commodities (soja, petróleo) y facilita el carry trade en pesos.
+        </div>
+
+        <div class="watch-row">
+          <span class="badge-bloque badge-watch">🔍 Watch</span>
+          <span class="watch-pill">💛 DXY / inversión real UST</span>
+          <span class="watch-pill">📊 Fed balance sheet / QT pace</span>
+          <span class="watch-pill">🌾 Commodity prices vs AR export</span>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /bloque global -->
+
+</div><!-- /container bloques -->
+
+
+<!-- ═══════════════════════════════════════ CALENDARIO ═══════════════════════════════════════ -->
+<div class="container">
+  <div class="section-title">Calendario · próximos 5 días hábiles</div>
+  <div class="section-sub">Eventos con potencial de mover mercados AR y Global</div>
+
+  <div class="next-event-banner">
+    <div class="dot-pulse"></div>
+    <div>
+      <div class="next-event-label">Próximo evento crítico</div>
+      <div class="next-event-val">📊 INDEC IPC abril 2026 — Jueves 14 de mayo, 16:00hs</div>
+    </div>
+    <div style="margin-left:auto;font-size:12px;color:var(--gris-claro);font-family:var(--font-data);">Estimado: 2.4–2.8%</div>
+  </div>
+
+  <table class="calendar-table">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Región</th>
+        <th>Evento</th>
+        <th>Qué mira el mercado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>07/05</strong><br><small>Jue</small></td>
+        <td><span class="chip-ar">AR</span></td>
+        <td>Rueda ByMA + seguimiento bonos post-Fitch</td>
+        <td>¿Continúa la compresión del riesgo país hacia 500 bps? Volumen como validación del rally.</td>
+      </tr>
+      <tr>
+        <td><strong>07/05</strong><br><small>Jue</small></td>
+        <td><span class="chip-global">Global</span></td>
+        <td>Fed speakers (varios miembros del FOMC)</td>
+        <td>Señales post-reunión: ¿cuánto importa la de-escalación Irán para el outlook inflacionario? Disidentes vs mayoría.</td>
+      </tr>
+      <tr>
+        <td><strong>08/05</strong><br><small>Vie</small></td>
+        <td><span class="chip-ar">AR</span></td>
+        <td>⚠️ Posible licitación Tesoro AR (no confirmada)</td>
+        <td>Tasa de corte LECAPs/BONCAPs como señal de demanda del mercado. Rollover de vencimientos en pesos. <br><small style="color:var(--amarillo-dark)">⚠️ Fecha exacta no confirmada; verificar cronograma argentina.gob.ar</small></td>
+      </tr>
+      <tr>
+        <td><strong>12/05</strong><br><small>Lun</small></td>
+        <td><span class="chip-ar">AR</span></td>
+        <td>Seguimiento reservas BCRA (fin de semana de acumulación)</td>
+        <td>Primer dato post-Fitch de ritmo de compras en MULC. ¿Sostiene el ritmo de $149M/día?</td>
+      </tr>
+      <tr>
+        <td><strong>13/05</strong><br><small>Mar</small></td>
+        <td><span class="chip-global">Global</span> <span class="chip-key">KEY</span></td>
+        <td>CPI EEUU abril 2026 (est. ca. 13–15 mayo)</td>
+        <td>Si supera el consenso, el mercado ajusta expectativas de corte Fed → presión sobre UST → efecto EM. Si baja, refuerza la narrativa dovish y es viento de cola para AR bonos.</td>
+      </tr>
+      <tr>
+        <td><strong>14/05</strong><br><small>Mie</small></td>
+        <td><span class="chip-ar">AR</span> <span class="chip-key">KEY</span></td>
+        <td>INDEC — IPC abril 2026 (16:00hs)</td>
+        <td>Estimado 2.4–2.8% (vs 3.4% marzo). Dato por debajo de 2.5% refuerza carry; dato sobre 2.8% presiona curva LECAPs. Descomposición sectorial (servicios vs bienes) es tan importante como el número.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="warn-box" style="margin-top:8px;">
+    ⚠️ Calendario AR: no fue posible acceder al cronograma oficial de licitaciones Tesoro (argentina.gob.ar) para confirmar fechas exactas de la semana. El INDEC confirma el 14/5 como fecha de publicación del IPC abril. Para el calendario global, el CPI EEUU de abril tiene fecha tentativa ~13-15 mayo según BLS (confirmar en bls.gov/schedule).
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ TRADE IDEAS ═══════════════════════════════════════ -->
+<div class="container">
+  <div class="section-title">Trade Ideas del día</div>
+  <div class="section-sub">2 ideas con convicción real · siempre con horizonte y contraargumento</div>
+
+  <!-- Trade Idea 1 -->
+  <div class="trade-card">
+    <div class="trade-header">
+      <div class="trade-inst">AL30 — USD MEP (cash)</div>
+      <div class="trade-dir dir-long">🟢 LONG</div>
+    </div>
+    <div class="trade-body">
+      <div class="trade-params">
+        <div class="param-box">
+          <div class="param-label">Entrada</div>
+          <div class="param-val">~USD 65.4</div>
+        </div>
+        <div class="param-box">
+          <div class="param-label">Stop</div>
+          <div class="param-val">~USD 61.5</div>
+        </div>
+        <div class="param-box">
+          <div class="param-label">Target</div>
+          <div class="param-val">~USD 70–72</div>
+        </div>
+        <div class="param-box param-horizonte" style="grid-column:1/-1;text-align:left;">
+          <div class="param-label">Horizonte</div>
+          <div class="param-val">6–10 semanas (hasta upgrade Moody's/S&P o IPC mayo)</div>
+        </div>
+      </div>
+
+      <div class="trade-rationale">
+        <strong>Rationale:</strong> El upgrade de Fitch abre la puerta a flujos de fondos con mandatos que excluían el universo CCC. Históricamente, cuando una de las tres grandes sube, las otras siguen en 2–4 meses. Si Moody's o S&P actúan antes de fin de agosto, el riesgo país tiene espacio para comprimir hacia 470–490 bps (desde 526 actuales), lo que implicaría un precio AL30 de USD 70–72. El backdrop externo (SPX en récords, DXY débil) amplifica el move. AL30 outperformó a GD30 hoy (+0.93% vs -0.33%), señal de que el mercado está eligiendo el bono con mejor estructura legal.
+      </div>
+
+      <div class="trade-contra">
+        <strong>Contraargumento:</strong> El upgrade de Fitch ya fue parcialmente priceado (bonos subieron hasta 2% hoy). Si Moody's/S&P demoran su acción más de 6 meses, el catalizador se agota y el spread consolida en 500–550 bps sin dirección. Además, Fitch señaló explícitamente las elecciones 2027 como riesgo: si la incertidumbre política se acelera antes de lo esperado, el mercado empieza a descontar prima de riesgo político que comprime el move de compresión crediticia. El WTI bajando es levemente negativo para el TC vía Vaca Muerta; cualquier shock de reservas revierte la narrativa.
+      </div>
+    </div>
+  </div>
+
+  <!-- Trade Idea 2 -->
+  <div class="trade-card">
+    <div class="trade-header">
+      <div class="trade-inst">GGAL (ADR NYSE) — Sector bancos</div>
+      <div class="trade-dir dir-long">🟢 LONG</div>
+    </div>
+    <div class="trade-body">
+      <div class="trade-params">
+        <div class="param-box">
+          <div class="param-label">Entrada</div>
+          <div class="param-val">~USD 54–56</div>
+        </div>
+        <div class="param-box">
+          <div class="param-label">Stop</div>
+          <div class="param-val">USD 50.5</div>
+        </div>
+        <div class="param-box">
+          <div class="param-label">Target</div>
+          <div class="param-val">USD 63–65</div>
+        </div>
+        <div class="param-box param-horizonte" style="grid-column:1/-1;text-align:left;">
+          <div class="param-label">Horizonte</div>
+          <div class="param-val">4–6 semanas (catalizador: IPC abril + upgrade cadena Moody's/S&P)</div>
+        </div>
+      </div>
+
+      <div class="trade-rationale">
+        <strong>Rationale:</strong> Los bancos son el proxy más directo del upgrade soberano. Con riesgo soberano comprimiendo y desinflación en curso (IPC abril ~2.5% estimado), el spread de crédito privado mejora y los márgenes bancarios se amplían. GGAL tiene el mejor mix de banca digital (Naranja X) + banca corporativa, posicionado para capturar la recuperación del crédito privado que acompaña el ciclo de re-apertura post-distorsión. Los bancos argentinos están en un proceso de re-rating desde múltiplos de crisis (P/BV ~0.5–0.7x) hacia múltiplos de país B (P/BV ~1.0–1.5x).
+      </div>
+
+      <div class="trade-contra">
+        <strong>Contraargumento:</strong> Los ADRs en USD pueden divergir de la ByMA si el CCL se aprecia (flujos de capitales post-upgrade aprecian el peso → el ratio ADR/acción local comprime). GGAL tiene exposición directa a bonos soberanos en balance: si hay toma de ganancias en soberanos post-upgrade (buy the rumor, sell the news), puede haber correlación negativa intraday. Además, el ADR ya subió ~7% en pesos en ByMA hoy; parte de la noticia está priceada. Si el IPC de abril sorprende al alza (>2.8%), toda la curva pesos se reprecia negativamente y los bancos sufren.
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container trade -->
+
+
+<!-- ═══════════════════════════════════════ FOOTER ═══════════════════════════════════════ -->
+<div class="footer">
+  <div class="container">
+    <div class="footer-sources">
+      <strong>Fuentes consultadas:</strong> ByMA / BYMADATA (cotizaciones AR) · Allaria.com.ar (AL30, GD30) · Investing.com (Merval histórico) · JPMorgan EMBI+ vía Diario Uno / Infobae (riesgo país) · LA NACION / Cronista / Río Negro / Ámbito (dólar MEP, CCL, blue) · ARCA gob.ar / Ámbito (recaudación tributaria abril) · INDEC gob.ar (IPC marzo, fecha publicación) · Infobae / C5N (IPC abril estimaciones) · BCRA / Ámbito (reservas, BADLAR, TAMAR) · Trading Economics (UST 10Y, DXY, Oro, WTI) · RoboForex (XAU/USD análisis) · Fortune (WTI close) · CNBC / múltiples (S&P 500, Nasdaq, Dow) · Infobae / Diario Uno / Canal 26 / Bloomberg Línea / BA Times (Fitch upgrade) · Federalreserve.gov (FOMC statement 29-abr)
+    </div>
+    <div class="footer-disclaimer">
+      Para fines informativos únicamente. No constituye asesoramiento de inversión ni recomendación de compra o venta de ningún activo financiero. Los precios y datos pueden no reflejar exactamente el cierre oficial del día.
+    </div>
+  </div>
+</div>
+
+
+<script>
+function copyReport(){
+  const btn=document.getElementById('copyBtn');
+  const blob=new Blob([document.documentElement.outerHTML],{type:'text/html'});
+  if(navigator.clipboard?.write){
+    navigator.clipboard.write([new ClipboardItem({'text/html':blob})])
+      .then(()=>{btn.textContent='✓ COPIED';btn.classList.add('copied');})
+      .catch(()=>fallback(btn));
+  } else { fallback(btn); }
+  setTimeout(()=>{btn.textContent='⎘ EXPORT REPORT';btn.classList.remove('copied');},2500);
+}
+function fallback(btn){
+  const t=document.createElement('textarea');
+  t.value=document.documentElement.outerHTML;
+  t.style='position:fixed;opacity:0';
+  document.body.appendChild(t);t.select();
+  document.execCommand('copy');document.body.removeChild(t);
+  btn.textContent='✓ COPIED';btn.classList.add('copied');
+}
+</script>
+
+</body>
+</html>

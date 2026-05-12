@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equity Risk Report — Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #08090d;
+  --bg2:       #0f1117;
+  --bg3:       #161820;
+  --bg4:       #1c1e28;
+  --border:    rgba(255,255,255,0.07);
+  --border2:   rgba(255,255,255,0.12);
+  --text:      #e8eaf0;
+  --muted:     #7a7f96;
+  --accent:    #74ACDF;
+  --green:     #F6B40E;
+  --amber:     #F6B40E;
+  --blue:      #74ACDF;
+  --orange:    #F97316;
+  --mono:      'JetBrains Mono', monospace;
+  --sans:      'DM Sans', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  min-height: 100vh;
+}
+
+/* ── Top bar ── */
+.topbar {
+  background: linear-gradient(180deg, #0d0e18 0%, #0a0b14 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+}
+.topbar-left { display: flex; flex-direction: column; gap: 3px; }
+.topbar-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+.topbar-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.count-pill {
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(116,172,223,0.12);
+  border: 1px solid rgba(116,172,223,0.25);
+  color: var(--accent);
+}
+
+/* ── Refresh button ── */
+.refresh-btn {
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s;
+}
+.refresh-btn:hover { color: var(--text); border-color: rgba(116,172,223,0.4); }
+.refresh-btn.spinning .refresh-icon { display: inline-block; animation: spin 0.7s linear infinite; }
+.refresh-btn.ok  { color: var(--green); border-color: rgba(246,180,14,0.3); }
+.refresh-btn.err { color: #f04070;      border-color: rgba(240,64,112,0.3); }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Main content ── */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 28px 60px;
+}
+
+/* ── Filters ── */
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1px solid var(--border2);
+  background: var(--bg2);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.filter-btn:hover { background: var(--bg3); color: var(--text); }
+.filter-btn.active.all      { background: rgba(116,172,223,0.15); border-color: rgba(116,172,223,0.35); color: var(--accent); }
+.filter-btn.active.semanal  { background: rgba(246,180,14,0.12);  border-color: rgba(246,180,14,0.3);  color: var(--green); }
+.filter-btn.active.diario   { background: rgba(116,172,223,0.12); border-color: rgba(116,172,223,0.3); color: var(--blue); }
+.filter-btn.active.premarket{ background: rgba(249,115,22,0.12);  border-color: rgba(249,115,22,0.3);  color: var(--orange); }
+
+/* ── Section header ── */
+.section-hdr {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.section-hdr.hidden { display: none; }
+
+/* ── Grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.18s;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  opacity: 0;
+  transition: opacity 0.18s;
+}
+.card.semanal::before   { background: var(--green); }
+.card.diario::before    { background: var(--blue); }
+.card.premarket::before { background: var(--orange); }
+.card:hover {
+  border-color: var(--border2);
+  background: var(--bg3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.card:hover::before { opacity: 1; }
+.card.hidden { display: none; }
+
+.card-head { display: flex; align-items: center; justify-content: space-between; }
+.type-badge {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+.badge-semanal   { background: rgba(246,180,14,0.1);  color: var(--green);  border: 1px solid rgba(246,180,14,0.2); }
+.badge-diario    { background: rgba(116,172,223,0.1); color: var(--blue);   border: 1px solid rgba(116,172,223,0.2); }
+.badge-premarket { background: rgba(249,115,22,0.1);  color: var(--orange); border: 1px solid rgba(249,115,22,0.2); }
+
+.card-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+.card-subtitle {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.card-snippet {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  background: var(--bg4);
+  border: 1px solid var(--border);
+  color: #606478;
+}
+
+.card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+.open-btn {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.15s;
+}
+.card:hover .open-btn { color: var(--text); }
+.open-arrow {
+  width: 16px; height: 16px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--bg4);
+  border: 1px solid var(--border);
+  font-size: 9px;
+  transition: all 0.15s;
+}
+.card:hover .open-arrow { background: var(--accent); border-color: var(--accent); color: white; }
+
+/* ── Empty state ── */
+.empty {
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--muted);
+  font-size: 14px;
+  display: none;
+}
+.empty.show { display: block; }
+
+/* ── Modal ── */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.overlay.open { display: flex; }
+
+.modal {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 1000px;
+  height: calc(100vh - 80px);
+  max-height: 860px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+  animation: modal-in 0.2s ease;
+}
+@keyframes modal-in {
+  from { opacity: 0; transform: scale(0.96) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  gap: 12px;
+}
+.modal-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.modal-actions { display: flex; gap: 8px; align-items: center; }
+.modal-link {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 7px;
+  border: 1px solid var(--border2);
+  background: var(--bg3);
+  color: var(--muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.modal-link:hover { color: var(--text); border-color: var(--border2); }
+.modal-close {
+  width: 28px; height: 28px;
+  border-radius: 7px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  transition: all 0.15s;
+}
+.modal-close:hover { background: var(--bg4); color: var(--text); }
+
+.modal-iframe {
+  flex: 1;
+  border: none;
+  background: white;
+}
+
+/* ── Empty section ── */
+.no-results { display: none; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-tag">Equity Risk Report</div>
+    <div class="topbar-title">Hub de Reportes</div>
+  </div>
+  <div class="topbar-right">
+    <button class="refresh-btn" id="refresh-btn" onclick="refreshReports()" title="Escanear carpetas y actualizar">
+      <span class="refresh-icon">↻</span>
+      <span class="refresh-label">Actualizar</span>
+    </button>
+    <div class="count-pill" id="count-display">cargando...</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="filters">
+    <button class="filter-btn active all" onclick="setFilter('all',this)">Todos</button>
+    <button class="filter-btn premarket" onclick="setFilter('premarket',this)">Pre-Markets</button>
+    <button class="filter-btn semanal" onclick="setFilter('semanal',this)">Semanales</button>
+    <button class="filter-btn diario" onclick="setFilter('diario',this)">Digests diarios</button>
+  </div>
+
+  <div class="section-hdr" id="hdr-premarket">Pre-Markets — Apertura NY</div>
+  <div class="grid" id="grid-premarket"></div>
+
+  <div class="section-hdr" id="hdr-semanal">Semanales — Economía & Mercados</div>
+  <div class="grid" id="grid-semanal"></div>
+
+  <div class="section-hdr" id="hdr-diario">Digests Diarios</div>
+  <div class="grid" id="grid-diario"></div>
+
+  <div class="empty" id="empty-state">No hay reportes en esta categoría.</div>
+
+</div>
+
+<!-- Modal -->
+<div class="overlay" id="overlay" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-bar">
+      <div class="modal-title" id="modal-title">—</div>
+      <div class="modal-actions">
+        <a class="modal-link" id="modal-open-link" target="_blank">Abrir en nueva pestaña ↗</a>
+        <button class="modal-close" onclick="closeModalDirect()">✕</button>
+      </div>
+    </div>
+    <iframe class="modal-iframe" id="modal-iframe" src="" title="Preview"></iframe>
+  </div>
+</div>
+
+<script>
+const REPORTS = [
+  {
+  "type": "premarket",
+  "title": "Pre-Market — Resumen de Mercados",
+  "subtitle": "Jueves 7 de mayo 2026",
+  "date": "2026-05-07",
+  "dateDisplay": "Jueves 7 de mayo 2026",
+  "snippet": "Fitch Upgrade Argentina: CCC+ → B- · Riesgo País (EMBI): 514 pbs · Merval (CCL): +4.7% → USD 1.945 · Globales (promedio): +2.1%",
+  "tags": [
+    "Fitch Upgrade Argentina",
+    "Riesgo País (EMBI)",
+    "Merval (CCL)",
+    "Globales (promedio)",
+    "WTI Crude Oil"
+  ],
+  "path": "Pre-Markets/resumen-mercados-2026-05-07.html"
+  },
+  {
+  "type": "diario",
+  "title": "Digest Diario — Mercados",
+  "subtitle": "Miércoles 6 de mayo 2026",
+  "date": "2026-05-06",
+  "dateDisplay": "Miércoles 6 de mayo 2026",
+  "snippet": "Riesgo país cayó 27 bps a 526 pbs · Merval +2.5% · Bonos soberanos +2% · Bancos lideran +7.4%...",
+  "tags": [
+    "Snapshot ampliado",
+    "Bloques temáticos",
+    "Calendario",
+    "Trade Ideas del día"
+  ],
+  "path": "digests-diarios/html/Daily's - 2026-05-06.html"
+  },
+  {
+  "type": "diario",
+  "title": "Digest Diario — Mercados",
+  "subtitle": "Martes 5 de mayo 2026",
+  "date": "2026-05-05",
+  "dateDisplay": "Martes 5 de mayo 2026",
+  "snippet": "Un BCRA que acumula a este ritmo reduce la probabilidad de salto cambiario y valida el esquema de bandas. El canal de transmisión directo es la curva soberana en dólares: cuando las reservas suben consistentemente, el riesgo de reperfilamiento cae y los bonos comprimen spread. GD...",
+  "tags": [
+    "Snapshot de Mercado",
+    "Los 3 Temas del Día"
+  ],
+  "path": "digests-diarios/html/Digest Diario - 2026-05-05.html"
+  },
+  {
+  "type": "semanal",
+  "title": "Digest Semanal — Economía & Mercados",
+  "subtitle": "Semana 28 abr – 2 may 2026",
+  "date": "2026-05-03",
+  "dateDisplay": "3 de mayo 2026",
+  "snippet": "El BCRA cerró abril comprando USD 2.563mm, llevando el acumulado del año a más de USD 7.000mm. La cosecha gruesa arrancó con el peor avance de las últimas 10 temporadas (10% del área cosechada), pero la normalización climática disparó el ingreso de camiones a puertos: de 1.400/dí...",
+  "tags": [
+    "Dólar & BCRA",
+    "Tasas",
+    "IPC",
+    "Crédito",
+    "Global",
+    "Radar"
+  ],
+  "path": "semanales/digest-semanal-2026-05-03.html"
+  },
+  {
+  "type": "semanal",
+  "title": "Digest Semanal — Economía & Mercados",
+  "subtitle": "Semana 17–24 abr 2026",
+  "date": "2026-04-24",
+  "dateDisplay": "24 de abril 2026",
+  "snippet": "(promedio móvil 30d: $1.393,44). Hoy subió hasta $1.399,50 — tercer día consecutivo al alza con volumen récord (~USD 1.000M operados)...",
+  "tags": [
+    "Dólar & BCRA",
+    "Tasas",
+    "IPC",
+    "Crédito",
+    "Global",
+    "Radar"
+  ],
+  "path": "semanales/digest-semanal-2026-04-24.html"
+  }
+];
+
+let currentFilter = 'all';
+
+function renderCards() {
+  const gridPre = document.getElementById('grid-premarket');
+  const gridSem = document.getElementById('grid-semanal');
+  const gridDia = document.getElementById('grid-diario');
+  const hdrPre  = document.getElementById('hdr-premarket');
+  const hdrSem  = document.getElementById('hdr-semanal');
+  const hdrDia  = document.getElementById('hdr-diario');
+  const empty   = document.getElementById('empty-state');
+  gridPre.innerHTML = '';
+  gridSem.innerHTML = '';
+  gridDia.innerHTML = '';
+
+  const premarkets = REPORTS.filter(r => r.type === 'premarket');
+  const semanales  = REPORTS.filter(r => r.type === 'semanal');
+  const diarios    = REPORTS.filter(r => r.type === 'diario');
+
+  const showPre = currentFilter === 'all' || currentFilter === 'premarket';
+  const showSem = currentFilter === 'all' || currentFilter === 'semanal';
+  const showDia = currentFilter === 'all' || currentFilter === 'diario';
+
+  hdrPre.classList.toggle('hidden', !showPre);
+  hdrSem.classList.toggle('hidden', !showSem);
+  hdrDia.classList.toggle('hidden', !showDia);
+
+  if (showPre) premarkets.forEach(r => gridPre.appendChild(makeCard(r)));
+  if (showSem) semanales.forEach(r => gridSem.appendChild(makeCard(r)));
+  if (showDia) diarios.forEach(r => gridDia.appendChild(makeCard(r)));
+
+  const total = (showPre ? premarkets.length : 0) +
+                (showSem ? semanales.length : 0) +
+                (showDia ? diarios.length : 0);
+  document.getElementById('count-display').textContent = `${total} reporte${total !== 1 ? 's' : ''}`;
+  empty.classList.toggle('show', total === 0);
+}
+
+function makeCard(r) {
+  const card = document.createElement('div');
+  card.className = `card ${r.type}`;
+  card.onclick = () => openModal(r);
+
+  const tagsHtml = r.tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+  card.innerHTML = `
+    <div class="card-head">
+      <span class="type-badge badge-${r.type}">${r.type === 'semanal' ? 'Semanal' : r.type === 'premarket' ? 'Pre-Market' : 'Diario'}</span>
+      <span class="card-date">${r.dateDisplay}</span>
+    </div>
+    <div>
+      <div class="card-title">${r.title}</div>
+      <div class="card-subtitle">${r.subtitle}</div>
+    </div>
+    <div class="card-snippet">${r.snippet}</div>
+    <div class="card-tags">${tagsHtml}</div>
+    <div class="card-foot">
+      <div class="open-btn">
+        <span>Ver reporte</span>
+        <span class="open-arrow">→</span>
+      </div>
+    </div>
+  `;
+  return card;
+}
+
+function setFilter(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCards();
+}
+
+function openModal(r) {
+  document.getElementById('modal-title').textContent = `${r.title} · ${r.dateDisplay}`;
+  document.getElementById('modal-iframe').src = r.path;
+  document.getElementById('modal-open-link').href = r.path;
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModalDirect() {
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('modal-iframe').src = '';
+  document.body.style.overflow = '';
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('overlay')) closeModalDirect();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModalDirect();
+});
+
+async function refreshReports() {
+  const btn = document.getElementById('refresh-btn');
+  const label = btn.querySelector('.refresh-label');
+  const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+  if (!isLocal) {
+    btn.className = 'refresh-btn ok';
+    label.textContent = 'Ya actualizado';
+    setTimeout(() => { btn.className = 'refresh-btn'; label.textContent = 'Actualizar'; }, 3000);
+    return;
+  }
+  btn.className = 'refresh-btn spinning';
+  label.textContent = 'Escaneando...';
+  try {
+    const res = await fetch('/api/refresh');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    REPORTS.length = 0;
+    data.forEach(r => REPORTS.push(r));
+    renderCards();
+    btn.className = 'refresh-btn ok';
+    label.textContent = `${data.length} reportes`;
+    setTimeout(() => { btn.className = 'refresh-btn'; label.textContent = 'Actualizar'; }, 2500);
+  } catch (e) {
+    btn.className = 'refresh-btn err';
+    label.textContent = location.protocol === 'file:' ? 'Iniciá server.py' : 'Error';
+    setTimeout(() => { btn.className = 'refresh-btn'; label.textContent = 'Actualizar'; }, 3000);
+  }
+}
+
+renderCards();
+</script>
+</body>
+</html>

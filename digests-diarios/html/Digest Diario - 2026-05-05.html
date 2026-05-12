@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digest Diario — Mercados | 5 de mayo 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #08090d;
+    --bg2: #0f1117;
+    --bg3: #161820;
+    --border: rgba(255,255,255,0.07);
+    --accent: #74ACDF;
+    --green: #F6B40E;
+    --amber: #f0a020;
+    --red: #f04070;
+    --text: #e8eaf0;
+    --muted: #7a7f96;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 0 0 48px;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0d0e18 0%, #131525 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+  }
+  .header-left { display: flex; flex-direction: column; gap: 4px; }
+  .header-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  .header-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .header-date {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .whatsapp-note {
+    font-size: 11px;
+    color: var(--muted);
+    background: rgba(240,160,32,0.1);
+    border: 1px solid rgba(240,160,32,0.2);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-family: var(--mono);
+  }
+  .export-btn {
+    background: rgba(116,172,223,0.15);
+    border: 1px solid rgba(116,172,223,0.4);
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .export-btn:hover { background: rgba(116,172,223,0.25); }
+  .export-btn.copied { color: var(--green); border-color: rgba(246,180,14,0.4); background: rgba(246,180,14,0.1); }
+
+  /* ── Container ── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+  /* ── Section title ── */
+  .section-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 32px 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── Market Snapshot ── */
+  .snapshot-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .snapshot-panel {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .snapshot-panel-title {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+  }
+  .metric-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .metric-values { text-align: right; }
+  .metric-value {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .metric-change {
+    font-family: var(--mono);
+    font-size: 10px;
+    margin-left: 8px;
+  }
+  .metric-source {
+    font-size: 9px;
+    color: rgba(122,127,150,0.6);
+    font-family: var(--mono);
+    display: block;
+    text-align: right;
+    margin-top: 1px;
+  }
+  .up { color: var(--green); }
+  .down { color: var(--red); }
+  .flat { color: var(--amber); }
+  .nd { color: var(--muted); font-style: italic; }
+
+  /* ── Topic Cards ── */
+  .topic-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .topic-header {
+    background: var(--bg3);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .topic-number {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    background: rgba(116,172,223,0.15);
+    border: 1px solid rgba(116,172,223,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-weight: 700;
+  }
+  .topic-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .section-block {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-block:last-child { border-bottom: none; }
+
+  .block-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .block-cambio .block-label { color: #60a8f8; background: rgba(96,168,248,0.12); border: 1px solid rgba(96,168,248,0.2); }
+  .block-importa .block-label { color: var(--green); background: rgba(246,180,14,0.1); border: 1px solid rgba(246,180,14,0.2); }
+  .block-posicion .block-label { color: #1aff8e; background: rgba(26,255,142,0.08); border: 1px solid rgba(26,255,142,0.2); }
+  .block-contra .block-label { color: var(--red); background: rgba(240,64,112,0.1); border: 1px solid rgba(240,64,112,0.2); }
+
+  .block-body {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #c8cad8;
+  }
+  .block-body strong { color: var(--text); }
+
+  .watch-section {
+    padding: 14px 20px;
+    background: rgba(116,172,223,0.04);
+    border-top: 1px solid rgba(116,172,223,0.1);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .watch-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+  .watch-pill {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    background: rgba(116,172,223,0.12);
+    border: 1px solid rgba(116,172,223,0.25);
+    border-radius: 20px;
+    padding: 3px 10px;
+    white-space: nowrap;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    margin-top: 40px;
+    padding: 20px 32px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .footer-sources { flex: 1; }
+  .footer-title {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .source-item {
+    font-size: 11px;
+    color: rgba(122,127,150,0.8);
+    margin-bottom: 3px;
+    font-family: var(--mono);
+  }
+  .disclaimer {
+    max-width: 320px;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* ── Data inline num ── */
+  .num { font-family: var(--mono); font-weight: 600; }
+  .src-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    background: rgba(122,127,150,0.1);
+    border-radius: 3px;
+    padding: 1px 5px;
+    margin-left: 4px;
+  }
+
+  @media (max-width: 800px) {
+    .snapshot-grid { grid-template-columns: 1fr; }
+    .header { padding: 16px; }
+    .container { padding: 0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<div class="header">
+  <div class="header-left">
+    <span class="header-tag">⬡ Equity Risk · Digest Diario</span>
+    <span class="header-title">Mercados — Martes 5 de mayo 2026</span>
+    <span class="header-date">Generado automáticamente · Sin conexión WhatsApp este run</span>
+  </div>
+  <div class="header-right">
+    <span class="whatsapp-note">⚠ Chrome no conectado · WhatsApp omitido</span>
+    <button class="export-btn" id="copyBtn" onclick="copyReport()">⎘ EXPORT REPORT</button>
+  </div>
+</div>
+
+<!-- ═══════════ CONTENT ═══════════ -->
+<div class="container">
+
+  <!-- ── Market Snapshot ── -->
+  <div class="section-title">Snapshot de Mercado · Cierre 5-may-2026</div>
+
+  <div class="snapshot-grid">
+
+    <!-- Panel 1: AR Equity / Bonos -->
+    <div class="snapshot-panel">
+      <div class="snapshot-panel-title">🇦🇷 AR · Equity &amp; Bonos</div>
+
+      <div class="metric-row">
+        <span class="metric-label">A3500 (mayorista)</span>
+        <div class="metric-values">
+          <span class="metric-value">$1.402,50</span>
+          <span class="metric-change up">+0.8%</span>
+          <span class="metric-source">Infobae / 4-may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">Reservas brutas</span>
+        <div class="metric-values">
+          <span class="metric-value num">USD 45.683M</span>
+          <span class="metric-source">Ambito / 4-may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">S&P Merval</span>
+        <div class="metric-values">
+          <span class="metric-value">~2.780.000</span>
+          <span class="metric-change down">-1.8%</span>
+          <span class="metric-source">iProfesional / 5-may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">AL30 (Bonar 30)</span>
+        <div class="metric-values">
+          <span class="metric-value">91.460</span>
+          <span class="metric-change up">+0.15%</span>
+          <span class="metric-source">Web search / 5-may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">GD30 (Global 30)</span>
+        <div class="metric-values">
+          <span class="metric-value">93.500</span>
+          <span class="metric-change up">+0.11%</span>
+          <span class="metric-source">Web search / 5-may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">Riesgo País</span>
+        <div class="metric-values">
+          <span class="metric-value down">540 bps</span>
+          <span class="metric-source">iProfesional / 5-may</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 2: Tasas Pesos -->
+    <div class="snapshot-panel">
+      <div class="snapshot-panel-title">💵 Tasas · Pesos</div>
+
+      <div class="metric-row">
+        <span class="metric-label">BADLAR</span>
+        <div class="metric-values">
+          <span class="metric-value nd">N/D</span>
+          <span class="metric-source">BCRA IMD bloqueado</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">TAMAR (TNA)</span>
+        <div class="metric-values">
+          <span class="metric-value">~23.4%</span>
+          <span class="metric-source">REM proyección / Cohen</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">LECAPs cortas</span>
+        <div class="metric-values">
+          <span class="metric-value">35–37% TIR</span>
+          <span class="metric-source">Ambito / may-2026</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">LECAPs largas</span>
+        <div class="metric-values">
+          <span class="metric-value">~30% TIR</span>
+          <span class="metric-source">Ambito / may-2026</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">Banda cam. techo</span>
+        <div class="metric-values">
+          <span class="metric-value amber">$1.761</span>
+          <span class="metric-source">Infobae / 4-may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">Spot vs. techo</span>
+        <div class="metric-values">
+          <span class="metric-value green">-23%</span>
+          <span class="metric-source">Infobae / 4-may</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 3: Global -->
+    <div class="snapshot-panel">
+      <div class="snapshot-panel-title">🌐 Global</div>
+
+      <div class="metric-row">
+        <span class="metric-label">S&amp;P 500</span>
+        <div class="metric-values">
+          <span class="metric-value">~7.240</span>
+          <span class="metric-change up">+0.55%</span>
+          <span class="metric-source">TheStreet / 5-may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">UST 10Y</span>
+        <div class="metric-values">
+          <span class="metric-value">4.43%</span>
+          <span class="metric-change down">-1bp</span>
+          <span class="metric-source">TradingEconomics / 5-may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">DXY</span>
+        <div class="metric-values">
+          <span class="metric-value">98.41</span>
+          <span class="metric-change flat">+0.04%</span>
+          <span class="metric-source">TradingEconomics / 5-may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">Oro (spot)</span>
+        <div class="metric-values">
+          <span class="metric-value">$4.550</span>
+          <span class="metric-source">Web search / 5-may</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span class="metric-label">WTI crude</span>
+        <div class="metric-values">
+          <span class="metric-value amber">~$105</span>
+          <span class="metric-change up">+3%</span>
+          <span class="metric-source">Fortune/CNBC / 4-may</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /snapshot-grid -->
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- TEMAS DEL DÍA -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="section-title">Los 3 Temas del Día</div>
+
+  <!-- ───── TEMA 1: BCRA / Reservas ───── -->
+  <div class="topic-card">
+    <div class="topic-header">
+      <span class="topic-number">01</span>
+      <span class="topic-title">BCRA acumula reservas: 72% de la meta anual en 4 meses</span>
+    </div>
+
+    <div class="section-block block-cambio">
+      <div class="block-label">🔵 Qué Cambió</div>
+      <div class="block-body">
+        El BCRA compró <strong>USD 71M el 4-mayo</strong>, extendiendo a <strong>79 ruedas consecutivas</strong> con saldo comprador.
+        Acumulado 2026: <strong>USD 7.226M</strong> — ya cubrió el <strong>72% de la meta mínima anual</strong> (USD 10.000M).
+        Reservas brutas: <strong>USD 45.683M</strong>. El mayorista A3500 cerró <strong>$1.402,50</strong> (+0.8%), a <strong>23% de distancia</strong> del techo de la banda ($1.761).
+        <span class="src-tag">Infobae 4-may · Ambito 4-may</span>
+      </div>
+    </div>
+
+    <div class="section-block block-importa">
+      <div class="block-label">🟢 Por Qué Le Importa al Mercado</div>
+      <div class="block-body">
+        Un BCRA que acumula a este ritmo reduce la probabilidad de salto cambiario y valida el esquema de bandas. El canal de transmisión directo es la curva soberana en dólares: cuando las reservas suben consistentemente, el riesgo de reperfilamiento cae y los bonos comprimen spread. GD30 y AL30 son los activos más sensibles. Secondario: si el BCRA cumple la meta mínima antes de Q3, puede relajar condiciones monetarias y bajar tasas — positivo para LECAPs largas y para equity financiero.
+      </div>
+    </div>
+
+    <div class="section-block block-posicion">
+      <div class="block-label">📈 Posición Analista</div>
+      <div class="block-body">
+        <strong>Long GD30 / AL30</strong>, horizonte <strong>3–6 meses</strong>. El ritmo de compra del BCRA (+USD 7.2B en 4 meses) supera el ritmo necesario para cumplir la meta en todos los escenarios. La compresión de riesgo país desde 540bps hacia 400–450bps es plausible si el dato macro de inflación de abril muestra desinflación. Paridad GD30 hoy ~93.5 — potencial de apreciación de 5–8% si el EMBI+ AR converge hacia 450bps.
+      </div>
+    </div>
+
+    <div class="section-block block-contra">
+      <div class="block-label">🔴 Contraargumento</div>
+      <div class="block-body">
+        El flujo de compras llega en parte porque el Gobierno está refinanciando vencimientos en pesos que "liberan" divisas al BCRA, no solo por exportaciones genuinas. Si la soja en Chicago cae por la cosecha brasileña récord o si la sequía golpea la producción Q3, el canal agro se seca. Además, la caída de las reservas brutas por debajo de USD 46.000M la semana pasada (Infobae 28-abr) muestra que los vencimientos de deuda siguen pesando. La meta es mucho más frágil de lo que parece.
+      </div>
+    </div>
+
+    <div class="watch-section">
+      <span class="watch-label">👁 Watch</span>
+      <span class="watch-pill">Compras diarias BCRA</span>
+      <span class="watch-pill">Soja Chicago (ZSc1)</span>
+      <span class="watch-pill">Licitación Tesoro en pesos</span>
+      <span class="watch-pill">Reservas netas esta semana</span>
+    </div>
+  </div>
+
+  <!-- ───── TEMA 2: Geopolítica / Oil ───── -->
+  <div class="topic-card">
+    <div class="topic-header">
+      <span class="topic-number">02</span>
+      <span class="topic-title">Tensión en Medio Oriente: WTI a $105 y mercados globales en modo defensivo</span>
+    </div>
+
+    <div class="section-block block-cambio">
+      <div class="block-label">🔵 Qué Cambió</div>
+      <div class="block-body">
+        El conflicto en Medio Oriente escaló el 4-mayo, enviando el <strong>WTI +3% a ~$105/bbl</strong> — nivel no visto desde mediados de 2025. El <strong>UST 10Y subió 5bps</strong> la sesión anterior (flight-to-safety + expectativas de inflación), pero se asentó hoy en <strong>4.43%</strong>. El <strong>S&P 500 subió +0.55%</strong> el 5-mayo impulsado por Pfizer (+2.2%, beat de earnings) y Micron (+5%, demanda HBM para IA). El DXY quedó prácticamente flat en 98.41. <span class="src-tag">TheStreet 5-may · CNBC 4-may</span>
+      </div>
+    </div>
+
+    <div class="section-block block-importa">
+      <div class="block-label">🟢 Por Qué Le Importa al Mercado</div>
+      <div class="block-body">
+        Para Argentina hay dos canales concretos. Primero, el <strong>oil >$100 beneficia directamente a YPF y Pampa Energía</strong> (margen de upstream sube, valuación sube). Segundo, el <strong>UST 10Y sostenido arriba de 4.4% encarece el financiamiento externo para EM</strong> — cada 10bps de Treasury arrastra ~15–20bps de riesgo país argentino en las semanas siguientes. El S&P 500 contenido limita el contagio negativo por ahora. El oro a $4.550 refleja demanda de cobertura global sostenida.
+      </div>
+    </div>
+
+    <div class="section-block block-posicion">
+      <div class="block-label">📈 Posición Analista</div>
+      <div class="block-body">
+        <strong>Long YPF (YPFD) en ByMA</strong>, horizonte <strong>1–3 meses</strong>. WTI >$100 es viento de cola estructural para los márgenes de upstream. Si el conflicto persiste, el oil se consolida arriba de $95–100 y YPF captura ese spread. La acción ya rebotó desde mínimos pero sigue con descuento vs. pares EM oil. Stop-loss lógico: WTI cierra por debajo de $90 dos sesiones consecutivas (desescalada o acuerdo diplomático).
+      </div>
+    </div>
+
+    <div class="section-block block-contra">
+      <div class="block-label">🔴 Contraargumento</div>
+      <div class="block-body">
+        Los conflictos geopolíticos tienen una vida útil corta en el pricing de mercados. Si hay desescalada o mediación en las próximas semanas, el oil vuelve rápido a $88–92 y la tesis se deshace en días. Adicionalmente, el Gobierno argentino puede capturar parte del upside vía incremento de retenciones a las exportaciones de crudo si la situación fiscal lo requiere — lo que anula el beneficio para el accionista privado. Tampoco descartar que un oil alto sostenga al UST 10Y arriba de 4.5% y deteriore el acceso a mercados de deuda externos para Argentina.
+      </div>
+    </div>
+
+    <div class="watch-section">
+      <span class="watch-label">👁 Watch</span>
+      <span class="watch-pill">WTI vs. $100 nivel clave</span>
+      <span class="watch-pill">Diplomacia Irán/EEUU</span>
+      <span class="watch-pill">UST 10Y vs. 4.5%</span>
+      <span class="watch-pill">Retenciones crudo AR (decreto)</span>
+    </div>
+  </div>
+
+  <!-- ───── TEMA 3: Merval / ADR Gap ───── -->
+  <div class="topic-card">
+    <div class="topic-header">
+      <span class="topic-number">03</span>
+      <span class="topic-title">Gap Merval–ADR: el mercado local ajusta el feriado del 1-mayo</span>
+    </div>
+
+    <div class="section-block block-cambio">
+      <div class="block-label">🔵 Qué Cambió</div>
+      <div class="block-body">
+        El <strong>S&P Merval cayó ~1.8%</strong> a ~2.780.000 pts hoy, mientras los <strong>ADRs en Wall Street subían hasta +5.5%</strong> (Edenor +4.4%, TGS +2.7%, BBVA +2.6%). El desfasaje es técnico: el mercado local no operó el viernes 1-mayo (Día del Trabajador) y hoy ajusta respecto al cierre de NY del jueves 30-abril. El <strong>riesgo país está en ~540 bps</strong>. Acciones líderes con más pérdidas en ByMA: Pampa Energía -3.3%, YPF -2.8%, Banco Macro -2.7%. <span class="src-tag">iProfesional 5-may · SitiosArgentina 5-may</span>
+      </div>
+    </div>
+
+    <div class="section-block block-importa">
+      <div class="block-label">🟢 Por Qué Le Importa al Mercado</div>
+      <div class="block-body">
+        El gap entre ADRs y Merval local crea una ventana de arbitraje de corto plazo: si el Merval ajusta hacia arriba en las próximas ruedas para cerrar la brecha con NY, los que entran hoy en el panel local capturan ese movimiento. La pregunta clave es <strong>¿cuánto del gap es técnico vs. señal real?</strong> Con riesgo país en 540bps, el mercado no está en modo "risk-on" pleno. Los bonos soberanos (AL30 +0.15%, GD30 +0.11%) confirman que no hay deterioro fundamental subyacente hoy.
+      </div>
+    </div>
+
+    <div class="section-block block-posicion">
+      <div class="block-label">📈 Posición Analista</div>
+      <div class="block-body">
+        <strong>Long utilities argentinas locales (EDN, TGSU2)</strong> en ByMA aprovechando el descuento post-feriado, horizonte <strong>1–2 semanas</strong>. Edenor subió +4.4% en NY el jueves — si ese movimiento no fue completamente arbitrado hoy en ByMA, hay recorrido. La tesis se cancela si el cierre de ADRs esta noche en NY retrocede, lo que eliminaría la base del arbitraje. Acción táctica, no estratégica.
+      </div>
+    </div>
+
+    <div class="section-block block-contra">
+      <div class="block-label">🔴 Contraargumento</div>
+      <div class="block-body">
+        El ajuste técnico de feriado puede exagerar a la baja si coincide con factores negativos reales: WTI alto que presiona costos energéticos, riesgo país sostenido arriba de 500bps, y datos de inflación de abril que eventualmente salgan por encima de lo esperado. Además, la baja de Pampa (-3.3%) y Banco Macro (-2.7%) puede reflejar toma de ganancias post-rally de Q1, no solo ajuste de feriado. El gap no es necesariamente una señal de compra sino una advertencia de que el mercado local puede estar más caro que los ADRs en dólares.
+      </div>
+    </div>
+
+    <div class="watch-section">
+      <span class="watch-label">👁 Watch</span>
+      <span class="watch-pill">ADRs cierre NY esta noche</span>
+      <span class="watch-pill">Merval apertura mañana</span>
+      <span class="watch-pill">Riesgo País vs. 500bps</span>
+      <span class="watch-pill">IPC abril (fecha publicación)</span>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<div class="footer">
+  <div class="footer-sources">
+    <div class="footer-title">Fuentes Consultadas</div>
+    <div class="source-item">· Infobae Economía — BCRA compras, banda cambiaria, A3500 (4-may-2026)</div>
+    <div class="source-item">· Ambito Financiero — Reservas, AL30, GD30, compras BCRA 2026</div>
+    <div class="source-item">· iProfesional — Merval, riesgo país, ADR gap (5-may-2026)</div>
+    <div class="source-item">· TheStreet / CNBC — S&P 500, earnings Pfizer/Micron (5-may-2026)</div>
+    <div class="source-item">· TradingEconomics — UST 10Y, DXY (5-may-2026)</div>
+    <div class="source-item">· Fortune — WTI oil price (4-may-2026)</div>
+    <div class="source-item">· Cohen Perspectivas / Ambito — TAMAR, LECAPs (may-2026)</div>
+    <div class="source-item">· BCRA IMD (infomondiae.pdf) — no accesible este run (red bloqueada)</div>
+    <div class="source-item">· WhatsApp "Informes MNH" — no accesible (Chrome no conectado)</div>
+  </div>
+  <div class="disclaimer">
+    Para fines informativos únicamente. No constituye asesoramiento de inversión ni recomendación de compra o venta de ningún instrumento financiero. Los datos de mercado son aproximaciones basadas en fuentes públicas y pueden diferir de los valores oficiales de cierre.
+  </div>
+</div>
+
+<script>
+function copyReport(){
+  const btn = document.getElementById('copyBtn');
+  const blob = new Blob([document.documentElement.outerHTML], {type:'text/html'});
+  if(navigator.clipboard?.write){
+    navigator.clipboard.write([new ClipboardItem({'text/html': blob})])
+      .then(()=>{ btn.textContent='✓ COPIED'; btn.classList.add('copied'); })
+      .catch(()=>fallback(btn));
+  } else { fallback(btn); }
+  setTimeout(()=>{ btn.textContent='⎘ EXPORT REPORT'; btn.classList.remove('copied'); }, 2500);
+}
+function fallback(btn){
+  const t = document.createElement('textarea');
+  t.value = document.documentElement.outerHTML;
+  t.style = 'position:fixed;opacity:0';
+  document.body.appendChild(t); t.select();
+  document.execCommand('copy'); document.body.removeChild(t);
+  btn.textContent='✓ COPIED'; btn.classList.add('copied');
+}
+</script>
+
+</body>
+</html>

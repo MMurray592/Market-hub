@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digest Diario — Mercados | 5 de mayo 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #08090d;
+            color: #e8e8f0;
+            font-family: 'DM Sans', sans-serif;
+            padding: 32px 24px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(112, 96, 248, 0.2);
+            padding-bottom: 24px;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .ticker-badge {
+            background-color: #7060f8;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .date-subtitle {
+            font-size: 14px;
+            color: #a0a0b0;
+        }
+
+        .snapshot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .snapshot-card {
+            background-color: rgba(112, 96, 248, 0.08);
+            border: 1px solid rgba(112, 96, 248, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .snapshot-card h3 {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #7060f8;
+            margin-bottom: 16px;
+        }
+
+        .metric {
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(112, 96, 248, 0.1);
+        }
+
+        .metric:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #a0a0b0;
+            font-weight: 500;
+            margin-bottom: 6px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .metric-value {
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 4px;
+        }
+
+        .metric-change {
+            font-size: 12px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .up {
+            color: #22d07a;
+        }
+
+        .down {
+            color: #f04070;
+        }
+
+        .neutral {
+            color: #a0a0b0;
+        }
+
+        .source {
+            font-size: 10px;
+            color: #7060f8;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .themes {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+
+        .theme-card {
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(112, 96, 248, 0.15);
+            border-radius: 8px;
+            padding: 28px;
+        }
+
+        .theme-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #fff;
+        }
+
+        .theme-section {
+            margin-bottom: 20px;
+        }
+
+        .theme-section h4 {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-leer h4 {
+            background-color: rgba(76, 100, 200, 0.2);
+            color: #7ca3ff;
+        }
+
+        .section-conectar h4 {
+            background-color: rgba(34, 208, 122, 0.15);
+            color: #22d07a;
+        }
+
+        .section-posicion h4 {
+            background-color: rgba(34, 160, 90, 0.2);
+            color: #1fb870;
+        }
+
+        .section-contra h4 {
+            background-color: rgba(240, 64, 112, 0.15);
+            color: #f07090;
+        }
+
+        .theme-section p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #d8d8e0;
+            margin-bottom: 8px;
+        }
+
+        .theme-section ul {
+            margin-left: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #d8d8e0;
+            margin-bottom: 8px;
+        }
+
+        .theme-section li {
+            margin-bottom: 6px;
+        }
+
+        .watch-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .pill {
+            background-color: rgba(160, 160, 176, 0.15);
+            color: #a0a0b0;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid rgba(160, 160, 176, 0.2);
+        }
+
+        .footer {
+            border-top: 1px solid rgba(112, 96, 248, 0.2);
+            padding-top: 24px;
+            font-size: 12px;
+            color: #808088;
+        }
+
+        .footer p {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .snapshot-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-top">
+                <span class="ticker-badge">MERCADOS</span>
+            </div>
+            <h1>Digest Diario</h1>
+            <p class="date-subtitle">Martes 5 de mayo de 2026</p>
+        </div>
+
+        <div class="snapshot-grid">
+            <div class="snapshot-card">
+                <h3>🇦🇷 Argentina</h3>
+                <div class="metric">
+                    <div class="metric-label">Dólar oficial</div>
+                    <div class="metric-value">$1.365</div>
+                    <div class="metric-change up">+ 0,7%</div>
+                    <div class="source">BCRA A3500 | 5-may</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">AL30</div>
+                    <div class="metric-value">USD 63,35</div>
+                    <div class="metric-change up">+ 1,97% (vs 62,12)</div>
+                    <div class="source">ByMA | 5-may</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Riesgo País</div>
+                    <div class="metric-value">~560 pb</div>
+                    <div class="metric-change neutral">Estable</div>
+                    <div class="source">EMBI+ | 2026 YTD</div>
+                </div>
+            </div>
+
+            <div class="snapshot-card">
+                <h3>💹 Tasas (AR)</h3>
+                <div class="metric">
+                    <div class="metric-label">BADLAR</div>
+                    <div class="metric-value">22,38%</div>
+                    <div class="metric-change down">- 4,5% (abril)</div>
+                    <div class="source">BCRA | abril 2026</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">MEP</div>
+                    <div class="metric-value">$1.433</div>
+                    <div class="metric-change up">+ 1,2%</div>
+                    <div class="source">MAE | 5-may</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">CCL</div>
+                    <div class="metric-value">$1.489</div>
+                    <div class="metric-change up">+ 0,8%</div>
+                    <div class="source">Mercado | 5-may</div>
+                </div>
+            </div>
+
+            <div class="snapshot-card">
+                <h3>🌎 Global</h3>
+                <div class="metric">
+                    <div class="metric-label">S&P 500</div>
+                    <div class="metric-value">7.259,47</div>
+                    <div class="metric-change up">+ 0,82%</div>
+                    <div class="source">NYSE | 5-may</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">UST 10Y</div>
+                    <div class="metric-value">4,43%</div>
+                    <div class="metric-change down">- 1 pb</div>
+                    <div class="source">FRB | 5-may</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">WTI</div>
+                    <div class="metric-value">$104,33/bbl</div>
+                    <div class="metric-change down">- 1,97%</div>
+                    <div class="source">NYMEX | 5-may</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="themes">
+            <div class="theme-card">
+                <h2 class="theme-title">1. Distensión US-Irán y valuación de riesgo global</h2>
+
+                <div class="theme-section section-leer">
+                    <h4>📖 Qué cambió</h4>
+                    <p>El S&P 500 cerró +0,82% en 7.259,47 puntos, con Nasdaq +1,03%, en día de distensión tras tensión en Hormuz. Petróleo WTI cayó -1,97% a $104,33/bbl tras máximos intraday. Oro spot avanzó +0,3% a $4.514,58/oz. UST 10Y cedió 1 pb a 4,43%. DXY subió +0,12% a 98,49. Contexto: ataques en Golfo Pérsico la madrugada del lunes; hoy cierre de velas verdes en equities tras alivio de presión de supply.</p>
+                </div>
+
+                <div class="theme-section section-conectar">
+                    <h4>🔗 Por qué importa al mercado</h4>
+                    <p>La baja de petróleo alivia inflación de energía y costo de vida en EM. US equities ganan confianza si Irán-Hormuz desescala. Tasas largas bajan (10Y) → compresión de spread. Argentina: AL30 sube +1,97% (USD 63,35), mercado replica alivio de contagio de riesgo soberano. Carry trade BONCER esperado en demanda si tasas cortas (BADLAR 22,38%) se mantienen en zona alta pero mercado descuenta probabilidad de rate pause Fed.</p>
+                </div>
+
+                <div class="theme-section section-posicion">
+                    <h4>📊 Posición analista (1-3 semanas)</h4>
+                    <p><strong>Comprador de AL30 en USD MEP.</strong> Argumento: elasticidad corta a largo (2030 vto, 12% TIR aproximada). Irán off → petróleo 15-20% abajo respecto a máximos febrero. Spread spread EM widening reversal in play. Ratio AL30/GD30 (credit vs timing) favorece AL30 en corto plazo si Fed mantiene hold táctico. Entrada: 63,20-63,40 MEP.</p>
+                </div>
+
+                <div class="theme-section section-contra">
+                    <h4>⚠️ Contraargumento</h4>
+                    <p>Irán reabre (confirmó Emiratos). Risk-off eventuals si nuevos ataques. Petróleo puede estabilizarse 105-110 si supply discipline continúa (OPEC cut extension probable). Al30 TIR 12% asume estabilidad macro AR que depende de recaudación fiscal (ver tema 3): caída 4,1% en abril. Mercado desdobla: equities corta si fiscal weakness → devaluación; bonos si tasa real cae.</p>
+                </div>
+
+                <div class="theme-section">
+                    <h4>🔍 Watch</h4>
+                    <div class="watch-pills">
+                        <span class="pill">🔴 Horarios Hormuz (barcos, tanques)</span>
+                        <span class="pill">⚡ OPEC+ 25 de mayo (extensión?)</span>
+                        <span class="pill">📈 S&P 500 resistencia 7.300</span>
+                        <span class="pill">💰 AL30 por encima de 64</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="theme-card">
+                <h2 class="theme-title">2. Bono soberano CABA USD 500mn: nuevo financiamiento externo</h2>
+
+                <div class="theme-section section-leer">
+                    <h4>📖 Qué cambió</h4>
+                    <p>Buenos Aires anuncia colocación de USD 500mn en bonos soberanos (4-6 de mayo, roadshow activo). Términos: tasa fija semestral, vencimiento a 10 años, denominado/pagadero en dólares bajo ley inglesa, amortización de capital en 3 cuotas anuales consecutivas, colocadores BofA, Deutsche Bank, JP Morgan, Santander. Finalidad: financiar pagos de amortización de deuda anterior. Spread estimado (mercado whispers): 150-175 pb sobre UST 10Y → TIR implícita 5,93%-6,18%.</p>
+                </div>
+
+                <div class="theme-section section-conectar">
+                    <h4>🔗 Por qué importa al mercado</h4>
+                    <p>Señal de acceso a mercados internacionales de CABA = proxy de confianza en Argentina. Vol de nueva deuda abre ventana de carry trade (BONCER 2028 FX hedged comentado en grupo, premium over cash de 200+ pb). Mercado internacionales: Al30/GD30 presionan si nueva deuda "senior" resta valor a bonos nacionales (quita liquidez). BADLAR 22,38% atrae capital local a plazo fijo; nuevo bono USD redefine betas de cartera.</p>
+                </div>
+
+                <div class="theme-section section-posicion">
+                    <h4>📊 Posición analista (1 semana)</h4>
+                    <p><strong>Trade corta: corta bonos de CABA vs. largo AL30.</strong> Rationale: CABA bono a 5,93-6,18% rendimiento asume estabilidad de riesgo país que no es cierta (ver tema 3). AL30 al 12% y más liquido ofrece mejor value-for-risk. Colocación exitosa (≥80% covered) sube refinanciamiento expectations → presiona spreads Al30/GD30. Setup: entrar corta CABA al 100-101 limpio, cerrar en 99-99,5 (9-11 puntos base de ganancia realista post-colocación).</p>
+                </div>
+
+                <div class="theme-section section-contra">
+                    <h4>⚠️ Contraargumento</h4>
+                    <p>CABA bono bien colocado (oferta fuerte) → creditworthiness signal sube. Si municipio tiene superávit fiscal y ahorro en caja, refinanciar antes de vencimiento es smart (aprovecha lower rates vs 2025). Anclaje de tasa CABA en 6% ayuda a descomprimir expectations de tasas Fed (si Fed pausa, 6% se ve atractivo). Al30 puede underperform CABA si spreads se contraen (EM rally post-Irán).</p>
+                </div>
+
+                <div class="theme-section">
+                    <h4>🔍 Watch</h4>
+                    <div class="watch-pills">
+                        <span class="pill">📋 Roadshow CABA (cierre 6-may)</span>
+                        <span class="pill">🎯 Spread colocación vs whispers 150-175</span>
+                        <span class="pill">📊 AL30 vs CABA spread compression</span>
+                        <span class="pill">🔄 BONCER 2028 FX carry premium</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="theme-card">
+                <h2 class="theme-title">3. Recaudación fiscal abril -4,1%: inflación outshooting vs. base imponible</h2>
+
+                <div class="theme-section section-leer">
+                    <h4>📖 Qué cambió</h4>
+                    <p>ARCA informa recaudación fiscal abril: caída 4,1% en términos reales, acumulado ARS 17,4 billones. Descomposición (falta detalle oficial, pero pattern previo): impuestos a ganancias/bienes personales presionados (IPC acum. 12 meses ~140% pero recaudación real cae = desfase indexación vs. inflación). IVA probablemente mejor (consumo resiliente) pero no compensa derrumbe de rentas. Período acumulado 9 meses de descenso en términos reales. Contexto: transición 0% inflation target (dic 2024) a ~5-6% end-2026 per BCRA; ciclo de desinflación pero base nominal aún alta.</p>
+                </div>
+
+                <div class="theme-section section-conectar">
+                    <h4>🔗 Por qué importa al mercado</h4>
+                    <p>Menor recaudación = presión fiscal (déficit crece si gasto no baja). BCRA mandato es estabilidad de precios (Milei framework); si ingresos fallan, salida es devaluación (para licuar base monetaria) o mayor tasa (austeridad). Dólar oficial $1,365 vs informal (blue $1,385-405) = brecha 1,5-3% (todavía anclada). Si recaudación sigue cayendo y BCRA pierde nervios → devaluación ordenada (+5-10%). BADLAR 22,38% descuenta esto (tasa real ~10% si inflación desciende a 12% anual). AL30 yields 12% asumen ciclo neutral; devaluación sorpresa comprime retornos reales.</p>
+                </div>
+
+                <div class="theme-section section-posicion">
+                    <h4>📊 Posición analista (2-4 semanas)</h4>
+                    <p><strong>Largo USD/ARS (dólar oficial) con stop en 1.355, target 1.410.</strong> Argumento: recaudación declina 9 meses seguidos = fiscal stress real. BCRA cambia forward guidance en próximas semanas (ruling party under pressure por recaudación). Devaluación 3-4% es "ajuste" predecible. Tactique: comprar dólar MEP (avanza a 1.435+) antes que official (BCRA resistance). Timing: próxima conferencia prensa BCRA (si guía baja growth forecast para 2026).</p>
+                </div>
+
+                <div class="theme-section section-contra">
+                    <h4>⚠️ Contraargumento</h4>
+                    <p>BCRA tiene reservas brutas suficientes (USD 25-28B estimado). Milei gobierno mantiene austeridad estricta (gasto público real down 15% YoY). Recaudación cae pero base inflada; en términos nominales ARS 17,4B es estable/posible suba si pesos ruedan. Indexación de impuestos puede ajustarse retroactivo. Nueva emisión de deuda externa (CABA bono, potencial emisión Nación) financia deficit sin devaluar. Dólar puede estabilizar 1.370-1.380 si Irán-Hormuz se resuelve (menos presión de fuga de capitales).</p>
+                </div>
+
+                <div class="theme-section">
+                    <h4>🔍 Watch</h4>
+                    <div class="watch-pills">
+                        <span class="pill">📊 Recaudación mayo (datos junio)</span>
+                        <span class="pill">🗣️ Conferencia BCRA forward guidance</span>
+                        <span class="pill">💵 Dólar oficial vs MEP gap</span>
+                        <span class="pill">📈 IPC mayo (inflación trend)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Fuentes:</strong> BCRA IMD, A3 Mercados, ByMA, WSJ, Infobae, Cronista, LA NACIÓN, CNBC, Investing.com | <strong>5 de mayo de 2026</strong></p>
+            <p style="margin-top: 16px; color: #606068;"><em>Para fines informativos. No constituye asesoramiento de inversión. Las posiciones analistas son hipotéticas y solo ilustrativas. El mercado puede comportarse de forma distinta a los escenarios presentados.</em></p>
+        </div>
+    </div>
+</body>
+</html>

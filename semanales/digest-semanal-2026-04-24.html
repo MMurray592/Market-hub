@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digest Semanal — 24 de abril 2026</title>
+<style>
+:root {
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #aaa;
+  --color-text-tertiary: #555;
+  --color-background-primary: #141414;
+  --color-background-secondary: #1a1a1a;
+  --color-border-tertiary: #2a2a2a;
+  --color-border-secondary: #333;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+html, body { background: #0f0f0f !important; }
+.tab.active { background: #0d2233 !important; border-color: #3a7aac !important; color: #74ACDF !important; }
+.card-label.lc { color: #74ACDF; }
+.card-label.lw { color: #F6B40E; }
+.card-label.lp { color: #c0c0c0; }
+.card-label.la { color: #f87171; }
+.up { color: #4ade80 !important; }
+.down { color: #f87171 !important; }
+.neu { color: #74ACDF !important; }
+.sig-title { color: #f0f0f0 !important; }
+.sig-up { border-left-color: #1D9E75 !important; }
+.sig-dn { border-left-color: #D85A30 !important; }
+.metric-src { color: #F6B40E !important; }
+.chart-src { color: #F6B40E !important; }
+.src.official { border-color: #1D9E75 !important; color: #4ade80 !important; }
+</style>
+</head>
+<body>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-sans);color:var(--color-text-primary);padding:1rem 0}
+.header{padding-bottom:1rem;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:1.5rem}
+.header-top{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+h1{font-size:20px;font-weight:500}
+.badge{font-size:11px;padding:3px 8px;border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.meta{font-size:12px;color:var(--color-text-tertiary);margin-top:3px}
+.sources{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.src{font-size:11px;padding:2px 7px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+.src.official{border-color:#1D9E75;color:#0F6E56}
+.tabs{display:flex;gap:4px;margin-bottom:1.5rem;flex-wrap:wrap}
+.tab{font-size:13px;padding:6px 14px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);cursor:pointer;background:transparent;color:var(--color-text-secondary);transition:all .15s}
+.tab.active{background:var(--color-text-primary);color:var(--color-background-primary);border-color:var(--color-text-primary)}
+.panel{display:none}
+.panel.active{display:block}
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:1.5rem}
+.metric{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.85rem 1rem}
+.metric-label{font-size:11px;color:var(--color-text-secondary);margin-bottom:3px}
+.metric-value{font-size:21px;font-weight:500}
+.metric-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:2px}
+.metric-src{font-size:10px;color:#0F6E56;margin-top:3px}
+.up{color:#0F6E56}.down{color:#993C1D}.neu{color:#74ACDF}
+.chart-box{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem;margin-bottom:1.25rem}
+.chart-title{font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:.75rem}
+.chart-src{font-size:10px;color:#0F6E56;margin-top:.5rem}
+.bar-chart{display:flex;flex-direction:column;gap:7px}
+.bar-row{display:flex;align-items:center;gap:8px}
+.bar-label{font-size:12px;color:var(--color-text-secondary);min-width:88px;text-align:right;flex-shrink:0}
+.bar-track{flex:1;background:var(--color-background-secondary);border-radius:3px;height:22px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:7px}
+.bar-val{font-size:11px;font-weight:500;white-space:nowrap}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.1rem;margin-bottom:.75rem}
+.card-label{font-size:11px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;margin-bottom:.4rem}
+.lc{color:#74ACDF}.lw{color:#F6B40E}.lp{color:#3B6D11}.la{color:#993C1D}
+.card-text{font-size:14px;line-height:1.65}
+.card-text strong{font-weight:500}
+.watch{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.7rem 1rem;margin-top:.75rem}
+.watch-title{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:.3rem}
+.watch-items{display:flex;flex-wrap:wrap;gap:5px}
+.wi{font-size:11px;padding:2px 7px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary)}
+.signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.5rem}
+.sig{border-radius:var(--border-radius-lg);padding:.85rem 1rem;border:0.5px solid var(--color-border-tertiary)}
+.sig-up{border-left:3px solid #1D9E75}
+.sig-dn{border-left:3px solid #D85A30}
+.sig-title{font-size:12px;font-weight:500;margin-bottom:.4rem}
+.sig-item{font-size:12px;color:var(--color-text-secondary);margin-bottom:.2rem;line-height:1.5}
+.divider{height:0.5px;background:var(--color-border-tertiary);margin:1.25rem 0}
+</style>
+
+<div class="header">
+  <div class="header-top">
+    <h1>Digest Semanal</h1>
+    <span class="badge">17–24 abr 2026</span>
+  </div>
+  <div class="meta">Argentina & Mercados Globales · Datos verificados contra fuentes oficiales</div>
+  <div class="sources">
+    <span class="src official">BCRA IMD</span>
+    <span class="src official">INDEC</span>
+    <span class="src official">A3 Mercados</span>
+    <span class="src">1816</span>
+    <span class="src">SBS Research</span>
+    <span class="src">Comafi #83</span>
+    <span class="src">BofA</span>
+    <span class="src">Infobae</span>
+    <span class="src">Cronista</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="show('dolar',this)">Dólar & BCRA</button>
+  <button class="tab" onclick="show('tasas',this)">Tasas</button>
+  <button class="tab" onclick="show('ipc',this)">IPC</button>
+  <button class="tab" onclick="show('credito',this)">Crédito</button>
+  <button class="tab" onclick="show('global',this)">Global</button>
+  <button class="tab" onclick="show('radar',this)">Radar</button>
+</div>
+
+<!-- DÓLAR & BCRA -->
+<div class="panel active" id="panel-dolar">
+  <div class="metrics-grid">
+    <div class="metric">
+      <div class="metric-label">TC A3500 (22-abr)</div>
+      <div class="metric-value">$1.378</div>
+      <div class="metric-sub">Cierre hoy: $1.399,50</div>
+      <div class="metric-src">Fuente: BCRA IMD</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">TC minorista BNA</div>
+      <div class="metric-value">$1.400</div>
+      <div class="metric-sub">Blue: $1.420</div>
+      <div class="metric-src">Fuente: BCRA IMD / BNA</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Futuro fin de mes</div>
+      <div class="metric-value neu">$1.403</div>
+      <div class="metric-sub">Banda sup: $1.693,51</div>
+      <div class="metric-src">Fuente: A3 Mercados</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Reservas brutas</div>
+      <div class="metric-value">USD 46.167M</div>
+      <div class="metric-sub down">vs USD 46.905M (máx. feb)</div>
+      <div class="metric-src">Fuente: BCRA IMD (23-abr)</div>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">TC A3500 — promedio mensual 2026 ($/USD)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><span class="bar-label">Ene-26</span><div class="bar-track"><div class="bar-fill" style="width:88%;background:#85B7EB"><span class="bar-val" style="color:#042C53">~$1.463 prom.</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Feb-26</span><div class="bar-track"><div class="bar-fill" style="width:84%;background:#85B7EB"><span class="bar-val" style="color:#042C53">~$1.400 prom.</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Mar-26</span><div class="bar-track"><div class="bar-fill" style="width:80%;background:#378ADD"><span class="bar-val" style="color:#fff">~$1.358 prom.</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">22-abr (último)</span><div class="bar-track"><div class="bar-fill" style="width:78%;background:#1a4a6e"><span class="bar-val" style="color:#fff">$1.378,13 ← BCRA A3500</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">24-abr (cierre)</span><div class="bar-track"><div class="bar-fill" style="width:79%;background:#0C447C"><span class="bar-val" style="color:#fff">$1.399,50 ← mercado</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: BCRA Informe Monetario Diario 23-abr-26 · Prom. 30d anterior: $1.393,44</div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">BCRA — compras en MLC acumuladas 2026 (USD millones)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><span class="bar-label">Ene-26</span><div class="bar-track"><div class="bar-fill" style="width:14%;background:#9FE1CB"><span class="bar-val" style="color:#04342C">~1.100</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Feb-26</span><div class="bar-track"><div class="bar-fill" style="width:25%;background:#5DCAA5"><span class="bar-val" style="color:#04342C">~2.900</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Mar-26</span><div class="bar-track"><div class="bar-fill" style="width:37%;background:#1D9E75"><span class="bar-val" style="color:#fff">~4.382 (acum. 1T)</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Abr MTD</span><div class="bar-track"><div class="bar-fill" style="width:50%;background:#0F6E56"><span class="bar-val" style="color:#fff">+2.299M → total: 6.681M</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: BCRA IMD — "Compra de divisas al sector privado y otros" acum. año: USD 6.151M al 22-abr · +USD 194M el 23-abr = ~6.685M</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El TC A3500 cerró el 22-abr en <strong>$1.378,13</strong> (promedio móvil 30d: $1.393,44). Hoy subió hasta $1.399,50 — tercer día consecutivo al alza con volumen récord (~USD 1.000M operados). <strong>El TC acumula -4,33% en 2026</strong> mientras la inflación suma ~10%: apreciación real de ~15%. La banda superior del BCRA está en $1.693,51, dejando al mayorista a <strong>21% del techo</strong>. El BCRA acumula USD 6.685M en compras 2026 (66% de la meta), con 73 ruedas consecutivas positivas. Aún quedan ~USD 3.200M de ONs corporativas pendientes de liquidación.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">La oferta de dólares viene de tres fuentes que tienen fecha de vencimiento: <strong>(i) cosecha gruesa</strong> — mayo-junio, después se acaba; <strong>(ii) ONs corporativas</strong> — quedan USD 3.200M, después termina; <strong>(iii) préstamos bancarios en USD</strong> — dependen de que el TC no se mueva. Si el TC sube (hoy subió tres días seguidos), el incentivo a endeudarse en dólares cae. La apreciación real del 15% YTD crea un dilema clásico: el ancla cambiaria descomprime inflación, pero deteriora competitividad exportadora fuera del agro. <strong>El mercado ya empieza a pricear más TC a fin de año: Rofex dic-26 en ~$1.631.</strong></div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Carry trade en pesos tiene lógica <strong>solo con duración corta</strong> (máx. 60-90 días). Estar afuera antes de que termine la cosecha. <strong>Oil & gas</strong> (YPF +8% semanal, consenso 1816/SBS/Comafi) es la apuesta de largo plazo porque genera FX genuino y no estacional. Soberana en USD (AL30/GD30): interesante mientras el contexto EM sea positivo, pero con stop claro en VIX.</div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">El Gobierno dice que la diversificación energética reemplaza la estacionalidad agrícola. Bausili lo planteó en Washington. Es válido a largo plazo, pero el RIGI ingresó apenas USD 762M netos desde ene-25 — <strong>la tesis energética como reemplazo del agro es 2027-2028, no 2026.</strong> Para este año, el ancla sigue siendo la soja.</div>
+  </div>
+  <div class="watch"><div class="watch-title">Watch</div><div class="watch-items"><span class="wi">Precio soja CME</span><span class="wi">Rofex dic-26</span><span class="wi">Reservas netas diarias</span><span class="wi">Liquidación campo</span></div></div>
+</div>
+
+<!-- TASAS -->
+<div class="panel" id="panel-tasas">
+  <div class="metrics-grid">
+    <div class="metric">
+      <div class="metric-label">Call interbancario</div>
+      <div class="metric-value">20,24%</div>
+      <div class="metric-sub">TNA · prom. 30d: 20,18%</div>
+      <div class="metric-src">Fuente: BCRA IMD 22-abr</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">BADLAR privada</div>
+      <div class="metric-value">22,00%</div>
+      <div class="metric-sub">TNA · prom. 30d: 22,23%</div>
+      <div class="metric-src">Fuente: BCRA IMD 22-abr</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">TAMAR privada</div>
+      <div class="metric-value">22,50%</div>
+      <div class="metric-sub">TNA · prom. 30d: 22,86%</div>
+      <div class="metric-src">Fuente: BCRA IMD 22-abr</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Préstamos personales</div>
+      <div class="metric-value down">65,23%</div>
+      <div class="metric-sub">TNA promedio mensual</div>
+      <div class="metric-src">Fuente: BCRA IMD 22-abr</div>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Tasas pasivas — evolución YTD (TNA %)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><span class="bar-label">Call (hoy)</span><div class="bar-track"><div class="bar-fill" style="width:20%;background:#9FE1CB"><span class="bar-val" style="color:#04342C">20,24%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Plazo fijo 30d</span><div class="bar-track"><div class="bar-fill" style="width:21%;background:#5DCAA5"><span class="bar-val" style="color:#04342C">21,44%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">BADLAR privada</span><div class="bar-track"><div class="bar-fill" style="width:22%;background:#1D9E75"><span class="bar-val" style="color:#fff">22,00%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">TAMAR privada</span><div class="bar-track"><div class="bar-fill" style="width:22%;background:#0F6E56"><span class="bar-val" style="color:#fff">22,50%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">IPC marzo</span><div class="bar-track"><div class="bar-fill" style="width:34%;background:#D85A30"><span class="bar-val" style="color:#fff">3,4% mensual = 40,8% TNA</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">IPC abr (est.)</span><div class="bar-track"><div class="bar-fill" style="width:30%;background:#F0997B"><span class="bar-val" style="color:#4A1B0C">2,7% est. = 32,4% TNA</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: BCRA IMD 22-abr-26 · IPC: INDEC (mar) + EcoGo/Analytica (abr estimado)</div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Tasas activas — préstamos en pesos (TNA %)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><span class="bar-label">Adelantos emp.</span><div class="bar-track"><div class="bar-fill" style="width:25%;background:#FAC775"><span class="bar-val" style="color:#412402">25,33%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Hipotecarios</span><div class="bar-track"><div class="bar-fill" style="width:37%;background:#FAC775"><span class="bar-val" style="color:#412402">37,16%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Tarjetas</span><div class="bar-track"><div class="bar-fill" style="width:70%;background:#F0997B"><span class="bar-val" style="color:#4A1B0C">69,68% (ene-26)</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Personales</span><div class="bar-track"><div class="bar-fill" style="width:65%;background:#D85A30"><span class="bar-val" style="color:#fff">65,23%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Doc. a sola firma</span><div class="bar-track"><div class="bar-fill" style="width:88%;background:#993C1D"><span class="bar-val" style="color:#fff">88,40% (ene-26)</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: BCRA IMD 22-abr-26 · Tasas activas = promedios mensuales</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">Las tasas pasivas colapsaron: el call interbancario está en <strong>20,24% TNA</strong>, menos de la mitad de lo que llegó a ser en julio-2025 (~150%). La BADLAR privada en 22,00% TNA implica una <strong>tasa real negativa del -18% anual</strong> vs inflación (~40%). El BCRA bajó la integración de encajes del 100% al 65% — la liquidez inyectada comprimió tasas. Del lado activo, los préstamos personales siguen en <strong>65,23% TNA</strong>: el spread activo/pasivo es brutal y explica la mora record.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">Con tasas reales cortas negativas, <strong>las LECAPs cortas pierden contra inflación</strong>. El mercado ya migró: los instrumentos CER duplicaron demanda (plazo fijo ajustado CER: +107% en 30 días según BCRA IMD). La rotación de tasa fija a CER es una señal de que el mercado <strong>no cree en la desinflación rápida que pricean las LECAPs largas</strong>. El breakeven implícito en el mercado es ~2,1% mensual para abril — pero las consultoras proyectan 2,5-2,9%.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text"><strong>Salir de LECAPs cortas, entrar en CER corto</strong> (TZX26, TZXO6). El diferencial de rendimiento real justifica la rotación. Para duración media: CER 2027 captura inercia inflacionaria + posible compresión de tasas reales. <strong>Evitar</strong>: carry trade largo sin stop cambiario definido. Alternativa táctica: TAMAR si el BCRA vuelve a subir tasas ante sorpresa inflacionaria.</div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Si la inflación cae a 2,0% en mayo-junio como proyecta el escenario base del Gobierno, las LECAPs largas ganan y el CER pierde. La apuesta en tasa fija larga es básicamente una apuesta a la credibilidad del programa. <strong>La tasa real negativa de hoy puede ser transición, no equilibrio.</strong></div>
+  </div>
+  <div class="watch"><div class="watch-title">Watch</div><div class="watch-items"><span class="wi">IPC abril (2da semana mayo)</span><span class="wi">Próxima licitación MECON</span><span class="wi">Breakeven CER/LECAP</span><span class="wi">TAMAR prom.</span></div></div>
+</div>
+
+<!-- IPC -->
+<div class="panel" id="panel-ipc">
+  <div class="metrics-grid">
+    <div class="metric">
+      <div class="metric-label">IPC Marzo (INDEC)</div>
+      <div class="metric-value down">3,4%</div>
+      <div class="metric-sub">9,4% acumulado 1T26</div>
+      <div class="metric-src">Fuente: INDEC</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Núcleo Marzo</div>
+      <div class="metric-value">3,2%</div>
+      <div class="metric-sub">Regulados: 5,1%</div>
+      <div class="metric-src">Fuente: INDEC</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Proyección Abril</div>
+      <div class="metric-value neu">2,5–2,9%</div>
+      <div class="metric-sub">EcoGo 2,5% · Analytica 2,9%</div>
+      <div class="metric-src">Fuente: consultoras privadas</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Implícita mercado</div>
+      <div class="metric-value neu">2,1%</div>
+      <div class="metric-sub">Breakeven LECAP/CER</div>
+      <div class="metric-src">Fuente: Cronista/Bloomberg</div>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">IPC mensual — evolución reciente (%)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><span class="bar-label">Oct-25</span><div class="bar-track"><div class="bar-fill" style="width:40%;background:#FAC775"><span class="bar-val" style="color:#412402">2,4%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Nov-25</span><div class="bar-track"><div class="bar-fill" style="width:44%;background:#F0997B"><span class="bar-val" style="color:#4A1B0C">2,7%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Dic-25</span><div class="bar-track"><div class="bar-fill" style="width:50%;background:#D85A30"><span class="bar-val" style="color:#fff">3,0%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Ene-26</span><div class="bar-track"><div class="bar-fill" style="width:52%;background:#D85A30"><span class="bar-val" style="color:#fff">3,1%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Feb-26</span><div class="bar-track"><div class="bar-fill" style="width:48%;background:#D85A30"><span class="bar-val" style="color:#fff">2,9%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Mar-26 (INDEC)</span><div class="bar-track"><div class="bar-fill" style="width:57%;background:#993C1D"><span class="bar-val" style="color:#fff">3,4% ↑ sorpresa</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Abr-26 (est.)</span><div class="bar-track"><div class="bar-fill" style="width:45%;background:#85B7EB"><span class="bar-val" style="color:#042C53">~2,7% est.</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: INDEC (hasta mar-26) · EcoGo / Analytica / LCG / Fdo. Capital (abr estimado)</div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Componentes IPC Marzo 2026 (variación mensual %)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><span class="bar-label">Educación</span><div class="bar-track"><div class="bar-fill" style="width:80%;background:#993C1D"><span class="bar-val" style="color:#fff">12,1%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Regulados</span><div class="bar-track"><div class="bar-fill" style="width:43%;background:#D85A30"><span class="bar-val" style="color:#fff">5,1%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Transporte</span><div class="bar-track"><div class="bar-fill" style="width:34%;background:#F0997B"><span class="bar-val" style="color:#4A1B0C">4,1%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Alimentos</span><div class="bar-track"><div class="bar-fill" style="width:28%;background:#FAC775"><span class="bar-val" style="color:#412402">3,3%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Núcleo</span><div class="bar-track"><div class="bar-fill" style="width:27%;background:#C0DD97"><span class="bar-val" style="color:#173404">3,2%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Nivel general</span><div class="bar-track"><div class="bar-fill" style="width:28%;background:#378ADD"><span class="bar-val" style="color:#fff">3,4%</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: INDEC — IPC Marzo 2026</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El INDEC publicó <strong>IPC Marzo: 3,4%</strong> — sorpresa al alza vs consenso 3,0%. Educación (+12,1%) fue el driver estacional, pero Regulados (+5,1%) y Transporte (+4,1%, combustibles con rezago 45 días) explican la rigidez estructural. <strong>Abril muestra desaceleración real en alta frecuencia</strong>: EcoGo proyecta 2,5%, Analytica 2,9%. Pero ambas cifras están <strong>por encima del breakeven implícito del mercado (2,1%)</strong> — hay un descalce entre expectativas del mercado y realidad proyectada.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">El REM (BCRA) proyectaba 3,0% para marzo y salió 3,4%. Si abril sale 2,7% vs implícita 2,1%, el mercado tendrá que subir los breakevens → <strong>LECAPs pierden precio, CER sube</strong>. La meta de Milei de "inflación con cero inicial" para mediados de año se aleja con cada dato que supera el 2,5%. Si la meta se retrasa, el programa pierde credibilidad y el riesgo país sube.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Abril probablemente salga en rango 2,5-2,8% — por encima del 2,1% que pricean los bonos. <strong>Trade: CER corto (TZX26)</strong> para capturar el diferencial. El dato de mayo es el que define la narrativa: si baja a 2,0-2,2%, el Gobierno se valida. Si queda en 2,5%+, la curva se reprecía completamente.</div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Milei/Rozada señalan que núcleo sin estacionalidad fue ~2,3% en marzo. Si ese es el "verdadero" ritmo, la desinflación está en marcha. El riesgo es que la inflación "subyacente" sea una métrica conveniente — <strong>las familias pagan el 3,4%, no el 2,3%.</strong></div>
+  </div>
+  <div class="watch"><div class="watch-title">Watch</div><div class="watch-items"><span class="wi">Alta frecuencia semanal EcoGo</span><span class="wi">Precio combustibles</span><span class="wi">Regulados mayo</span></div></div>
+</div>
+
+<!-- CRÉDITO -->
+<div class="panel" id="panel-credito">
+  <div class="metrics-grid">
+    <div class="metric">
+      <div class="metric-label">Préstamos privados $ (mensual)</div>
+      <div class="metric-value neu">+0,2%</div>
+      <div class="metric-sub">Personales: +2,2% · Tarjetas: -5,3%</div>
+      <div class="metric-src">Fuente: BCRA IMD 20-abr</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Préstamos privados USD</div>
+      <div class="metric-value up">+3,3%</div>
+      <div class="metric-sub">USD 22.055M · +18,6% YTD</div>
+      <div class="metric-src">Fuente: BCRA IMD 20-abr</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Mora familiar (feb-26)</div>
+      <div class="metric-value down">11,2%</div>
+      <div class="metric-sub">Récord histórico +20 años</div>
+      <div class="metric-src">Fuente: BCRA / Focus Market</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Crédito / PBI (ene-26)</div>
+      <div class="metric-value up">13,6%</div>
+      <div class="metric-sub">vs 5,2% en dic-23</div>
+      <div class="metric-src">Fuente: BCRA</div>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Préstamos al sector privado en pesos — variaciones (%)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><span class="bar-label">Hipotecarios</span><div class="bar-track"><div class="bar-fill" style="width:80%;background:#1D9E75"><span class="bar-val" style="color:#fff">+162,5% i.a. · +13,9% YTD</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Prendarios</span><div class="bar-track"><div class="bar-fill" style="width:50%;background:#5DCAA5"><span class="bar-val" style="color:#04342C">+49,7% i.a.</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Personales</span><div class="bar-track"><div class="bar-fill" style="width:44%;background:#FAC775"><span class="bar-val" style="color:#412402">+44,9% i.a. · +9,2% YTD</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Adelantos</span><div class="bar-track"><div class="bar-fill" style="width:45%;background:#FAC775"><span class="bar-val" style="color:#412402">+45,1% i.a.</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Tarjetas</span><div class="bar-track"><div class="bar-fill" style="width:34%;background:#F0997B"><span class="bar-val" style="color:#4A1B0C">+34,0% i.a. · -6,1% YTD</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: BCRA IMD 20-abr-26 · i.a. = interanual · YTD = desde ene-26</div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Mora en créditos a familias — evolución (%)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><span class="bar-label">Ene-25</span><div class="bar-track"><div class="bar-fill" style="width:14%;background:#C0DD97"><span class="bar-val" style="color:#173404">2,7%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Jun-25</span><div class="bar-track"><div class="bar-fill" style="width:28%;background:#FAC775"><span class="bar-val" style="color:#412402">~5,5%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Sep-25</span><div class="bar-track"><div class="bar-fill" style="width:44%;background:#F0997B"><span class="bar-val" style="color:#4A1B0C">~8,8%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Ene-26</span><div class="bar-track"><div class="bar-fill" style="width:53%;background:#D85A30"><span class="bar-val" style="color:#fff">10,6%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Feb-26</span><div class="bar-track"><div class="bar-fill" style="width:56%;background:#993C1D"><span class="bar-val" style="color:#fff">11,2% ← récord</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: BCRA Central de Deudores / Focus Market / 1816 · Moody's advierte que seguirá subiendo hasta mediados 2026</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">Los datos del BCRA muestran una foto mixta: <strong>crédito en pesos apenas creció 0,2% en el mes</strong> (tarjetas bajaron 5,3%); crédito en USD sigue fuerte (+3,3% mensual, +18,6% YTD). La mora familiar llegó a <strong>11,2% en febrero</strong> — récord histórico. Préstamos personales a 65,23% TNA: con ese costo, no es raro que la mora explote. El BCRA bajó encajes para liberar liquidez, pero los bancos están endureciendo scoring por la mora.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">El crédito bancario sostuvo el consumo cuando los salarios reales caían. Ahora ese motor tiene el freno puesto: <strong>tarjetas -6,1% YTD, personales apenas crecen</strong>. Si el crédito en pesos no reactiva, el consumo privado tampoco. Eso conecta directo con el EMAE de feb-26 (-2,6% m/m). Las tarjetas son el indicador de consumo más dinámico — su caída del 6,1% YTD es la señal más clara de que el consumo real está frenado.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text"><strong>Cuidado con bancos en equity</strong>: BBVA -10,56% semanal, Galicia -8,42%, Macro -7,60%. El deterioro de cartera presiona rentabilidad. El spread activo/pasivo hoy es enorme (65% activo vs 22% pasivo), pero si las tasas activas bajan y la mora sigue subiendo, el margen se comprime. <strong>Preferir sectores sin exposición a crédito doméstico: oil & gas, exportadoras.</strong></div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Moody's dice explícitamente: "alta mora + alta tasa = rentabilidad bancaria igual en el corto plazo". Los spreads son tan altos que los bancos sobreviven incluso con 11% de mora. <strong>El punto de quiebre es cuando la mora llega a 15-18% y los spreads se comprimen simultáneamente.</strong> ¿Estamos ahí? Todavía no, pero el camino va en esa dirección.</div>
+  </div>
+  <div class="watch"><div class="watch-title">Watch</div><div class="watch-items"><span class="wi">Mora mensual BCRA</span><span class="wi">Bancos en Merval</span><span class="wi">Tarjetas m/m</span><span class="wi">Baja de tasas activas</span></div></div>
+</div>
+
+<!-- GLOBAL -->
+<div class="panel" id="panel-global">
+  <div class="metrics-grid">
+    <div class="metric">
+      <div class="metric-label">S&P 500</div>
+      <div class="metric-value">7.108</div>
+      <div class="metric-sub up">+8,88% YTD</div>
+      <div class="metric-src">Fuente: SBS Research 23-abr</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">MSCI LatAm</div>
+      <div class="metric-value up">3.255</div>
+      <div class="metric-sub up">+20,15% YTD</div>
+      <div class="metric-src">Fuente: SBS Research 23-abr</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">BRL/USD</div>
+      <div class="metric-value">5,020</div>
+      <div class="metric-sub up">BRL -8,34% vs USD en 12m</div>
+      <div class="metric-src">Fuente: SBS Research 23-abr</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Brent crudo</div>
+      <div class="metric-value down">USD 106,2</div>
+      <div class="metric-sub down">+1,1% · tensión Irán</div>
+      <div class="metric-src">Fuente: Infobae 24-abr</div>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Tasas soberanas emergentes — nivel y variación semanal (pb)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><span class="bar-label">Brasil</span><div class="bar-track"><div class="bar-fill" style="width:70%;background:#F0997B"><span class="bar-val" style="color:#4A1B0C">13,77% · +12,5pb sem.</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Colombia</span><div class="bar-track"><div class="bar-fill" style="width:65%;background:#FAC775"><span class="bar-val" style="color:#412402">12,90% · +8,2pb sem.</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">México</span><div class="bar-track"><div class="bar-fill" style="width:45%;background:#C0DD97"><span class="bar-val" style="color:#173404">8,92% · +1,2pb sem.</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Chile</span><div class="bar-track"><div class="bar-fill" style="width:28%;background:#9FE1CB"><span class="bar-val" style="color:#04342C">5,46% · +9pb sem.</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Turquía</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#993C1D"><span class="bar-val" style="color:#fff">30,50% · +37pb sem.</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: SBS Research 23-abr-26 · EM soberanos: tasas en alza general esta semana</div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Flujos de fondos globales — BofA "Follow The Flow" (semana)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><span class="bar-label">EM Debt</span><div class="bar-track"><div class="bar-fill" style="width:75%;background:#1D9E75"><span class="bar-val" style="color:#fff">Inflows fuertes ↑</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">High Yield</span><div class="bar-track"><div class="bar-fill" style="width:60%;background:#5DCAA5"><span class="bar-val" style="color:#04342C">2da semana inflows</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Inv. Grade</span><div class="bar-track"><div class="bar-fill" style="width:40%;background:#F7C1C1"><span class="bar-val" style="color:#501313">6ta semana outflows ↓</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Equities</span><div class="bar-track"><div class="bar-fill" style="width:35%;background:#F0997B"><span class="bar-val" style="color:#4A1B0C">Outflows ↓</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: BofA "Follow The Flow" — EPFR Global · "Beta in vogue"</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El crudo Brent trepó a <strong>USD 106,2</strong> (+1,1%) por tensiones en Estrecho de Ormuz — Irán desplegó minas, EEUU redirigió 33 buques. Trump extendió el cese al fuego pero la tensión persiste. <strong>Los flujos EM siguen positivos</strong> (BofA "beta in vogue"): HY e EM debt con inflows, IG con outflows por sexta semana. El MSCI LatAm rinde +20,15% YTD — uno de los mejores activos del año. La Fed mantiene postura hawkish.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">Para Argentina: el crudo alto es <strong>doble filo</strong>. Por un lado, beneficia a YPF y el sector energético (exportaciones). Por el otro, presiona inflación doméstica (combustibles) con rezago de 45 días. Los flujos EM positivos sostienen el rally de bonos ARG. Pero el VIX puede saltar si el conflicto Irán-EEUU escala — y en ese caso los flujos se revierten en horas, no en días.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text"><strong>Soberana en USD con duration corta</strong> (AL30/GD30) para capturar rally EM sin duration risk. Oil & gas sigue siendo el sector con mejor combinación de catalizadores: crudo alto + generación de FX. Para el contexto global: <strong>no agregar EM sin stop en VIX</strong> — el profit-taking puede ser brusco dado el +20% YTD que ya acumula LatAm.</div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">El argumento alcista es: "crudo alto + cese al fuego = el mercado ya priceó lo peor y ahora descuenta resolución". Si Irán-EEUU llega a un acuerdo, el crudo cae a 85-90 y la inflación global se frena → Fed puede bajar tasas → más inflows EM. <strong>La apuesta contraria requiere catalizador de escalada que hoy no está confirmado.</strong></div>
+  </div>
+  <div class="watch"><div class="watch-title">Watch</div><div class="watch-items"><span class="wi">Noticias EEUU-Irán</span><span class="wi">Brent nivel</span><span class="wi">VIX</span><span class="wi">Fed próxima reunión</span></div></div>
+</div>
+
+<!-- RADAR -->
+<div class="panel" id="panel-radar">
+  <div class="signal-grid">
+    <div class="sig sig-up">
+      <div class="sig-title">Alcistas esta semana</div>
+      <div class="sig-item">✓ BCRA: 73 ruedas compradoras · USD 6.685M YTD</div>
+      <div class="sig-item">✓ Brecha implícita en 6,1% · Blue/oficial casi en par</div>
+      <div class="sig-item">✓ EM debt flows: inflows · LatAm +20% YTD</div>
+      <div class="sig-item">✓ YPF +8% semanal · oil & gas outperforming</div>
+      <div class="sig-item">✓ IPC abril desacelera vs marzo (aunque sobre expectativas)</div>
+    </div>
+    <div class="sig sig-dn">
+      <div class="sig-title">Bajistas esta semana</div>
+      <div class="sig-item">✗ EMAE feb-26: -2,6% m/m · peor desde dic-23</div>
+      <div class="sig-item">✗ Mora familias 11,2% · récord histórico</div>
+      <div class="sig-item">✗ Bancos: BBVA -10,6% · Galicia -8,4% · Macro -7,6%</div>
+      <div class="sig-item">✗ Tasas reales negativas: BADLAR 22% vs IPC 40%</div>
+      <div class="sig-item">✗ Tarjetas de crédito: -6,1% YTD · consumo frenado</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div style="margin-bottom:1rem">
+    <div class="chart-title" style="margin-bottom:.75rem">Catalizadores próximas 4 semanas</div>
+    <div class="bar-chart">
+      <div class="bar-row"><span class="bar-label">IPC Abril</span><div class="bar-track"><div class="bar-fill" style="width:90%;background:#1a4a6e"><span class="bar-val" style="color:#fff">2da sem. mayo — define curva tasas entera</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Cosecha gruesa</span><div class="bar-track"><div class="bar-fill" style="width:80%;background:#1D9E75"><span class="bar-val" style="color:#fff">Mayo-jun — sostiene FX y compras BCRA</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Fed (mayo)</span><div class="bar-track"><div class="bar-fill" style="width:70%;background:#FAC775"><span class="bar-val" style="color:#412402">Define apetito EM global</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">EMAE marzo</span><div class="bar-track"><div class="bar-fill" style="width:60%;background:#F0997B"><span class="bar-val" style="color:#4A1B0C">Junio — confirma rebote o profundiza caída</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">Licitación MECON</span><div class="bar-track"><div class="bar-fill" style="width:55%;background:#B5D4F4"><span class="bar-val" style="color:#042C53">Próxima sem. — señal de tasas de corte</span></div></div></div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="card"><div class="card-text"><strong style="color:#4ade80">Sobreponderar:</strong> Oil & gas (YPF, Pampa, TGS) · CER corto (TZX26) · Soberana USD duración corta (AL30)</div></div>
+  <div class="card"><div class="card-text"><strong style="color:#f87171">Subponderar:</strong> Bancos (mora + spreads comprimiéndose) · LECAPs largas (breakevens optimistas) · EM duration larga</div></div>
+  <div class="card"><div class="card-text"><strong style="color:#74ACDF">Monitorear:</strong> Carry trade en pesos (atractivo hasta que termine cosecha) · Merval en USD (neutro hasta que actividad rebote)</div></div>
+</div>
+
+<script>
+function show(id, btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+
+</body></html>
