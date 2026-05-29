@@ -226,19 +226,6 @@ def parse_premarket(filepath, relpath):
 def scan():
     reports = []
 
-    # Pre-Markets
-    pre_dir = os.path.join(BASE, 'Pre-Markets')
-    if os.path.isdir(pre_dir):
-        for fname in sorted(os.listdir(pre_dir), reverse=True):
-            if not fname.endswith('.html'):
-                continue
-            fpath = os.path.join(pre_dir, fname)
-            relpath = f'Pre-Markets/{fname}'
-            r = parse_premarket(fpath, relpath)
-            if r:
-                reports.append(r)
-                print(f'  ✓ premarket {r["date"]}')
-
     # Semanales
     sem_dir = os.path.join(BASE, 'semanales')
     if os.path.isdir(sem_dir):
