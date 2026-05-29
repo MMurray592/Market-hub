@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digest Semanal — 28 de mayo 2026</title>
+<style>
+:root {
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #aaa;
+  --color-text-tertiary: #555;
+  --color-background-primary: #141414;
+  --color-background-secondary: #1a1a1a;
+  --color-border-tertiary: #2a2a2a;
+  --color-border-secondary: #333;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+html, body { background: #0f0f0f !important; color: var(--color-text-primary); }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-sans);padding:1.25rem;max-width:920px;margin:0 auto;line-height:1.6}
+
+.header{padding-bottom:1rem;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:1.5rem}
+.header-top{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+h1{font-size:20px;font-weight:500}
+.badge{font-size:11px;padding:3px 10px;border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.meta{font-size:12px;color:var(--color-text-tertiary);margin-top:3px}
+.sources{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+.src{font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+.src.official{border-color:#1D9E75;color:#4ade80}
+
+.tabs{display:flex;gap:4px;margin-bottom:1.5rem;flex-wrap:wrap}
+.tab{font-size:13px;padding:7px 14px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);cursor:pointer;background:transparent;color:var(--color-text-secondary);transition:all .15s}
+.tab.active{background:#0d2233;border-color:#3a7aac;color:#74ACDF}
+.panel{display:none}
+.panel.active{display:block}
+
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1.25rem}
+.metric{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.85rem 1rem}
+.metric-label{font-size:11px;color:var(--color-text-secondary);margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px}
+.metric-value{font-size:21px;font-weight:500}
+.metric-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:2px}
+.metric-src{font-size:10px;color:#F6B40E;margin-top:4px}
+.up{color:#4ade80}.down{color:#f87171}.neu{color:#74ACDF}
+
+.chart-box{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem;margin-bottom:1.25rem}
+.chart-title{font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:.75rem}
+.chart-src{font-size:10px;color:#F6B40E;margin-top:.5rem}
+.bar-chart{display:flex;flex-direction:column;gap:7px}
+.bar-row{display:flex;align-items:center;gap:8px}
+.bar-label{font-size:12px;color:var(--color-text-secondary);min-width:96px;text-align:right;flex-shrink:0}
+.bar-track{flex:1;background:var(--color-background-secondary);border-radius:3px;height:22px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px}
+.bar-val{font-size:11px;font-weight:500;color:#fff;white-space:nowrap}
+
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.1rem;margin-bottom:.75rem}
+.card-label{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:.4rem}
+.lc{color:#74ACDF}.lw{color:#F6B40E}.lp{color:#c0c0c0}.la{color:#f87171}
+.card-text{font-size:14px;line-height:1.65}
+.card-text strong{font-weight:500;color:#f0f0f0}
+
+.watch{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.7rem 1rem;margin-top:.75rem}
+.watch-title{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.5px}
+.watch-items{display:flex;flex-wrap:wrap;gap:6px}
+.wi{font-size:11px;padding:3px 8px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+
+.signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.25rem}
+@media(max-width:640px){.signal-grid{grid-template-columns:1fr}}
+.sig{border-radius:var(--border-radius-lg);padding:.85rem 1rem;border:0.5px solid var(--color-border-tertiary)}
+.sig-up{border-left:3px solid #1D9E75}
+.sig-dn{border-left:3px solid #D85A30}
+.sig-title{font-size:12px;font-weight:600;margin-bottom:.5rem;color:#f0f0f0;text-transform:uppercase;letter-spacing:.5px}
+.sig-item{font-size:12.5px;color:var(--color-text-secondary);margin-bottom:.3rem;line-height:1.5}
+.sig-item::before{content:"→ ";color:var(--color-text-tertiary)}
+
+.pos-grid{display:grid;gap:7px;margin-bottom:1rem}
+.pos-row{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);font-size:13px;flex-wrap:wrap}
+.pos-instr{font-weight:500;color:#f0f0f0;min-width:120px}
+.pos-dir{font-size:10.5px;padding:3px 9px;border-radius:10px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+.pos-long{background:#0d2218;color:#4ade80;border:1px solid #1D9E75}
+.pos-short{background:#2a0d0d;color:#f87171;border:1px solid #D85A30}
+.pos-neu{background:#1a1a1a;color:#74ACDF;border:1px solid #3a7aac}
+.pos-desc{color:#aaa;flex:1;font-size:12px;min-width:200px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <h1>Digest Semanal</h1>
+    <span class="badge">22 – 28 may 2026</span>
+  </div>
+  <div class="meta">Argentina &amp; Mercados Globales · Datos cross-verificados PDFs + mails brokers</div>
+  <div class="sources">
+    <span class="src">SBS Semanal 22-may</span>
+    <span class="src">1816 Especial 2027</span>
+    <span class="src">PPI Semanal 27-may</span>
+    <span class="src">JPMorgan EOTM 26-may</span>
+    <span class="src">SBS Comentario Diario</span>
+    <span class="src">PPI Aviso Telecom</span>
+    <span class="src official">FMI Staff Report 22-may</span>
+    <span class="src official">BCRA</span>
+    <span class="src official">INDEC</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="show('dolar',this)">Dólar &amp; BCRA</button>
+  <button class="tab" onclick="show('tasas',this)">Tasas</button>
+  <button class="tab" onclick="show('ipc',this)">IPC</button>
+  <button class="tab" onclick="show('credito',this)">Crédito</button>
+  <button class="tab" onclick="show('global',this)">Global</button>
+  <button class="tab" onclick="show('radar',this)">Radar</button>
+</div>
+
+<!-- DÓLAR & BCRA -->
+<div id="tab-dolar" class="panel active">
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">TC mayorista</div><div class="metric-value">$1.410</div><div class="metric-sub down">-$2,50 vs. 27-may</div><div class="metric-src">SBS Comentario 28-may</div></div>
+    <div class="metric"><div class="metric-label">BCRA compra 28-may</div><div class="metric-value">+USD 447mn</div><div class="metric-sub up">Día récord de la semana</div><div class="metric-src">SBS Comentario 28-may</div></div>
+    <div class="metric"><div class="metric-label">BCRA YTD MULC</div><div class="metric-value">~USD 9.300mn</div><div class="metric-sub up">USD 8.861mn al jueves 21 + ~440mn</div><div class="metric-src">SBS Semanal 22-may</div></div>
+    <div class="metric"><div class="metric-label">Balanza comercial abr-26</div><div class="metric-value">+USD 2.711mn</div><div class="metric-sub up">vs. USD 214mn abr-25</div><div class="metric-src">SBS Semanal</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Compras BCRA en MULC — días seleccionados (USD mn)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">Semanal (al jue 21)</div><div class="bar-track"><div class="bar-fill" style="width:62%;background:#378ADD"><span class="bar-val">770</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">MTD (al jue 21)</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#1D9E75"><span class="bar-val">1.696</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">27-may</div><div class="bar-track"><div class="bar-fill" style="width:10%;background:#888"><span class="bar-val">132</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">28-may</div><div class="bar-track"><div class="bar-fill" style="width:35%;background:#1D9E75"><span class="bar-val">447</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: SBS Research · Comentarios Diarios 27 y 28-may</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El BCRA <strong>aceleró el ritmo de compras en el MULC</strong> esta semana, con USD 132mn el martes 27 y USD 447mn el jueves 28 — el mayor registro diario de la semana. El acumulado YTD se acerca a USD 9.300mn (USD 8.861mn al jueves 21 según SBS Semanal). El TC mayorista cerró en $1.410 el 28-may, cediendo $2,50 vs. el día anterior. Surgió además una novedad clave: según Bloomberg vía SBS, el gobierno <strong>negocia con bancos internacionales fusionar los 3 repos vigentes del BCRA en uno solo de al menos USD 5.000mn, con vencimiento 2028 o post-elecciones</strong>. El FMI publicó el viernes 22 el Staff Report de la 2° revisión del EFF: modificó el target de acumulación de reservas a USD 8.000mn en 2026 y se espera préstamo sindicado de bancos internacionales por USD 4.000mn (garantía 40-95% BM/BID/CAF) con aprobación "a fines de junio".</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">La <strong>aceleración del MULC + préstamo sindicado de OOII por USD 4.000mn + repo unificado de USD 5.000mn</strong> conforman un combo que descomprime el frente externo de cara a los pagos de 2027. Si las tres piezas se confirman, las reservas brutas pueden cerrar el año por encima del target ajustado. Eso reduce el riesgo binario de los Globales y deja espacio para compresión de spreads, especialmente del tramo largo (GD35/GD41), que ya respondió: +30 cts promedio el 27 y 28-may. El TC cayendo con balanza comercial sólida valida que el ancla cambiaria sigue funcional sin necesidad de intervención agresiva del BCRA en la oferta.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Mantener <strong>LONG hard dollar soberano largo</strong> — GD35 y GD41 son los favoritos de SBS dado el potencial de compresión vs. EM. Para perfiles más conservadores, AO27 da renta mensual; AO28 para los que apuestan al "se paga en cualquier escenario" (tesis 1816 vía balanza energética 2028-2031 de USD 43.000mn). El AO28 forward implícito sugiere tasa USD a 1 año de 13,7% para oct-27 — espacio razonable si la curva sigue comprimiendo. Horizonte 4-8 semanas mientras se confirma el préstamo OOII (fines junio).</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">El BCRA acumula reservas pero el contexto privado sigue débil: <strong>tasas reales cortas en negativo, mora privada subiendo</strong> (BCRA informe bancos 22-may). Si el préstamo OOII se demora o sale por menos, o si el repo unificado no cierra en USD 5.000mn, el target FMI de USD 8.000mn se complica. Además, el 1816 advierte que la elección 2027 introducirá volatilidad cambiaria casi sin importar quién gane — el camino a oct-27 difícilmente sea lineal. La caída del TC esta semana puede ser efecto cosecha + acumulación intervención y revertirse en H2 cuando se modere la liquidación.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch semana 1-5 jun 2026</div>
+    <div class="watch-items">
+      <span class="wi">Compras diarias BCRA</span>
+      <span class="wi">Cierre préstamo sindicado OOII (jun)</span>
+      <span class="wi">Liquidación agro (USD mn/día)</span>
+      <span class="wi">Anuncio formal repo unificado</span>
+      <span class="wi">Riesgo país zona 500pb</span>
+    </div>
+  </div>
+</div>
+
+<!-- TASAS -->
+<div id="tab-tasas" class="panel">
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Licitación 27-may adjudicado</div><div class="metric-value">$12,57 bn</div><div class="metric-sub up">Rollover 114,4%</div><div class="metric-src">Sec. Finanzas / SBS 27-may</div></div>
+    <div class="metric"><div class="metric-label">Ofertas recibidas</div><div class="metric-value">$16,14 bn</div><div class="metric-sub neu">Vto del día: ~$11 bn</div><div class="metric-src">Sec. Finanzas 27-may</div></div>
+    <div class="metric"><div class="metric-label">Forward TZX27/TZX28</div><div class="metric-value">12,4%</div><div class="metric-sub neu">Tasa real 1y vista jun-27</div><div class="metric-src">1816 Especial 2027</div></div>
+    <div class="metric"><div class="metric-label">Forward AO27/AO28</div><div class="metric-value">13,7%</div><div class="metric-sub neu">USD 1y vista oct-27</div><div class="metric-src">1816 Especial 2027</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Licitación Tesoro 27-may — menú adjudicado</div>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">Lecap nueva sep-26</div><div class="bar-track"><div class="bar-fill" style="width:55%;background:#378ADD"><span class="bar-val">Tasa fija TEM</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Boncer TZXM7</div><div class="bar-track"><div class="bar-fill" style="width:45%;background:#7F77DD"><span class="bar-val">CER corto</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Boncer TZXS7</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:#7F77DD"><span class="bar-val">CER medio</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">TAMAR TMG28</div><div class="bar-track"><div class="bar-fill" style="width:38%;background:#F6B40E"><span class="bar-val">Floater</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Dollar-linked nuevos</div><div class="bar-track"><div class="bar-fill" style="width:14%;background:#D85A30"><span class="bar-val">14% del total</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Bonares AO27 / AO28</div><div class="bar-track"><div class="bar-fill" style="width:22%;background:#1D9E75"><span class="bar-val">USD 200 + 150mn</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: SBS Comentario Diario 27 y 28-may · Sec. Finanzas</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El Tesoro <strong>rolleó la licitación del 27-may con holgura</strong>: ofertas por $16,14 bn contra vencimientos por ~$11 bn, adjudicación final $12,57 bn (rollover 114,4%). El menú incluyó una nueva Lecap a sep-26, los Boncer TZXM7 y TZXS7, el TAMAR TMG28, dos dollar-linked nuevos (jul-26 y mar-27) que representaron el 14% del total adjudicado, y los Bonares AO27 (VNO USD 200mn) y AO28 (VNO USD 150mn). El TMG28 cayó 1% en secundario el 27-may. La curva CER se mantuvo firme (+0,15% promedio el 28-may), mientras la tasa fija subió 0,25% promedio. Las <strong>tasas reales cortas siguen en negativo</strong> según diagnóstico de SBS.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">El rollover holgado confirma que <strong>la liquidez en pesos sigue sobreabundante</strong> ($4,4 bn en "otros instrumentos" del BCRA según SBS) y que el Tesoro no enfrenta presión de demanda interna. La reaparición de los dollar-linked (14% de adjudicación) es señal de que cierto segmento de inversores empieza a cubrir cobertura cambiaria barata, anticipando posible volatilidad pre-2027. Las forwards de 1816 son la lectura más clara: el mercado descuenta tasa USD 13,7% a 1y vista para oct-27 — implícitamente, sigue habiendo prima de riesgo política que el inversor con view positivo de crédito puede capturar.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Para perfil pesos con view desinflacionario, <strong>tasa fija tramo 2027 (TZXM7-tipo)</strong>; para los que ven riesgos por inercia y ajustes pendientes, <strong>X30N6 corto y TZXD7 medio-largo</strong> (favoritos SBS). Los Duales CER/TAMAR mantienen atractivo pero SBS prefiere CER puros a duration similar. El Dual TMG28 es atractivo para bancos que se fondean a plazo fijo, aunque el comportamiento reciente sugiere cautela táctica. No alargar carry en LECAP más de 60 días sin claridad del sendero inflación post-cosecha. Vencimientos próxima licitación: monitorear cuando el Tesoro publique calendario.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Si el IPC de mayo se confirma <strong>por debajo del cierre de abril</strong> (alta frecuencia ya lo sugiere), las breakevens implícitas pueden tener razón y el carry en LECAP corto bate a CER. La reaparición de dollar-linked en licitación, si bien sugiere cobertura cambiaria, también puede ser oferta del Tesoro buscando aliviar presión nominal — no necesariamente indicador de stress. El riesgo de capital por suba de tasas (que SBS marca como posibilidad si el frente cambiario se presiona) es bajo en el muy corto plazo dada la dinámica MULC.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch semana 1-5 jun 2026</div>
+    <div class="watch-items">
+      <span class="wi">Próximo calendario licitación Tesoro</span>
+      <span class="wi">Curva CER corta vs. largo</span>
+      <span class="wi">Demanda secundario TMG28</span>
+      <span class="wi">Breakevens post-IPC may-26</span>
+      <span class="wi">Forward TZX27-TZX28</span>
+    </div>
+  </div>
+</div>
+
+<!-- IPC -->
+<div id="tab-ipc" class="panel">
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">IPIM abr-26</div><div class="metric-value">5,2% m/m</div><div class="metric-sub down">+1,8pp vs. mar-26</div><div class="metric-src">INDEC · SBS Semanal</div></div>
+    <div class="metric"><div class="metric-label">IPIM ex petróleo/gas</div><div class="metric-value">1,4% m/m</div><div class="metric-sub up">Núcleo benigno</div><div class="metric-src">INDEC · SBS Semanal</div></div>
+    <div class="metric"><div class="metric-label">IPC may-26 (alta frec.)</div><div class="metric-value">&lt; abr-26</div><div class="metric-sub up">SBS / OJF Ferreres</div><div class="metric-src">SBS Semanal 22-may</div></div>
+    <div class="metric"><div class="metric-label">Dato oficial INDEC</div><div class="metric-value">~12 jun</div><div class="metric-sub neu">D-day IPC may-26</div><div class="metric-src">INDEC</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">IPC mayorista (IPIM) — descomposición abr-26</div>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">IPIM total</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#D85A30"><span class="bar-val">5,2%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Ex petróleo/gas</div><div class="bar-track"><div class="bar-fill" style="width:27%;background:#1D9E75"><span class="bar-val">1,4%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">IPIM mar-26 ex P/G</div><div class="bar-track"><div class="bar-fill" style="width:12%;background:#888"><span class="bar-val">0,6%</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: INDEC vía SBS Research Semanal 22-may</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El <strong>IPIM de abril aceleró 1,8pp a 5,2% m/m</strong>, fuertemente afectado por precios del petróleo y gas. Excluyendo ese efecto, hubiera sido 1,4% (vs. 0,6% ex P/G en marzo). Los datos de alta frecuencia para mayo (SBS, OJF Ferreres) sugieren que la inflación corre <strong>a ritmo inferior al cierre de abr-26</strong>. Esto valida el view del inversor optimista con la trayectoria desinflacionaria. SBS advierte sin embargo que el barril sigue muy por encima del nivel del último ajuste de surtidor — efectos de primera y segunda ronda pueden traer presión inflacionaria adicional si el petróleo persiste alto.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">La <strong>desinflación de mayo es el principal catalizador para la curva en pesos</strong>. Si el IPC de mayo viene por debajo del breakeven del mercado, los CER outperform; si viene en línea o sobre, la LECAP corta sigue siendo el trade. Más importante: el sendero de desinflación es el ancla de imagen del gobierno y la tolerancia política para sostener el ajuste. La diferencia entre IPIM con y sin petróleo/gas (5,2% vs. 1,4%) marca que el shock externo es el riesgo dominante en el corto plazo — no la dinámica doméstica.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Posicionarse en <strong>CER corto (X30N6) antes del 12 de junio</strong> para capturar el dato de mayo. Si el IPC sorprende por encima de breakeven, el CER outperform. Reducir exposición a tasa fija larga: regulados (combustibles, energía) siguen con ajustes pendientes y son la mayor amenaza alcista. El TZXD7 mantiene el atractivo para inversores con view de inercia y traslado de precios externos. Para perfil arriesgado, dual CER/TAMAR es válido aunque SBS prefiere CER puros a duration similar.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Si la desaceleración de mayo se confirma y el petróleo se modera con el acuerdo Irán-EEUU (cese al fuego tentativo 60 días), <strong>el carry en LECAP corto bate a CER</strong> sin necesidad de cobertura. El ancla cambiaria se mantiene firme, la cosecha sigue normalizándose y los flujos de USD pueden ayudar a contener precios importados. La caída del WTI a USD 89 (vs. máximos sobre USD 100) es un alivio si se consolida.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch semana 1-5 jun 2026</div>
+    <div class="watch-items">
+      <span class="wi">IPC OJF semanal alta frecuencia</span>
+      <span class="wi">Precio WTI / Brent</span>
+      <span class="wi">Tarifas energéticas (ajuste pendiente)</span>
+      <span class="wi">Breakevens CER/LECAP</span>
+      <span class="wi">D-day INDEC ~12-jun</span>
+    </div>
+  </div>
+</div>
+
+<!-- CRÉDITO -->
+<div id="tab-credito" class="panel">
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">EMAE mar-26 m/m s.e.</div><div class="metric-value">+3,5%</div><div class="metric-sub up">Máximos históricos</div><div class="metric-src">INDEC · SBS Semanal</div></div>
+    <div class="metric"><div class="metric-label">EMAE ajustado 1T26 t/t</div><div class="metric-value">-0,1%</div><div class="metric-sub down">Ex agro/min/intf</div><div class="metric-src">SBS Research</div></div>
+    <div class="metric"><div class="metric-label">ICG UTDT may-26</div><div class="metric-value">39,8</div><div class="metric-sub down">-1,6% m/m · 6° caída</div><div class="metric-src">Poliarquía-UTDT</div></div>
+    <div class="metric"><div class="metric-label">Aprob. Milei AtlasIntel</div><div class="metric-value">39,9%</div><div class="metric-sub up">+4,4pp en mayo</div><div class="metric-src">AtlasIntel-Bloomberg 28-may</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Indicadores de humor — ICG UTDT y aprobación Milei (may-26)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">ICG Interior</div><div class="bar-track"><div class="bar-fill" style="width:87%;background:#888"><span class="bar-val">43,4%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Aprob. AtlasIntel</div><div class="bar-track"><div class="bar-fill" style="width:80%;background:#1D9E75"><span class="bar-val">39,9%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">ICG nacional</div><div class="bar-track"><div class="bar-fill" style="width:80%;background:#D85A30"><span class="bar-val">39,8%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">ICG CABA</div><div class="bar-track"><div class="bar-fill" style="width:76%;background:#888"><span class="bar-val">38,2%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">ICG GBA</div><div class="bar-track"><div class="bar-fill" style="width:66%;background:#D85A30"><span class="bar-val">33,0%</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: Poliarquía-UTDT · AtlasIntel-Bloomberg · vía SBS Comentario 26-may + 1816 Especial 2027</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El <strong>EMAE de marzo rebotó 3,5% m/m s.e. (+5,5% a/a)</strong>, llevando la serie a máximos históricos por tercera vez en lo que va del año (dic-25, ene-26, mar-26). Pero el ajustado por SBS — excluyendo agro, minería y financiero — arroja <strong>-0,1% t/t s.e. en 1T26</strong>: la heterogeneidad sectorial sigue siendo el problema. Los datos preliminares para abril ya muestran dinámica magra. Mientras, la mora crediticia privada volvió a subir según BCRA (informe bancos 22-may). El ICG UTDT cayó 1,6% m/m en mayo (6° caída consecutiva, contracción acumulada 19,4%), pero la aprobación de Milei medida por AtlasIntel-Bloomberg <strong>rebotó +4,4pp a 39,9%</strong>. El ICC UTDT también rebotó +1,26% m/m, con CABA liderando +6,42%.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">El <strong>EMAE máximo histórico encubre que la economía ex-recursos naturales está parada</strong>. Eso significa que el crecimiento del crédito al consumo sigue tensionado, la mora continúa subiendo y los bancos deben provisionar más — comprimiendo márgenes. Los datos políticos son contradictorios: ICG sigue cayendo pero AtlasIntel marca rebote. Esto importa para la prima de riesgo política de los Globales y para los forwards electorales de 1816 (AO28 implica USD 13,7% a 1y de oct-27). El rebote del ICC (consumidor) puede ser precursor de mejora en H2 si el salario real empieza a recuperarse con la desinflación.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Mantener cautela en <strong>equity bancario expuesto al consumo</strong> hasta ver estabilización de la mora — pero un papel líquido con beta alto como <strong>GGAL sigue siendo el "play Argentina"</strong> según SBS. El rebote del salario real con desinflación es el catalizador para que el cuadro mejore en H2. Mantener radar en el EMAE de abril: si confirma la lectura preliminar magra, los bancos siguen exigidos. La aprobación rebotando en AtlasIntel es señal positiva para Globales pero todavía no para fundamentos bancarios.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">La mora alta puede ser fenómeno de <strong>stock (crédito tomado 2024-25 a tasas elevadas)</strong> más que deterioro estructural. Si el IPC baja a 2-2,5% en H2 y el salario nominal sube, el salario real puede recuperarse rápido. El rebote del ICC en mayo puede ser inicio de inflexión. La elección 2027 está lejos y el escenario base de 1816 es que Milei "llega con muy buenas chances" si REM sobre inflación y actividad se cumple. El sector energético (RIGI, LLL Oil de YPF USD 25.000mn) genera dólares genuinos que blindan la macro.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch semana 1-5 jun 2026</div>
+    <div class="watch-items">
+      <span class="wi">EMAE abr-26 (rebote o desaceleración)</span>
+      <span class="wi">Mora bancaria datos BCRA</span>
+      <span class="wi">ICC may-26 confirmación</span>
+      <span class="wi">Empleo privado registrado</span>
+      <span class="wi">Próxima encuesta política (Poliarquía/AtlasIntel)</span>
+    </div>
+  </div>
+</div>
+
+<!-- GLOBAL -->
+<div id="tab-global" class="panel">
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">WTI 28-may</div><div class="metric-value">USD 89,46</div><div class="metric-sub down">-4,8% el 27-may por Ormuz</div><div class="metric-src">SBS Comentario 28-may</div></div>
+    <div class="metric"><div class="metric-label">UST 10y 28-may</div><div class="metric-value">4,45%</div><div class="metric-sub down">Desde máximos 4,67%</div><div class="metric-src">SBS Comentario 28-may</div></div>
+    <div class="metric"><div class="metric-label">UST 30y</div><div class="metric-value">5,20%</div><div class="metric-sub down">Máx. desde 2007</div><div class="metric-src">SBS Semanal 22-may</div></div>
+    <div class="metric"><div class="metric-label">S&amp;P 500</div><div class="metric-value">+0,58%</div><div class="metric-sub up">6 días arriba</div><div class="metric-src">SBS Comentario 28-may</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">UST yields y mercado USD — semana 22-28 may</div>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">UST 30y</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#D85A30"><span class="bar-val">5,20%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">UST 10y máx</div><div class="bar-track"><div class="bar-fill" style="width:90%;background:#D85A30"><span class="bar-val">4,67%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">UST 10y 28-may</div><div class="bar-track"><div class="bar-fill" style="width:86%;background:#888"><span class="bar-val">4,45%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">UST 2y máx</div><div class="bar-track"><div class="bar-fill" style="width:79%;background:#888"><span class="bar-val">4,12%</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: SBS Research · Reuters · Bloomberg vía SBS Semanal y Comentarios Diarios</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">La semana cerró con <strong>optimismo geopolítico</strong>: reportes de un acuerdo tentativo entre EEUU e Irán para extender el cese al fuego por 60 días impulsaron el S&amp;P 500 a su 6° día consecutivo arriba (+0,58% el 28-may). El WTI se desplomó 4,8% a USD 89,37 el 27-may cuando EEUU desmintió un borrador que sugería reapertura inmediata del Estrecho de Ormuz, pero rebotó +0,9% el 28-may. La UST 10y aflojó del máximo de 4,67% a 4,45% al cierre del jueves, aunque la UST 30y sigue en 5,20% (máximos desde 2007). El nuevo Fed chair Kevin Warsh — sucesor de Powell — enfrenta presión de Trump por bajar tasas ("lowest rates in the world", 1% o menos), defendiendo el "trimmed PCE" como su métrica preferida. Mercado descuenta cero recortes Fed en 2026. Q1 GDP US: +1,6% con inflación persistente.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">La caída de la UST 10y libera espacio para <strong>compresión de spreads soberanos EM</strong>, lo que beneficia directo a los Globales (GD35/GD41 lideraron la suba semanal, +30 cts y +50 cts respectivamente). Pero la UST 30y en 5,20% sigue siendo un techo para la duration larga. El WTI alto impacta importaciones energéticas argentinas, aunque el saldo O&amp;G sigue positivo (tesis estructural 1816: USD 43.000mn/año energía+minería 2028-2031). La narrativa Warsh-Trump es crítica para Argentina por dos vías: (1) si la Fed cae en presión política, riesgo de USD débil y commodities altos; (2) si Warsh resiste, las tasas USD largas siguen tensionadas y el carry global sufre.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Overweight <strong>oil &amp; gas argentino (VIST, PAM, YPF, TGS)</strong> según SBS — con Brent rondando USD 100, los fundamentos son sólidos y las inversiones de Vaca Muerta (LLL Oil de YPF USD 25.000mn/15 años, Vista 250k bbl/d target 2026) son catalizador estructural. En bonos ARG, <strong>GD35 y GD41 son los favoritos SBS</strong> por mayor potencial de compresión vs. EM con fundamentos comparables. Para perfil más arriesgado, BUENOS 37A de PBA. Tier 1 corporativas: PAE, YPF Luz, TGS, Tecpetrol. Horizonte 4-8 semanas mientras se materializa el acuerdo Irán-EEUU.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Las <strong>UST largas en 5,20% son riesgo para cualquier compresión sostenida</strong> de spreads EM. Si Warsh efectivamente sube tasas en algún momento (como sugieren las condiciones macro según JPM EOTM), el escenario de Globales argentinos se complica. La narrativa "Warsh sucumbe a presión Trump y baja tasas" es low probability en el corto plazo. Además, la economía US desacelerando a 1,6% y la posibilidad de recesión meten ruido al equity global. Para Argentina específicamente, los Globales tienen drivers locales (humor social, ruta electoral, emisiones internacionales) que exceden el factor UST.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch semana 1-5 jun 2026</div>
+    <div class="watch-items">
+      <span class="wi">Acuerdo final cese al fuego Irán</span>
+      <span class="wi">Precio Brent / WTI</span>
+      <span class="wi">UST 30y zona 5%</span>
+      <span class="wi">Comunicación Warsh / Fed</span>
+      <span class="wi">Datos macro US (NFP, ISM)</span>
+    </div>
+  </div>
+</div>
+
+<!-- RADAR -->
+<div id="tab-radar" class="panel">
+  <div class="signal-grid">
+    <div class="sig sig-up">
+      <div class="sig-title">Señales alcistas</div>
+      <div class="sig-item">BCRA aceleró compras MULC: USD 447mn el 28-may, semanal +USD 770mn</div>
+      <div class="sig-item">FMI Staff Report 22-may: préstamo OOII por USD 4.000mn esperado fines de jun</div>
+      <div class="sig-item">Repo BCRA "unificado" en negociación: USD 5.000mn vto 2028+</div>
+      <div class="sig-item">Aprobación Milei AtlasIntel +4,4pp a 39,9% en may-26</div>
+      <div class="sig-item">ICC UTDT rebotó +1,26% (CABA +6,42%) tras 3 meses de baja</div>
+      <div class="sig-item">EMAE mar-26 en máximos históricos (+3,5% m/m s.e.)</div>
+      <div class="sig-item">Acuerdo tentativo cese al fuego Irán por 60 días</div>
+      <div class="sig-item">Globales semana: +0,9% (mejor que EMB +0,3%)</div>
+    </div>
+    <div class="sig sig-dn">
+      <div class="sig-title">Señales bajistas</div>
+      <div class="sig-item">ICG UTDT: 6° caída consecutiva, -19,4% acumulado, 39,8%</div>
+      <div class="sig-item">Mora crediticia privada subió nuevamente (BCRA informe bancos)</div>
+      <div class="sig-item">Salarios reales privados: 7° caída mensual consecutiva mar-26</div>
+      <div class="sig-item">EMAE ex-agro/min/intf: 1T26 -0,1% t/t s.e. — heterogeneidad alta</div>
+      <div class="sig-item">UST 30y en 5,20% (máx. desde 2007): techo para duration larga</div>
+      <div class="sig-item">US Q1 GDP +1,6% con inflación persistente</div>
+      <div class="sig-item">IPIM abr-26 5,2% (afectado por petróleo/gas)</div>
+      <div class="sig-item">Datos preliminares EMAE abril magros</div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:1rem">
+    <div class="watch-title" style="margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px;font-size:11px;color:var(--color-text-secondary)">Posiciones core — semana 1-5 jun 2026</div>
+    <div class="pos-grid">
+      <div class="pos-row"><span class="pos-instr">GD35 / GD41</span><span class="pos-dir pos-long">LONG</span><span class="pos-desc">Favoritos SBS por potencial compresión vs. EM. GD41 +50 cts el 28-may. Horizonte 4-8 semanas.</span></div>
+      <div class="pos-row"><span class="pos-instr">AO27 / AO28</span><span class="pos-dir pos-long">LONG</span><span class="pos-desc">AO27 renta mensual conservador; AO28 "se paga en cualquier escenario" (tesis 1816 balanza energética).</span></div>
+      <div class="pos-row"><span class="pos-instr">X30N6 / TZXD7 (CER)</span><span class="pos-dir pos-long">LONG</span><span class="pos-desc">Cobertura pre-IPC mayo (12-jun D-day). X30N6 corto; TZXD7 medio-largo para inversor con view de inercia.</span></div>
+      <div class="pos-row"><span class="pos-instr">VIST / PAM / YPF</span><span class="pos-dir pos-long">LONG</span><span class="pos-desc">Oil &amp; Gas con Brent ~USD 100. Vaca Muerta (LLL Oil USD 25k mn, Vista 250k bbl/d) catalizador estructural.</span></div>
+      <div class="pos-row"><span class="pos-instr">GGAL</span><span class="pos-dir pos-long">LONG</span><span class="pos-desc">"Play Argentina" beta alto según SBS, pese a contexto bancario tensionado por mora.</span></div>
+      <div class="pos-row"><span class="pos-instr">Tier 1 corp. USD (PAE, YPF Luz, TGS, Tecpetrol)</span><span class="pos-dir pos-long">LONG</span><span class="pos-desc">Emisiones corporativas argentinas &gt;USD 10.000mn en 7 meses con compresión de spreads.</span></div>
+      <div class="pos-row"><span class="pos-instr">LECAP largo / tasa fija &gt;60d</span><span class="pos-dir pos-neu">CAUTELA</span><span class="pos-desc">No alargar carry sin claridad sendero inflación post-cosecha. Riesgo capital si frente cambiario presiona.</span></div>
+      <div class="pos-row"><span class="pos-instr">Equity bancario consumo (ex GGAL)</span><span class="pos-dir pos-short">EVITAR</span><span class="pos-desc">Mora subiendo + provisiones crecientes. Esperar estabilización antes de entrar.</span></div>
+    </div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Catalizadores próximas 4 semanas</div>
+    <div class="watch-items">
+      <span class="wi">Cierre préstamo sindicado OOII USD 4.000mn (fines junio)</span>
+      <span class="wi">Confirmación repo unificado USD 5.000mn</span>
+      <span class="wi">IPC may-26 — INDEC ~12-jun (D-day curva ARS)</span>
+      <span class="wi">EMAE abr-26 (¿confirma magra?)</span>
+      <span class="wi">Acuerdo final cese al fuego Irán-EEUU</span>
+      <span class="wi">Próximas encuestas imagen Milei</span>
+      <span class="wi">Reforma laboral: avanza o se posterga</span>
+      <span class="wi">Próxima licitación Tesoro (rollover post-vto)</span>
+    </div>
+  </div>
+</div>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
