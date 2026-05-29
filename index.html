@@ -392,13 +392,9 @@ body {
 
   <div class="filters">
     <button class="filter-btn active all" onclick="setFilter('all',this)">Todos</button>
-    <button class="filter-btn premarket" onclick="setFilter('premarket',this)">Pre-Markets</button>
     <button class="filter-btn semanal" onclick="setFilter('semanal',this)">Semanales</button>
     <button class="filter-btn diario" onclick="setFilter('diario',this)">Digests diarios</button>
   </div>
-
-  <div class="section-hdr" id="hdr-premarket">Pre-Markets — Apertura NY</div>
-  <div class="grid" id="grid-premarket"></div>
 
   <div class="section-hdr" id="hdr-semanal">Semanales — Economía & Mercados</div>
   <div class="grid" id="grid-semanal"></div>
@@ -510,35 +506,27 @@ const REPORTS = [
 let currentFilter = 'all';
 
 function renderCards() {
-  const gridPre = document.getElementById('grid-premarket');
   const gridSem = document.getElementById('grid-semanal');
   const gridDia = document.getElementById('grid-diario');
-  const hdrPre  = document.getElementById('hdr-premarket');
   const hdrSem  = document.getElementById('hdr-semanal');
   const hdrDia  = document.getElementById('hdr-diario');
   const empty   = document.getElementById('empty-state');
-  gridPre.innerHTML = '';
   gridSem.innerHTML = '';
   gridDia.innerHTML = '';
 
-  const premarkets = REPORTS.filter(r => r.type === 'premarket');
   const semanales  = REPORTS.filter(r => r.type === 'semanal');
   const diarios    = REPORTS.filter(r => r.type === 'diario');
 
-  const showPre = currentFilter === 'all' || currentFilter === 'premarket';
   const showSem = currentFilter === 'all' || currentFilter === 'semanal';
   const showDia = currentFilter === 'all' || currentFilter === 'diario';
 
-  hdrPre.classList.toggle('hidden', !showPre);
   hdrSem.classList.toggle('hidden', !showSem);
   hdrDia.classList.toggle('hidden', !showDia);
 
-  if (showPre) premarkets.forEach(r => gridPre.appendChild(makeCard(r)));
   if (showSem) semanales.forEach(r => gridSem.appendChild(makeCard(r)));
   if (showDia) diarios.forEach(r => gridDia.appendChild(makeCard(r)));
 
-  const total = (showPre ? premarkets.length : 0) +
-                (showSem ? semanales.length : 0) +
+  const total = (showSem ? semanales.length : 0) +
                 (showDia ? diarios.length : 0);
   document.getElementById('count-display').textContent = `${total} reporte${total !== 1 ? 's' : ''}`;
   empty.classList.toggle('show', total === 0);
