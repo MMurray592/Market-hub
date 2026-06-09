@@ -8,241 +8,436 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Digest Semanal — 3 de mayo 2026</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0f0f0f;color:#e8e8e8;padding:24px;max-width:900px;margin:0 auto;line-height:1.6}
-h1{font-size:22px;font-weight:500;color:#f0f0f0;margin-bottom:4px}
-.sub{font-size:13px;color:#888;margin-bottom:0}
-.header{padding-bottom:16px;border-bottom:1px solid #2a2a2a;margin-bottom:20px}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
-.tab{padding:7px 16px;font-size:13px;font-weight:500;border:1px solid #333;border-radius:8px;background:transparent;cursor:pointer;color:#999;transition:all .15s}
+:root {
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #aaa;
+  --color-text-tertiary: #555;
+  --color-background-primary: #141414;
+  --color-background-secondary: #1a1a1a;
+  --color-border-tertiary: #2a2a2a;
+  --color-border-secondary: #333;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+html, body { background: #0f0f0f !important; color: var(--color-text-primary); }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-sans);padding:1.25rem;max-width:920px;margin:0 auto;line-height:1.6}
+
+.header{padding-bottom:1rem;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:1.5rem}
+.header-top{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+h1{font-size:20px;font-weight:500}
+.badge{font-size:11px;padding:3px 10px;border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.meta{font-size:12px;color:var(--color-text-tertiary);margin-top:3px}
+.sources{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+.src{font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+.src.official{border-color:#1D9E75;color:#4ade80}
+
+.tabs{display:flex;gap:4px;margin-bottom:1.5rem;flex-wrap:wrap}
+.tab{font-size:13px;padding:7px 14px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);cursor:pointer;background:transparent;color:var(--color-text-secondary);transition:all .15s}
 .tab.active{background:#0d2233;border-color:#3a7aac;color:#74ACDF}
 .panel{display:none}
 .panel.active{display:block}
-.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:20px}
-.metric{background:#1a1a1a;border-radius:8px;padding:14px}
-.metric-label{font-size:11px;color:#777;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-.metric-val{font-size:22px;font-weight:500;color:#f0f0f0}
-.metric-delta{font-size:12px;margin-top:3px;font-weight:500}
-.metric-src{font-size:10px;color:#555;margin-top:3px}
-.up{color:#1D9E75}.down{color:#D85A30}
-.analysis{border:1px solid #2a2a2a;border-radius:12px;overflow:hidden;margin-bottom:20px}
-.section{padding:14px 18px;border-bottom:1px solid #222}
-.section:last-child{border-bottom:none}
-.section-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.7px;margin-bottom:7px}
-.section-text{font-size:14px;line-height:1.65}
-.sec-cambio{background:#0d1a26}.sec-cambio .section-label{color:#74ACDF}
-.sec-mercado{background:#1a1400}.sec-mercado .section-label{color:#F6B40E}
-.sec-posicion{background:#1a1a1a}.sec-posicion .section-label{color:#c0c0c0}
-.sec-contra{background:#2a0d0d}.sec-contra .section-label{color:#f87171}
-.chart-wrap{margin-bottom:20px}
-.chart-title{font-size:13px;font-weight:500;color:#888;margin-bottom:10px}
-.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.bar-label{font-size:12px;color:#888;width:120px;text-align:right;flex-shrink:0}
-.bar-track{flex:1;background:#1f1f1f;border-radius:4px;height:20px;overflow:hidden}
-.bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px}
-.bar-val{font-size:11px;font-weight:600;color:white}
-.watch{margin-top:4px}
-.watch-label{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
-.pills{display:flex;flex-wrap:wrap;gap:8px}
-.pill{font-size:12px;padding:5px 12px;border-radius:20px;background:#1a1a1a;border:1px solid #333;color:#aaa}
-.radar-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
-.radar-card{border:1px solid #2a2a2a;border-radius:8px;padding:14px}
-.radar-card-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
-.radar-up .radar-card-title{color:#1D9E75}
-.radar-down .radar-card-title{color:#D85A30}
-.radar-list{list-style:none;font-size:13px;color:#ccc;display:flex;flex-direction:column;gap:6px}
-.radar-list li::before{content:"→ ";color:#555}
-.pos-grid{display:grid;gap:8px;margin-bottom:20px}
-.pos-row{display:flex;align-items:center;gap:12px;padding:10px 14px;background:#1a1a1a;border-radius:8px;font-size:13px}
-.pos-instr{font-weight:500;color:#f0f0f0;min-width:100px}
-.pos-dir{font-size:11px;padding:3px 10px;border-radius:10px;font-weight:600}
+
+.lead{font-size:13px;color:var(--color-text-secondary);margin-bottom:1.25rem;line-height:1.6}
+
+.flag{background:rgba(246,180,14,.10);border:0.5px solid #F6B40E;border-radius:var(--border-radius-md);padding:.7rem 1rem;font-size:12.5px;line-height:1.55;color:#F6B40E;margin-bottom:1.25rem}
+
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1.25rem}
+.metric{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.85rem 1rem}
+.metric-label{font-size:11px;color:var(--color-text-secondary);margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px}
+.metric-value{font-size:21px;font-weight:500}
+.metric-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:2px}
+.metric-src{font-size:10px;color:#F6B40E;margin-top:4px}
+.up{color:#4ade80}.down{color:#f87171}.neu{color:#74ACDF}
+
+.chart-box{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem;margin-bottom:1.25rem}
+.chart-title{font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:.75rem}
+.chart-src{font-size:10px;color:#F6B40E;margin-top:.5rem}
+.bar-chart{display:flex;flex-direction:column;gap:7px}
+.bar-row{display:flex;align-items:center;gap:8px}
+.bar-label{font-size:12px;color:var(--color-text-secondary);min-width:96px;text-align:right;flex-shrink:0}
+.bar-track{flex:1;background:var(--color-background-secondary);border-radius:3px;height:22px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px}
+.bar-val{font-size:11px;font-weight:500;color:#fff;white-space:nowrap}
+
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.1rem;margin-bottom:.75rem}
+.card-label{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:.4rem}
+.lc{color:#74ACDF}.lw{color:#F6B40E}.lp{color:#c0c0c0}.la{color:#f87171}
+.card-text{font-size:14px;line-height:1.65}
+.card-text strong{font-weight:500;color:#f0f0f0}
+
+.watch{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.7rem 1rem;margin-top:.75rem}
+.watch-title{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.5px}
+.watch-items{display:flex;flex-wrap:wrap;gap:6px}
+.wi{font-size:11px;padding:3px 8px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+
+.signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.25rem}
+@media(max-width:640px){.signal-grid{grid-template-columns:1fr}}
+.sig{border-radius:var(--border-radius-lg);padding:.85rem 1rem;border:0.5px solid var(--color-border-tertiary)}
+.sig-up{border-left:3px solid #1D9E75}
+.sig-dn{border-left:3px solid #D85A30}
+.sig-title{font-size:12px;font-weight:600;margin-bottom:.5rem;color:#f0f0f0;text-transform:uppercase;letter-spacing:.5px}
+.sig-item{font-size:12.5px;color:var(--color-text-secondary);margin-bottom:.3rem;line-height:1.5}
+.sig-item::before{content:"→ ";color:var(--color-text-tertiary)}
+
+.pos-grid{display:grid;gap:7px;margin-bottom:1rem}
+.pos-row{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);font-size:13px;flex-wrap:wrap}
+.pos-instr{font-weight:500;color:#f0f0f0;min-width:120px}
+.pos-dir{font-size:10.5px;padding:3px 9px;border-radius:10px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
 .pos-long{background:#0d2218;color:#4ade80;border:1px solid #1D9E75}
 .pos-short{background:#2a0d0d;color:#f87171;border:1px solid #D85A30}
-.pos-desc{color:#888;flex:1;font-size:12px}
+.pos-neu{background:#1a1a1a;color:#74ACDF;border:1px solid #3a7aac}
+.pos-desc{color:#aaa;flex:1;font-size:12px;min-width:200px}
+
+footer{margin-top:2rem;padding-top:1.25rem;border-top:0.5px solid var(--color-border-tertiary);font-size:12px;color:var(--color-text-tertiary);line-height:1.6}
+footer strong{color:var(--color-text-secondary)}
 </style>
 </head>
 <body>
+
 <div class="header">
-  <h1>Digest Semanal — Economía &amp; Mercados</h1>
-  <p class="sub">Semana 28 abr – 2 may 2026 &nbsp;·&nbsp; Fuentes: 1816, SBS, Comafi, Facimex, BofA Follow The Flow &nbsp;·&nbsp; Generado: 3-may-2026</p>
+  <div class="header-top">
+    <h1>Digest Semanal</h1>
+    <span class="badge">28 abr – 2 may 2026</span>
+  </div>
+  <div class="meta">Argentina &amp; Mercados Globales · Generado 3-may-2026</div>
+  <div class="sources">
+    <span class="src">1816</span>
+    <span class="src">SBS Research 30-abr</span>
+    <span class="src">Comafi Weekly #84</span>
+    <span class="src">Facimex 30-abr</span>
+    <span class="src">BofA Follow The Flow</span>
+    <span class="src official">BCRA</span>
+    <span class="src official">INDEC</span>
+  </div>
 </div>
 
 <div class="tabs">
-  <button class="tab active" onclick="showTab('dolar',this)">Dólar &amp; BCRA</button>
-  <button class="tab" onclick="showTab('tasas',this)">Tasas</button>
-  <button class="tab" onclick="showTab('ipc',this)">IPC</button>
-  <button class="tab" onclick="showTab('credito',this)">Crédito</button>
-  <button class="tab" onclick="showTab('global',this)">Global</button>
-  <button class="tab" onclick="showTab('radar',this)">Radar</button>
+  <button class="tab active" onclick="show('dolar',this)">Dólar &amp; BCRA</button>
+  <button class="tab" onclick="show('tasas',this)">Tasas</button>
+  <button class="tab" onclick="show('ipc',this)">IPC</button>
+  <button class="tab" onclick="show('credito',this)">Crédito</button>
+  <button class="tab" onclick="show('global',this)">Global</button>
+  <button class="tab" onclick="show('radar',this)">Radar</button>
 </div>
 
 <!-- DÓLAR & BCRA -->
 <div id="tab-dolar" class="panel active">
-  <div class="metrics">
-    <div class="metric"><div class="metric-label">TC A3500</div><div class="metric-val">$1,399</div><div class="metric-src">BNA / Ámbito 2-may</div></div>
-    <div class="metric"><div class="metric-label">Compras BCRA 2026</div><div class="metric-val">+USD 7.0b</div><div class="metric-delta up">USD 2.56b solo en abril</div><div class="metric-src">SBS Research 30-abr</div></div>
-    <div class="metric"><div class="metric-label">Reservas brutas</div><div class="metric-val">~USD 46b</div><div class="metric-delta up">Máximos 1 mes y medio</div><div class="metric-src">Ámbito 2-may</div></div>
-    <div class="metric"><div class="metric-label">FAE privada</div><div class="metric-val">USD 1.7b</div><div class="metric-delta up">Mínimos desde nov-25</div><div class="metric-src">Comafi Weekly #84</div></div>
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">TC A3500</div><div class="metric-value">$1.399</div><div class="metric-src">BNA / Ámbito 2-may</div></div>
+    <div class="metric"><div class="metric-label">Compras BCRA 2026</div><div class="metric-value up">+USD 7.0b</div><div class="metric-sub up">USD 2,56b solo en abril</div><div class="metric-src">SBS Research 30-abr</div></div>
+    <div class="metric"><div class="metric-label">Reservas brutas</div><div class="metric-value up">~USD 46b</div><div class="metric-sub up">Máximos 1 mes y medio</div><div class="metric-src">Ámbito 2-may</div></div>
+    <div class="metric"><div class="metric-label">FAE privada</div><div class="metric-value">USD 1.7b</div><div class="metric-sub up">Mínimos desde nov-25</div><div class="metric-src">Comafi Weekly #84</div></div>
   </div>
-  <div class="chart-wrap">
+
+  <div class="chart-box">
     <div class="chart-title">Liquidación agro en abril vs. histórico (USD mm/día)</div>
-    <div class="bar-row"><div class="bar-label">Promedio hist.</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#378ADD"><span class="bar-val">140</span></div></div></div>
-    <div class="bar-row"><div class="bar-label">Abril 2026</div><div class="bar-track"><div class="bar-fill" style="width:86%;background:#D85A30"><span class="bar-val">120</span></div></div></div>
-    <div class="bar-row"><div class="bar-label">Avance cosecha soja</div><div class="bar-track"><div class="bar-fill" style="width:10%;background:#555"><span class="bar-val">10%</span></div></div></div>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">Promedio hist.</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#378ADD"><span class="bar-val">140</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Abril 2026</div><div class="bar-track"><div class="bar-fill" style="width:86%;background:#D85A30"><span class="bar-val">120</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Avance cosecha soja</div><div class="bar-track"><div class="bar-fill" style="width:10%;background:#888"><span class="bar-val">10%</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: SBS Research 30-abr · Comafi Weekly #84</div>
   </div>
-  <div class="analysis">
-    <div class="section sec-cambio"><div class="section-label">Qué cambió</div><div class="section-text">El BCRA cerró abril comprando USD 2.563mm, llevando el acumulado del año a más de USD 7.000mm. La cosecha gruesa arrancó con el peor avance de las últimas 10 temporadas (10% del área cosechada), pero la normalización climática disparó el ingreso de camiones a puertos: de 1.400/día a más de 4.200/día hacia el cierre de abril. La FAE retrocedió a USD 1.700mm (mínimos desde nov-25), con el atesoramiento puro explicando apenas USD 700mm. Nota: el 99% del aumento de reservas brutas en Q1 fue por revalorización del oro, no por compras netas en el MLC.</div></div>
-    <div class="section sec-mercado"><div class="section-label">Por qué le importa al mercado</div><div class="section-text">El flujo de la cosecha es el principal driver de la acumulación de reservas de acá a junio. Si el catch-up se confirma (~60% de avance en 4 semanas según patrones históricos análogos), el BCRA puede sostener compras netas elevadas. Eso consolida la estabilidad cambiaria y comprime la brecha, manteniendo el carry trade viable aunque con horizonte acotado. La FAE en mínimos indica que el sector privado no está dolarizando: señal de credibilidad del ancla cambiaria.</div></div>
-    <div class="section sec-posicion"><div class="section-label">Posición analista</div><div class="section-text">Mantener exposición hard dollar a través de AO28 / AN29 con horizonte hasta la baja estacional de la cosecha (mediados de mayo). La estabilidad cambiaria más la baja de FAE sugieren que el dólar financiero seguirá comprimido en el corto plazo. No alargar el carry en pesos más allá de 60 días sin tener claro el escenario post-cosecha.</div></div>
-    <div class="section sec-contra"><div class="section-label">Contraargumento</div><div class="section-text">El 99% del aumento de reservas Q1 fue por revalorización del oro, no por compras genuinas. Si el oro retrocede o la cosecha se retrasa más, la acumulación puede verse comprometida. La FAE baja puede revertirse rápido ante cualquier shock político o externo que reactive la cobertura del sector privado.</div></div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El BCRA cerró abril comprando USD 2.563mm, llevando el acumulado del año a más de USD 7.000mm. La cosecha gruesa arrancó con el peor avance de las últimas 10 temporadas (10% del área cosechada), pero la normalización climática disparó el ingreso de camiones a puertos: de 1.400/día a más de 4.200/día hacia el cierre de abril. La FAE retrocedió a USD 1.700mm (mínimos desde nov-25), con el atesoramiento puro explicando apenas USD 700mm. Nota: el 99% del aumento de reservas brutas en Q1 fue por revalorización del oro, no por compras netas en el MLC.</div>
   </div>
-  <div class="watch"><div class="watch-label">Watch semana 4-8 mayo</div><div class="pills"><span class="pill">Ingreso camiones a puertos</span><span class="pill">Compras diarias BCRA</span><span class="pill">Reservas brutas vs. netas</span><span class="pill">FAE privada en mayo</span></div></div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">El flujo de la cosecha es el principal driver de la acumulación de reservas de acá a junio. Si el catch-up se confirma (~60% de avance en 4 semanas según patrones históricos análogos), el BCRA puede sostener compras netas elevadas. Eso consolida la estabilidad cambiaria y comprime la brecha, manteniendo el carry trade viable aunque con horizonte acotado. La FAE en mínimos indica que el sector privado no está dolarizando: señal de credibilidad del ancla cambiaria.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Mantener exposición hard dollar a través de AO28 / AN29 con horizonte hasta la baja estacional de la cosecha (mediados de mayo). La estabilidad cambiaria más la baja de FAE sugieren que el dólar financiero seguirá comprimido en el corto plazo. No alargar el carry en pesos más allá de 60 días sin tener claro el escenario post-cosecha.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">El 99% del aumento de reservas Q1 fue por revalorización del oro, no por compras genuinas. Si el oro retrocede o la cosecha se retrasa más, la acumulación puede verse comprometida. La FAE baja puede revertirse rápido ante cualquier shock político o externo que reactive la cobertura del sector privado.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch semana 4-8 mayo</div>
+    <div class="watch-items">
+      <span class="wi">Ingreso camiones a puertos</span>
+      <span class="wi">Compras diarias BCRA</span>
+      <span class="wi">Reservas brutas vs. netas</span>
+      <span class="wi">FAE privada en mayo</span>
+    </div>
+  </div>
 </div>
 
 <!-- TASAS -->
 <div id="tab-tasas" class="panel">
-  <div class="metrics">
-    <div class="metric"><div class="metric-label">TAMAR (piso)</div><div class="metric-val">~20% TNA</div><div class="metric-src">BCRA / mercado</div></div>
-    <div class="metric"><div class="metric-label">Techo corredor</div><div class="metric-val">25% TNA</div><div class="metric-delta up">Pases activos reactivados</div><div class="metric-src">BCRA (RIX+500bps)</div></div>
-    <div class="metric"><div class="metric-label">LECAP 1 mes</div><div class="metric-val">~2% TEM</div><div class="metric-src">Mercado / licitación 28-abr</div></div>
-    <div class="metric"><div class="metric-label">Dual 2029</div><div class="metric-val">TAMAR +8bps</div><div class="metric-delta">Cortó en licitación</div><div class="metric-src">Tesoro / 1816 30-abr</div></div>
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">TAMAR (piso)</div><div class="metric-value">~20% TNA</div><div class="metric-src">BCRA / mercado</div></div>
+    <div class="metric"><div class="metric-label">Techo corredor</div><div class="metric-value">25% TNA</div><div class="metric-sub up">Pases activos reactivados</div><div class="metric-src">BCRA (RIX+500bps)</div></div>
+    <div class="metric"><div class="metric-label">LECAP 1 mes</div><div class="metric-value">~2% TEM</div><div class="metric-src">Mercado / licitación 28-abr</div></div>
+    <div class="metric"><div class="metric-label">Dual 2029</div><div class="metric-value">TAMAR +8bps</div><div class="metric-sub">Cortó en licitación</div><div class="metric-src">Tesoro / 1816 30-abr</div></div>
   </div>
-  <div class="chart-wrap">
+
+  <div class="chart-box">
     <div class="chart-title">Curva de tasas referenciales (TNA %)</div>
-    <div class="bar-row"><div class="bar-label">Call e/bancos</div><div class="bar-track"><div class="bar-fill" style="width:76%;background:#378ADD"><span class="bar-val">~19%</span></div></div></div>
-    <div class="bar-row"><div class="bar-label">TAMAR (piso)</div><div class="bar-track"><div class="bar-fill" style="width:80%;background:#1D9E75"><span class="bar-val">20%</span></div></div></div>
-    <div class="bar-row"><div class="bar-label">LECAP 1m</div><div class="bar-track"><div class="bar-fill" style="width:96%;background:#378ADD"><span class="bar-val">~24%</span></div></div></div>
-    <div class="bar-row"><div class="bar-label">Pases activos</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#7F77DD"><span class="bar-val">25%</span></div></div></div>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">Call e/bancos</div><div class="bar-track"><div class="bar-fill" style="width:76%;background:#378ADD"><span class="bar-val">~19%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">TAMAR (piso)</div><div class="bar-track"><div class="bar-fill" style="width:80%;background:#1D9E75"><span class="bar-val">20%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">LECAP 1m</div><div class="bar-track"><div class="bar-fill" style="width:96%;background:#378ADD"><span class="bar-val">~24%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Pases activos</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#7F77DD"><span class="bar-val">25%</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: BCRA · mercado · 1816 30-abr</div>
   </div>
-  <div class="analysis">
-    <div class="section sec-cambio"><div class="section-label">Qué cambió</div><div class="section-text">El BCRA reactivó pases activos (ventanilla de liquidez a RIX+500bps, límite 5% RPC), recomponiendo el corredor de tasas 20-25% TNA. Flexibilizó encajes: integración mínima diaria al 65% (venía de 100% el año pasado), encajes vista al 45%. La curva CER corta operó en terreno negativo. El Tesoro colocó el nuevo Dual CER/TAMAR 2029 (TAMAR+8bps) y USD 848mm en Bonares AO27/AO28.</div></div>
-    <div class="section sec-mercado"><div class="section-label">Por qué le importa al mercado</div><div class="section-text">El mercado de pesos está "complaciente" con breakevens que asumen desinflación más rápida que los datos efectivos. El descalce entre implícitas (2,5% para abril) y estimaciones privadas (2,7-2,9%) abre una oportunidad CER si el IPC sorprende al alza. Menor exigencia de encajes mejora liquidez bancaria sin ser expansión monetaria directa.</div></div>
-    <div class="section sec-posicion"><div class="section-label">Posición analista</div><div class="section-text">Rotar parcialmente de LECAPs a CER de tramo corto (TZXS8, TZX28) para capturar cobertura si el IPC de abril sorprende sobre breakevens. El Dual 2029 (TAMAR+8bps) es atractivo para bancos que se fondean a plazo fijo. Horizonte carry trade: no más de 60 días. Para perfiles moderados, cautela en tasa fija larga hasta confirmar el sendero de inflación post-cosecha.</div></div>
-    <div class="section sec-contra"><div class="section-label">Contraargumento</div><div class="section-text">Si el IPC de abril efectivamente llega a 2,4-2,5%, el carry en LECAPs bate a CER corto incluso sin compresión adicional. La reactivación de pases activos no implica regreso del corredor clásico: la tasa a 1d sigue volátil. Además los bonos CER negativos en el tramo corto pueden ser una señal correcta del mercado.</div></div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El BCRA reactivó pases activos (ventanilla de liquidez a RIX+500bps, límite 5% RPC), recomponiendo el corredor de tasas 20-25% TNA. Flexibilizó encajes: integración mínima diaria al 65% (venía de 100% el año pasado), encajes vista al 45%. La curva CER corta operó en terreno negativo. El Tesoro colocó el nuevo Dual CER/TAMAR 2029 (TAMAR+8bps) y USD 848mm en Bonares AO27/AO28.</div>
   </div>
-  <div class="watch"><div class="watch-label">Watch semana 4-8 mayo</div><div class="pills"><span class="pill">Volatilidad tasa call diario</span><span class="pill">Licitación Tesoro (menú ARS)</span><span class="pill">Breakevens CER post-IPC</span><span class="pill">Demanda TAMAR 2027 en secundario</span></div></div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">El mercado de pesos está "complaciente" con breakevens que asumen desinflación más rápida que los datos efectivos. El descalce entre implícitas (2,5% para abril) y estimaciones privadas (2,7-2,9%) abre una oportunidad CER si el IPC sorprende al alza. Menor exigencia de encajes mejora liquidez bancaria sin ser expansión monetaria directa.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Rotar parcialmente de LECAPs a CER de tramo corto (TZXS8, TZX28) para capturar cobertura si el IPC de abril sorprende sobre breakevens. El Dual 2029 (TAMAR+8bps) es atractivo para bancos que se fondean a plazo fijo. Horizonte carry trade: no más de 60 días. Para perfiles moderados, cautela en tasa fija larga hasta confirmar el sendero de inflación post-cosecha.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Si el IPC de abril efectivamente llega a 2,4-2,5%, el carry en LECAPs bate a CER corto incluso sin compresión adicional. La reactivación de pases activos no implica regreso del corredor clásico: la tasa a 1d sigue volátil. Además los bonos CER negativos en el tramo corto pueden ser una señal correcta del mercado.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch semana 4-8 mayo</div>
+    <div class="watch-items">
+      <span class="wi">Volatilidad tasa call diario</span>
+      <span class="wi">Licitación Tesoro (menú ARS)</span>
+      <span class="wi">Breakevens CER post-IPC</span>
+      <span class="wi">Demanda TAMAR 2027 en secundario</span>
+    </div>
+  </div>
 </div>
 
 <!-- IPC -->
 <div id="tab-ipc" class="panel">
-  <div class="metrics">
-    <div class="metric"><div class="metric-label">IPC Marzo 2026</div><div class="metric-val">3,4%</div><div class="metric-delta down">El más alto del último año</div><div class="metric-src">INDEC</div></div>
-    <div class="metric"><div class="metric-label">Acum. Q1 2026</div><div class="metric-val">9,4%</div><div class="metric-src">INDEC</div></div>
-    <div class="metric"><div class="metric-label">Proyección abril</div><div class="metric-val">2,5–2,9%</div><div class="metric-delta up">Primera vez &lt;3% en ~1 año</div><div class="metric-src">Fundam. Cap. 2,7% / EcoGo 2,5%</div></div>
-    <div class="metric"><div class="metric-label">Dato oficial abril</div><div class="metric-val">14-may</div><div class="metric-src">INDEC (fecha publicación)</div></div>
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">IPC Marzo 2026</div><div class="metric-value down">3,4%</div><div class="metric-sub down">El más alto del último año</div><div class="metric-src">INDEC</div></div>
+    <div class="metric"><div class="metric-label">Acum. Q1 2026</div><div class="metric-value">9,4%</div><div class="metric-src">INDEC</div></div>
+    <div class="metric"><div class="metric-label">Proyección abril</div><div class="metric-value up">2,5–2,9%</div><div class="metric-sub up">1ª vez &lt;3% en ~1 año</div><div class="metric-src">Fundam. Cap. 2,7% / EcoGo 2,5%</div></div>
+    <div class="metric"><div class="metric-label">Dato oficial abril</div><div class="metric-value">14-may</div><div class="metric-src">INDEC (fecha publicación)</div></div>
   </div>
-  <div class="chart-wrap">
+
+  <div class="chart-box">
     <div class="chart-title">IPC mensual 2026 — real vs. breakeven mercado (%)</div>
-    <div class="bar-row"><div class="bar-label">Enero (real)</div><div class="bar-track"><div class="bar-fill" style="width:58%;background:#D85A30"><span class="bar-val">2,9%</span></div></div></div>
-    <div class="bar-row"><div class="bar-label">Febrero (real)</div><div class="bar-track"><div class="bar-fill" style="width:58%;background:#D85A30"><span class="bar-val">2,9%</span></div></div></div>
-    <div class="bar-row"><div class="bar-label">Marzo (real)</div><div class="bar-track"><div class="bar-fill" style="width:68%;background:#D85A30"><span class="bar-val">3,4%</span></div></div></div>
-    <div class="bar-row"><div class="bar-label">Abril (est. priv.)</div><div class="bar-track"><div class="bar-fill" style="width:54%;background:#888"><span class="bar-val">~2,7%</span></div></div></div>
-    <div class="bar-row"><div class="bar-label">Breakeven mayo</div><div class="bar-track"><div class="bar-fill" style="width:42%;background:#378ADD"><span class="bar-val">2,1%</span></div></div></div>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">Enero (real)</div><div class="bar-track"><div class="bar-fill" style="width:58%;background:#D85A30"><span class="bar-val">2,9%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Febrero (real)</div><div class="bar-track"><div class="bar-fill" style="width:58%;background:#D85A30"><span class="bar-val">2,9%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Marzo (real)</div><div class="bar-track"><div class="bar-fill" style="width:68%;background:#D85A30"><span class="bar-val">3,4%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Abril (est. priv.)</div><div class="bar-track"><div class="bar-fill" style="width:54%;background:#888"><span class="bar-val">~2,7%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Breakeven mayo</div><div class="bar-track"><div class="bar-fill" style="width:42%;background:#378ADD"><span class="bar-val">2,1%</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: INDEC · Fundación Capital · EcoGo · Analytica</div>
   </div>
-  <div class="analysis">
-    <div class="section sec-cambio"><div class="section-label">Qué cambió</div><div class="section-text">El IPC de marzo subió 3,4%, la inflación mensual más alta del año, impulsado por Educación (+12,1% estacional), Transporte (+4,1% por combustibles) y Alimentos (+3,3% traccionados por carnes). Núcleo: 3,2%; regulados: 5,1%. Las mediciones de alta frecuencia de abril apuntan a moderación: Fundación Capital 2,7%, EcoGo 2,5%, Analytica 2,9%. Si se confirma, sería la primera vez por debajo de 3% en casi un año.</div></div>
-    <div class="section sec-mercado"><div class="section-label">Por qué le importa al mercado</div><div class="section-text">La desaceleración de abril es el principal catalizador para la curva de tasas en pesos. Si el dato efectivo supera el breakeven del mercado (implícita 2,5%), los CER ganan vs. LECAPs. Más importante: el sendero de desinflación condiciona la imagen del gobierno y la tolerancia política para sostener el ajuste. Con mora record y salario real cayendo, el IPC es el termómetro del humor social.</div></div>
-    <div class="section sec-posicion"><div class="section-label">Posición analista</div><div class="section-text">Posicionarse en CER corto (TZXS8) antes del 14 de mayo para capturar el dato de abril. Si el IPC viene en la zona de 2,7-2,9% (por encima de breakevens), el CER outperforma a la LECAP corta. Reducir exposición a tasa fija larga: regulados (combustibles, energía) siguen con ajustes pendientes. No apostar a 1,9% de inflación mensual para mayo/junio sin más datos.</div></div>
-    <div class="section sec-contra"><div class="section-label">Contraargumento</div><div class="section-text">Si la desaceleración se confirma en 2,4-2,5% y la tendencia continúa, el mercado tiene razón con las implícitas y el carry en LECAPs sigue siendo el trade. La caída del precio de soja y maíz podría abaratar alimentos. El ancla cambiaria se mantiene firme y con la cosecha normalizándose, la oferta de dólares puede ayudar a contener precios importados.</div></div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El IPC de marzo subió 3,4%, la inflación mensual más alta del año, impulsado por Educación (+12,1% estacional), Transporte (+4,1% por combustibles) y Alimentos (+3,3% traccionados por carnes). Núcleo: 3,2%; regulados: 5,1%. Las mediciones de alta frecuencia de abril apuntan a moderación: Fundación Capital 2,7%, EcoGo 2,5%, Analytica 2,9%. Si se confirma, sería la primera vez por debajo de 3% en casi un año.</div>
   </div>
-  <div class="watch"><div class="watch-label">Watch semana 4-8 mayo</div><div class="pills"><span class="pill">IPC OJF semanal (alta frecuencia)</span><span class="pill">Precios combustibles mayo</span><span class="pill">Tarifas energéticas (ajuste pendiente)</span><span class="pill">Dato oficial INDEC 14-may (D-day)</span></div></div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">La desaceleración de abril es el principal catalizador para la curva de tasas en pesos. Si el dato efectivo supera el breakeven del mercado (implícita 2,5%), los CER ganan vs. LECAPs. Más importante: el sendero de desinflación condiciona la imagen del gobierno y la tolerancia política para sostener el ajuste. Con mora record y salario real cayendo, el IPC es el termómetro del humor social.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Posicionarse en CER corto (TZXS8) antes del 14 de mayo para capturar el dato de abril. Si el IPC viene en la zona de 2,7-2,9% (por encima de breakevens), el CER outperforma a la LECAP corta. Reducir exposición a tasa fija larga: regulados (combustibles, energía) siguen con ajustes pendientes. No apostar a 1,9% de inflación mensual para mayo/junio sin más datos.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Si la desaceleración se confirma en 2,4-2,5% y la tendencia continúa, el mercado tiene razón con las implícitas y el carry en LECAPs sigue siendo el trade. La caída del precio de soja y maíz podría abaratar alimentos. El ancla cambiaria se mantiene firme y con la cosecha normalizándose, la oferta de dólares puede ayudar a contener precios importados.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch semana 4-8 mayo</div>
+    <div class="watch-items">
+      <span class="wi">IPC OJF semanal (alta frecuencia)</span>
+      <span class="wi">Precios combustibles mayo</span>
+      <span class="wi">Tarifas energéticas (ajuste pendiente)</span>
+      <span class="wi">Dato oficial INDEC 14-may (D-day)</span>
+    </div>
+  </div>
 </div>
 
 <!-- CRÉDITO -->
 <div id="tab-credito" class="panel">
-  <div class="metrics">
-    <div class="metric"><div class="metric-label">Mora familias</div><div class="metric-val">11,2%</div><div class="metric-delta down">Máximo en +20 años</div><div class="metric-src">BCRA / 1816 feb-26</div></div>
-    <div class="metric"><div class="metric-label">Mora préstamos pers.</div><div class="metric-val">13,2%</div><div class="metric-delta down">x4 vs. feb-25 (2,94%)</div><div class="metric-src">BCRA ene-26</div></div>
-    <div class="metric"><div class="metric-label">Salario real privado</div><div class="metric-val">−3,6%</div><div class="metric-delta down">6° mes consecutivo</div><div class="metric-src">SIPA / Comafi feb-26</div></div>
-    <div class="metric"><div class="metric-label">EMAE feb-26</div><div class="metric-val">−2,6%</div><div class="metric-delta down">Mayor caída desde dic-23</div><div class="metric-src">INDEC / SBS</div></div>
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Mora familias</div><div class="metric-value down">11,2%</div><div class="metric-sub down">Máximo en +20 años</div><div class="metric-src">BCRA / 1816 feb-26</div></div>
+    <div class="metric"><div class="metric-label">Mora préstamos pers.</div><div class="metric-value down">13,2%</div><div class="metric-sub down">x4 vs. feb-25 (2,94%)</div><div class="metric-src">BCRA ene-26</div></div>
+    <div class="metric"><div class="metric-label">Salario real privado</div><div class="metric-value down">−3,6%</div><div class="metric-sub down">6° mes consecutivo</div><div class="metric-src">SIPA / Comafi feb-26</div></div>
+    <div class="metric"><div class="metric-label">EMAE feb-26</div><div class="metric-value down">−2,6%</div><div class="metric-sub down">Mayor caída desde dic-23</div><div class="metric-src">INDEC / SBS</div></div>
   </div>
-  <div class="chart-wrap">
+
+  <div class="chart-box">
     <div class="chart-title">Mora por segmento — familias (% en situación irregular, feb-26)</div>
-    <div class="bar-row"><div class="bar-label">No bancario</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#A32D2D"><span class="bar-val">~25-30%</span></div></div></div>
-    <div class="bar-row"><div class="bar-label">Préstamos pers.</div><div class="bar-track"><div class="bar-fill" style="width:52%;background:#D85A30"><span class="bar-val">13,2%</span></div></div></div>
-    <div class="bar-row"><div class="bar-label">Tarjetas crédito</div><div class="bar-track"><div class="bar-fill" style="width:44%;background:#D85A30"><span class="bar-val">11,0%</span></div></div></div>
-    <div class="bar-row"><div class="bar-label">Total familias</div><div class="bar-track"><div class="bar-fill" style="width:44%;background:#888"><span class="bar-val">11,2%</span></div></div></div>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">No bancario</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#A32D2D"><span class="bar-val">~25-30%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Préstamos pers.</div><div class="bar-track"><div class="bar-fill" style="width:52%;background:#D85A30"><span class="bar-val">13,2%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Tarjetas crédito</div><div class="bar-track"><div class="bar-fill" style="width:44%;background:#D85A30"><span class="bar-val">11,0%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Total familias</div><div class="bar-track"><div class="bar-fill" style="width:44%;background:#888"><span class="bar-val">11,2%</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: BCRA · 1816 feb-26</div>
   </div>
-  <div class="analysis">
-    <div class="section sec-cambio"><div class="section-label">Qué cambió</div><div class="section-text">La mora de familias llegó a 11,2% en febrero, cuadruplicando el nivel de feb-25 (2,94%), el registro más alto desde la salida de la Convertibilidad. Provincias y municipios estudian planes de salvataje (reportes 2-may). El EMAE de febrero cayó 2,6% m/m s.e. — excluyendo agro y minería, la contracción fue 2,2% — dejando arrastre estadístico negativo para 2026. El ICG de la UTDT cayó 5,6pp en abril a 40,4% y la aprobación de Milei (AtlasIntel/Bloomberg) llegó a su piso bajo la actual gestión: 35,5%.</div></div>
-    <div class="section sec-mercado"><div class="section-label">Por qué le importa al mercado</div><div class="section-text">La mora record impacta directamente en la imagen del gobierno y la tolerancia política al ajuste. Es el driver principal de la caída de aprobación de Milei a mínimos de gestión (Facimex 30-abr). Macro: si la mora sigue subiendo, los bancos deben provisionar más, comprimiendo márgenes y potencialmente frenando el crecimiento del crédito en pesos — vital para sostener la actividad en sectores no agro.</div></div>
-    <div class="section sec-posicion"><div class="section-label">Posición analista</div><div class="section-text">Evitar equity bancario expuesto a crédito al consumo hasta ver señales de estabilización de la mora. El rebote del salario real que debería llegar con la desinflación es el catalizador para que este cuadro mejore en H2 2026. Mantener radar en el EMAE de marzo: si confirma rebote (efecto agro + cosecha), el cuadro no se deteriora más. La caída del ICG y la aprobación aumenta el riesgo político a monitorear de cara a 2027.</div></div>
-    <div class="section sec-contra"><div class="section-label">Contraargumento</div><div class="section-text">La mora alta puede ser en parte un fenómeno de stock (crédito tomado en 2024-25 a tasas elevadas que ahora pesa) más que un deterioro estructural en curso. Si el IPC baja a 2,5% y el salario nominal sube, el salario real puede recuperarse en H2. Comafi y SBS señalan que la cosecha gruesa y el RIGI deberían impulsar la actividad desde Q2. El gobierno tiene margen fiscal para algún refuerzo de ingresos si la situación social se complica.</div></div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">La mora de familias llegó a 11,2% en febrero, cuadruplicando el nivel de feb-25 (2,94%), el registro más alto desde la salida de la Convertibilidad. Provincias y municipios estudian planes de salvataje (reportes 2-may). El EMAE de febrero cayó 2,6% m/m s.e. — excluyendo agro y minería, la contracción fue 2,2% — dejando arrastre estadístico negativo para 2026. El ICG de la UTDT cayó 5,6pp en abril a 40,4% y la aprobación de Milei (AtlasIntel/Bloomberg) llegó a su piso bajo la actual gestión: 35,5%.</div>
   </div>
-  <div class="watch"><div class="watch-label">Watch semana 4-8 mayo</div><div class="pills"><span class="pill">EMAE marzo (¿rebote agro?)</span><span class="pill">Datos mora mensual BCRA</span><span class="pill">ICC mayo (Confianza del Consumidor)</span><span class="pill">Planes salvataje deuda familias</span><span class="pill">Empleo privado registrado ene-feb</span></div></div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">La mora record impacta directamente en la imagen del gobierno y la tolerancia política al ajuste. Es el driver principal de la caída de aprobación de Milei a mínimos de gestión (Facimex 30-abr). Macro: si la mora sigue subiendo, los bancos deben provisionar más, comprimiendo márgenes y potencialmente frenando el crecimiento del crédito en pesos — vital para sostener la actividad en sectores no agro.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Evitar equity bancario expuesto a crédito al consumo hasta ver señales de estabilización de la mora. El rebote del salario real que debería llegar con la desinflación es el catalizador para que este cuadro mejore en H2 2026. Mantener radar en el EMAE de marzo: si confirma rebote (efecto agro + cosecha), el cuadro no se deteriora más. La caída del ICG y la aprobación aumenta el riesgo político a monitorear de cara a 2027.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">La mora alta puede ser en parte un fenómeno de stock (crédito tomado en 2024-25 a tasas elevadas que ahora pesa) más que un deterioro estructural en curso. Si el IPC baja a 2,5% y el salario nominal sube, el salario real puede recuperarse en H2. Comafi y SBS señalan que la cosecha gruesa y el RIGI deberían impulsar la actividad desde Q2. El gobierno tiene margen fiscal para algún refuerzo de ingresos si la situación social se complica.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch semana 4-8 mayo</div>
+    <div class="watch-items">
+      <span class="wi">EMAE marzo (¿rebote agro?)</span>
+      <span class="wi">Datos mora mensual BCRA</span>
+      <span class="wi">ICC mayo (Confianza del Consumidor)</span>
+      <span class="wi">Planes salvataje deuda familias</span>
+      <span class="wi">Empleo privado registrado ene-feb</span>
+    </div>
+  </div>
 </div>
 
 <!-- GLOBAL -->
 <div id="tab-global" class="panel">
-  <div class="metrics">
-    <div class="metric"><div class="metric-label">Brent</div><div class="metric-val">USD 121</div><div class="metric-delta down">+34% desde 17-abr</div><div class="metric-src">SBS Research 30-abr</div></div>
-    <div class="metric"><div class="metric-label">VIX</div><div class="metric-val">18–19</div><div class="metric-delta">Lejos de máximos</div><div class="metric-src">SBS / Reuters 30-abr</div></div>
-    <div class="metric"><div class="metric-label">UST 10y</div><div class="metric-val">4,42%</div><div class="metric-delta down">UST 30y tocó 5%</div><div class="metric-src">SBS Research 30-abr</div></div>
-    <div class="metric"><div class="metric-label">Recortes Fed dic-26</div><div class="metric-val">22%</div><div class="metric-delta down">Implícito de mercado</div><div class="metric-src">SBS Research 30-abr</div></div>
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Brent</div><div class="metric-value down">USD 121</div><div class="metric-sub down">+34% desde 17-abr</div><div class="metric-src">SBS Research 30-abr</div></div>
+    <div class="metric"><div class="metric-label">VIX</div><div class="metric-value neu">18–19</div><div class="metric-sub">Lejos de máximos</div><div class="metric-src">SBS / Reuters 30-abr</div></div>
+    <div class="metric"><div class="metric-label">UST 10y</div><div class="metric-value down">4,42%</div><div class="metric-sub down">UST 30y tocó 5%</div><div class="metric-src">SBS Research 30-abr</div></div>
+    <div class="metric"><div class="metric-label">Recortes Fed dic-26</div><div class="metric-value down">22%</div><div class="metric-sub down">Implícito de mercado</div><div class="metric-src">SBS Research 30-abr</div></div>
   </div>
-  <div class="chart-wrap">
+
+  <div class="chart-box">
     <div class="chart-title">Performance activos seleccionados desde inicio guerra Oriente Medio (17-abr)</div>
-    <div class="bar-row"><div class="bar-label">Brent</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#D85A30"><span class="bar-val">+34%</span></div></div></div>
-    <div class="bar-row"><div class="bar-label">S&amp;P500 vs mín.</div><div class="bar-track"><div class="bar-fill" style="width:37%;background:#1D9E75"><span class="bar-val">+12,5%</span></div></div></div>
-    <div class="bar-row"><div class="bar-label">EMBI ARG</div><div class="bar-track"><div class="bar-fill" style="width:65%;background:#888"><span class="bar-val">~650bps</span></div></div></div>
-    <div class="bar-row"><div class="bar-label">Globales (7 ruedas)</div><div class="bar-track"><div class="bar-fill" style="width:9%;background:#A32D2D"><span class="bar-val">-3,1%</span></div></div></div>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">Brent</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#D85A30"><span class="bar-val">+34%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">S&amp;P500 vs mín.</div><div class="bar-track"><div class="bar-fill" style="width:37%;background:#1D9E75"><span class="bar-val">+12,5%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">EMBI ARG</div><div class="bar-track"><div class="bar-fill" style="width:65%;background:#888"><span class="bar-val">~650bps</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Globales (7 ruedas)</div><div class="bar-track"><div class="bar-fill" style="width:9%;background:#A32D2D"><span class="bar-val">-3,1%</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: SBS Research 30-abr · Reuters</div>
   </div>
-  <div class="analysis">
-    <div class="section sec-cambio"><div class="section-label">Qué cambió</div><div class="section-text">El conflicto Irán-EEUU en el Estrecho de Ormuz sigue sin resolución: Irán rechazó la segunda propuesta de Trump en Pakistán. Brent a USD 121/barril (+34% desde el 17-abr). La Fed mantuvo tasas y Kevin Warsh (sucesor de Powell) compareció ante el Senado sin señales dovish, hablando de "nuevo marco para la inflación". Breakeven inflación EEUU 1 año: 3,6%. Los fondos de deuda EM registraron su mayor entrada desde dic-25 (BofA Follow the Flow, semana 22-abr).</div></div>
-    <div class="section sec-mercado"><div class="section-label">Por qué le importa al mercado</div><div class="section-text">El petróleo alto impacta directo en la balanza comercial argentina (importaciones energéticas más caras, aunque el saldo neto sigue positivo por exportaciones del sector O&amp;G). La UST30y en 5% comprime el espacio para compresión de spreads soberanos EM. El flujo positivo a deuda EM es constructivo para ARG, pero los Globales llevan 7 ruedas de caída — la señal macro positiva no basta si el riesgo específico-país pesa más.</div></div>
-    <div class="section sec-posicion"><div class="section-label">Posición analista</div><div class="section-text">Overweight commodities (oil &amp; gas) en equity local: Brent USD 121/barril beneficia a Vista, YPF, TGS. La entrada de flujos a EM puede dar soporte a Globales si el ruido político-local se modera. En bonos ARG, priorizar duraciones cortas (AL29, GD29) frente al riesgo de que la UST30y siga presionando la curva larga. Horizonte 4-8 semanas mientras se aguarda avance en las negociaciones Irán-EEUU.</div></div>
-    <div class="section sec-contra"><div class="section-label">Contraargumento</div><div class="section-text">El VIX en 18-19 sugiere que el mercado global no está en pánico: las 7 ruedas de baja de los Globales pueden ser corrección técnica. Si las negociaciones en Pakistán avanzan, el Brent puede retroceder y la UST10y bajar, liberando espacio para compresión de spreads EM. El S&amp;P500 ya recuperó 12,5% desde mínimos — el risk appetite global no está roto.</div></div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El conflicto Irán-EEUU en el Estrecho de Ormuz sigue sin resolución: Irán rechazó la segunda propuesta de Trump en Pakistán. Brent a USD 121/barril (+34% desde el 17-abr). La Fed mantuvo tasas y Kevin Warsh (sucesor de Powell) compareció ante el Senado sin señales dovish, hablando de "nuevo marco para la inflación". Breakeven inflación EEUU 1 año: 3,6%. Los fondos de deuda EM registraron su mayor entrada desde dic-25 (BofA Follow the Flow, semana 22-abr).</div>
   </div>
-  <div class="watch"><div class="watch-label">Watch semana 4-8 mayo</div><div class="pills"><span class="pill">Negociaciones Irán-EEUU (2° ronda Pakistán)</span><span class="pill">Precio Brent (umbral $115/$130)</span><span class="pill">Earnings Big Tech (AMZN, META, MSFT)</span><span class="pill">Warsh: señales marco Fed</span><span class="pill">Flujos EM deuda (BofA FtF)</span></div></div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">El petróleo alto impacta directo en la balanza comercial argentina (importaciones energéticas más caras, aunque el saldo neto sigue positivo por exportaciones del sector O&amp;G). La UST30y en 5% comprime el espacio para compresión de spreads soberanos EM. El flujo positivo a deuda EM es constructivo para ARG, pero los Globales llevan 7 ruedas de caída — la señal macro positiva no basta si el riesgo específico-país pesa más.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Overweight commodities (oil &amp; gas) en equity local: Brent USD 121/barril beneficia a Vista, YPF, TGS. La entrada de flujos a EM puede dar soporte a Globales si el ruido político-local se modera. En bonos ARG, priorizar duraciones cortas (AL29, GD29) frente al riesgo de que la UST30y siga presionando la curva larga. Horizonte 4-8 semanas mientras se aguarda avance en las negociaciones Irán-EEUU.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">El VIX en 18-19 sugiere que el mercado global no está en pánico: las 7 ruedas de baja de los Globales pueden ser corrección técnica. Si las negociaciones en Pakistán avanzan, el Brent puede retroceder y la UST10y bajar, liberando espacio para compresión de spreads EM. El S&amp;P500 ya recuperó 12,5% desde mínimos — el risk appetite global no está roto.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch semana 4-8 mayo</div>
+    <div class="watch-items">
+      <span class="wi">Negociaciones Irán-EEUU (2° ronda Pakistán)</span>
+      <span class="wi">Precio Brent (umbral $115/$130)</span>
+      <span class="wi">Earnings Big Tech (AMZN, META, MSFT)</span>
+      <span class="wi">Warsh: señales marco Fed</span>
+      <span class="wi">Flujos EM deuda (BofA FtF)</span>
+    </div>
+  </div>
 </div>
 
 <!-- RADAR -->
 <div id="tab-radar" class="panel">
-  <div class="radar-grid">
-    <div class="radar-card radar-up">
-      <div class="radar-card-title">Señales alcistas</div>
-      <ul class="radar-list">
-        <li>BCRA acumula +USD 7.0b en el año (record para el período)</li>
-        <li>FAE en mínimos desde nov-25: sector privado no dolariza</li>
-        <li>Cosecha gruesa catch-up: +4.200 camiones/día al cierre de abril</li>
-        <li>Flujos EM debt: mayores entradas desde dic-25 (BofA FtF)</li>
-        <li>Superávit comercial Q1: el más alto de la última década</li>
-        <li>Garantías BM/BID: reduce presión de acumulación sobre BCRA</li>
-      </ul>
+  <div class="signal-grid">
+    <div class="sig sig-up">
+      <div class="sig-title">Señales alcistas</div>
+      <div class="sig-item">BCRA acumula +USD 7.0b en el año (record para el período)</div>
+      <div class="sig-item">FAE en mínimos desde nov-25: sector privado no dolariza</div>
+      <div class="sig-item">Cosecha gruesa catch-up: +4.200 camiones/día al cierre de abril</div>
+      <div class="sig-item">Flujos EM debt: mayores entradas desde dic-25 (BofA FtF)</div>
+      <div class="sig-item">Superávit comercial Q1: el más alto de la última década</div>
+      <div class="sig-item">Garantías BM/BID: reduce presión de acumulación sobre BCRA</div>
     </div>
-    <div class="radar-card radar-down">
-      <div class="radar-card-title">Señales bajistas</div>
-      <ul class="radar-list">
-        <li>Mora familias en record de 20 años (11,2% en feb-26)</li>
-        <li>Aprobación Milei en mínimos históricos de gestión (35,5%)</li>
-        <li>EMAE feb-26: -2,6% m/m — actividad ex-agro en caída</li>
-        <li>Globales: 7 ruedas consecutivas de baja (-3,1% promedio)</li>
-        <li>Salario real privado: 6° mes consecutivo a la baja (-3,6%)</li>
-        <li>UST30y en 5%: comprime espacio para spreads EM</li>
-      </ul>
+    <div class="sig sig-dn">
+      <div class="sig-title">Señales bajistas</div>
+      <div class="sig-item">Mora familias en record de 20 años (11,2% en feb-26)</div>
+      <div class="sig-item">Aprobación Milei en mínimos históricos de gestión (35,5%)</div>
+      <div class="sig-item">EMAE feb-26: -2,6% m/m — actividad ex-agro en caída</div>
+      <div class="sig-item">Globales: 7 ruedas consecutivas de baja (-3,1% promedio)</div>
+      <div class="sig-item">Salario real privado: 6° mes consecutivo a la baja (-3,6%)</div>
+      <div class="sig-item">UST30y en 5%: comprime espacio para spreads EM</div>
     </div>
   </div>
 
   <div style="margin-bottom:1rem">
-    <div class="watch-label" style="margin-bottom:12px">Posiciones core — semana 4-8 mayo 2026</div>
+    <div class="watch-title" style="margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px;font-size:11px;color:var(--color-text-secondary)">Posiciones core — semana 4-8 mayo 2026</div>
     <div class="pos-grid">
       <div class="pos-row"><span class="pos-instr">AO28 / AN29</span><span class="pos-dir pos-long">LONG</span><span class="pos-desc">Hard dollar soberano, horizonte cosecha. Catalizado por compras BCRA y FAE baja.</span></div>
       <div class="pos-row"><span class="pos-instr">Dual 2029</span><span class="pos-dir pos-long">LONG</span><span class="pos-desc">Opcionalidad TAMAR+8bps para bancos. Carry asegurado si inflación no colapsa.</span></div>
       <div class="pos-row"><span class="pos-instr">CER corto (TZXS8)</span><span class="pos-dir pos-long">LONG</span><span class="pos-desc">Pre-IPC abril (14-may). Cobertura vs. sorpresa inflacionaria sobre breakevens.</span></div>
       <div class="pos-row"><span class="pos-instr">Oil &amp; Gas equity</span><span class="pos-dir pos-long">LONG</span><span class="pos-desc">Brent USD 121/barril. Vista, TGS, YPF se benefician. Horizonte 4-8 semanas.</span></div>
-      <div class="pos-row"><span class="pos-instr">LECAP largo</span><span class="pos-dir pos-short">CAUTELA</span><span class="pos-desc">No extender más de 60 días hasta confirmar sendero inflación post-cosecha.</span></div>
+      <div class="pos-row"><span class="pos-instr">LECAP largo</span><span class="pos-dir pos-neu">CAUTELA</span><span class="pos-desc">No extender más de 60 días hasta confirmar sendero inflación post-cosecha.</span></div>
       <div class="pos-row"><span class="pos-instr">Equity bancario</span><span class="pos-dir pos-short">EVITAR</span><span class="pos-desc">Mora record + provisiones crecientes comprimen márgenes. Esperar estabilización.</span></div>
     </div>
   </div>
 
-  <div class="watch"><div class="watch-label">Catalizadores próximas 4 semanas</div><div class="pills"><span class="pill">IPC abril — 14 de mayo (clave para curva ARS)</span><span class="pill">Aceleración liquidación cosecha mayo-junio</span><span class="pill">Encuestas imagen Milei (¿piso o continúa?)</span><span class="pill">Próxima licitación Tesoro (demanda ARS)</span><span class="pill">Resolución negociación Irán-EEUU</span><span class="pill">Dato EMAE marzo (rebote agro)</span></div></div>
+  <div class="watch">
+    <div class="watch-title">Catalizadores próximas 4 semanas</div>
+    <div class="watch-items">
+      <span class="wi">IPC abril — 14 de mayo (clave para curva ARS)</span>
+      <span class="wi">Aceleración liquidación cosecha mayo-junio</span>
+      <span class="wi">Encuestas imagen Milei (¿piso o continúa?)</span>
+      <span class="wi">Próxima licitación Tesoro (demanda ARS)</span>
+      <span class="wi">Resolución negociación Irán-EEUU</span>
+      <span class="wi">Dato EMAE marzo (rebote agro)</span>
+    </div>
+  </div>
 </div>
 
+<footer>
+  Fuentes (semana 28 abr – 2 may 2026): 1816 · SBS Research 30-abr · Comafi Weekly #84 · Facimex 30-abr · BofA Follow The Flow. Datos oficiales: BCRA, INDEC.<br><br>
+  Estructura analítica: Leer · Conectar · Defender. Todas las posiciones son ilustrativas, con su horizonte temporal explícito.<br><br>
+  <strong>Solo con fines informativos. No constituye asesoramiento de inversión.</strong>
+</footer>
+
 <script>
-function showTab(id,btn){
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
-  document.getElementById('tab-'+id).classList.add('active');
+function show(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
   btn.classList.add('active');
 }
 </script>
