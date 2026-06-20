@@ -1,5 +1,5 @@
-__pycache__/
-*.pyc
-*.pyo
 .DS_Store
-.env
+.deploy.log
+.launchd.out.log
+.launchd.err.log
+last_hash

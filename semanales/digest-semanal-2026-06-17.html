@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digest Semanal — 17 de junio 2026</title>
+<style>
+:root {
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #aaa;
+  --color-text-tertiary: #555;
+  --color-background-primary: #141414;
+  --color-background-secondary: #1a1a1a;
+  --color-border-tertiary: #2a2a2a;
+  --color-border-secondary: #333;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+html, body { background: #0f0f0f !important; color: var(--color-text-primary); }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-sans);padding:1.25rem;max-width:920px;margin:0 auto;line-height:1.6}
+
+.header{padding-bottom:1rem;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:1.5rem}
+.header-top{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+h1{font-size:20px;font-weight:500}
+.badge{font-size:11px;padding:3px 10px;border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.meta{font-size:12px;color:var(--color-text-tertiary);margin-top:3px}
+.sources{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+.src{font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+.src.official{border-color:#1D9E75;color:#4ade80}
+
+.tabs{display:flex;gap:4px;margin-bottom:1.5rem;flex-wrap:wrap}
+.tab{font-size:13px;padding:7px 14px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);cursor:pointer;background:transparent;color:var(--color-text-secondary);transition:all .15s}
+.tab.active{background:#0d2233;border-color:#3a7aac;color:#74ACDF}
+.panel{display:none}
+.panel.active{display:block}
+
+.lead{font-size:13px;color:var(--color-text-secondary);margin-bottom:1.25rem;line-height:1.6}
+
+.flag{background:rgba(246,180,14,.10);border:0.5px solid #F6B40E;border-radius:var(--border-radius-md);padding:.7rem 1rem;font-size:12.5px;line-height:1.55;color:#F6B40E;margin-bottom:1.25rem}
+
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1.25rem}
+.metric{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.85rem 1rem}
+.metric-label{font-size:11px;color:var(--color-text-secondary);margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px}
+.metric-value{font-size:21px;font-weight:500}
+.metric-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:2px}
+.metric-src{font-size:10px;color:#F6B40E;margin-top:4px}
+.up{color:#4ade80}.down{color:#f87171}.neu{color:#74ACDF}
+
+.chart-box{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem;margin-bottom:1.25rem}
+.chart-title{font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:.75rem}
+.chart-src{font-size:10px;color:#F6B40E;margin-top:.5rem}
+.bar-chart{display:flex;flex-direction:column;gap:7px}
+.bar-row{display:flex;align-items:center;gap:8px}
+.bar-label{font-size:12px;color:var(--color-text-secondary);min-width:96px;text-align:right;flex-shrink:0}
+.bar-track{flex:1;background:var(--color-background-secondary);border-radius:3px;height:22px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px}
+.bar-val{font-size:11px;font-weight:500;color:#fff;white-space:nowrap}
+
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.1rem;margin-bottom:.75rem}
+.card-label{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:.4rem}
+.lc{color:#74ACDF}.lw{color:#F6B40E}.lp{color:#c0c0c0}.la{color:#f87171}
+.card-text{font-size:14px;line-height:1.65}
+.card-text strong{font-weight:500;color:#f0f0f0}
+
+.watch{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.7rem 1rem;margin-top:.75rem}
+.watch-title{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.5px}
+.watch-items{display:flex;flex-wrap:wrap;gap:6px}
+.wi{font-size:11px;padding:3px 8px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+
+.signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.25rem}
+@media(max-width:640px){.signal-grid{grid-template-columns:1fr}}
+.sig{border-radius:var(--border-radius-lg);padding:.85rem 1rem;border:0.5px solid var(--color-border-tertiary)}
+.sig-up{border-left:3px solid #1D9E75}
+.sig-dn{border-left:3px solid #D85A30}
+.sig-title{font-size:12px;font-weight:600;margin-bottom:.5rem;color:#f0f0f0;text-transform:uppercase;letter-spacing:.5px}
+.sig-item{font-size:12.5px;color:var(--color-text-secondary);margin-bottom:.3rem;line-height:1.5}
+.sig-item::before{content:"→ ";color:var(--color-text-tertiary)}
+
+.pos-grid{display:grid;gap:7px;margin-bottom:1rem}
+.pos-row{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);font-size:13px;flex-wrap:wrap}
+.pos-instr{font-weight:500;color:#f0f0f0;min-width:120px}
+.pos-dir{font-size:10.5px;padding:3px 9px;border-radius:10px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+.pos-long{background:#0d2218;color:#4ade80;border:1px solid #1D9E75}
+.pos-short{background:#2a0d0d;color:#f87171;border:1px solid #D85A30}
+.pos-neu{background:#1a1a1a;color:#74ACDF;border:1px solid #3a7aac}
+.pos-desc{color:#aaa;flex:1;font-size:12px;min-width:200px}
+
+footer{margin-top:2rem;padding-top:1.25rem;border-top:0.5px solid var(--color-border-tertiary);font-size:12px;color:var(--color-text-tertiary);line-height:1.6}
+footer strong{color:var(--color-text-secondary)}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <h1>Digest Semanal</h1>
+    <span class="badge">11 – 17 jun 2026</span>
+  </div>
+  <div class="meta">Argentina &amp; Mercados Globales · cierre 16-jun · Datos PDFs + mails brokers</div>
+  <div class="sources">
+    <span class="src">IPC Comafi may-26</span>
+    <span class="src">Facimex "Otro gran dato"</span>
+    <span class="src">Semanal 1816 11-jun</span>
+    <span class="src">Especial 1816 (licitación)</span>
+    <span class="src">"Más Duales a la cancha"</span>
+    <span class="src">Acceso al financiamiento (CNV)</span>
+    <span class="src">IT BCRA mayo</span>
+    <span class="src">Coyuntura Política jun</span>
+    <span class="src">SBS</span>
+    <span class="src">PPI</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="show('dolar',this)">Dólar &amp; BCRA</button>
+  <button class="tab" onclick="show('tasas',this)">Tasas</button>
+  <button class="tab" onclick="show('ipc',this)">IPC</button>
+  <button class="tab" onclick="show('credito',this)">Crédito</button>
+  <button class="tab" onclick="show('global',this)">Global</button>
+  <button class="tab" onclick="show('radar',this)">Radar</button>
+</div>
+
+<!-- DOLAR -->
+<div id="tab-dolar" class="panel active">
+  <p class="lead">El BCRA sigue comprando todos los días dentro de la banda. Las compras de junio se acercan a USD 1.000mn y el respaldo del Banco Mundial (USD 2.000mn en garantías) refuerza la pata de reservas. El Tesoro arma un canje para despejar el vencimiento dollar-linked de fin de mes.</p>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Compras BCRA junio</div><div class="metric-value up">USD 952mn</div><div class="metric-sub">acum. al 16-jun</div><div class="metric-src">SBS 17-jun (BCRA)</div></div>
+    <div class="metric"><div class="metric-label">Compras BCRA 2026</div><div class="metric-value up">USD 10.708mn</div><div class="metric-sub">acumulado del año</div><div class="metric-src">SBS 17-jun (BCRA)</div></div>
+    <div class="metric"><div class="metric-label">Reservas brutas</div><div class="metric-value neu">USD 47.655mn</div><div class="metric-sub">cierre 16-jun</div><div class="metric-src">SBS 17-jun (BCRA)</div></div>
+    <div class="metric"><div class="metric-label">Garantías Banco Mundial</div><div class="metric-value up">USD 2.000mn</div><div class="metric-sub">BID y CAF a seguir</div><div class="metric-src">SBS 17-jun / WB</div></div>
+    <div class="metric"><div class="metric-label">Compra diaria (16-jun)</div><div class="metric-value up">USD 79mn</div><div class="metric-sub">12-jun: USD 50mn</div><div class="metric-src">SBS (BCRA)</div></div>
+    <div class="metric"><div class="metric-label">Canje TZV26</div><div class="metric-value neu">18-jun</div><div class="metric-sub">vto 30-jun a despejar</div><div class="metric-src">SBS 17-jun (MECON)</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Compras BCRA — acumulado junio y 2026 (USD mn)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">Junio (al 16)</div><div class="bar-track"><div class="bar-fill" style="width:9%;background:#1D9E75"><span class="bar-val">952</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Garantías WB</div><div class="bar-track"><div class="bar-fill" style="width:19%;background:#378ADD"><span class="bar-val">2.000</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Acum. 2026</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#F6B40E"><span class="bar-val">10.708</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: comunicados diarios BCRA vía SBS (16 y 17-jun). El Banco Mundial confirmó garantías por USD 2.000mn para bajar el costo de financiamiento argentino.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El BCRA compró <strong>USD 79mn el 16-jun</strong> (USD 50mn el 12-jun), llevando las compras de junio a <strong>USD 952mn</strong> y el acumulado 2026 a <strong>USD 10.708mn</strong>; las reservas brutas cerraron en <strong>USD 47.655mn</strong>. El Banco Mundial oficializó <strong>USD 2.000mn en garantías</strong> para "alcanzar costos de financiamiento más bajos", con BID y CAF esperados en las próximas semanas. El Tesoro anunció un <strong>canje del dollar-linked TZV26</strong> (vto 30-jun) por la Lelink D31L6 o el TZVD28.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">La acumulación sostenida de reservas dentro de la banda es lo que ancla la <strong>compresión del riesgo país</strong> y validó el upgrade de S&amp;P. Las garantías de organismos funcionan como respaldo cuasi-reservas que abaratan el rolleo de deuda. El canje del TZV26 <strong>quita presión al vencimiento dollar-linked de fin de mes</strong> y despeja la demanda de cobertura justo antes del cierre semestral.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Carry táctico en pesos cortos con cobertura parcial; el respaldo de organismos y las compras diarias justifican animarse a <strong>algo de carry desnudo</strong> en el tramo corto. Para quien tiene TZV26, <strong>entrar al canje hacia el TZVD28</strong> si se busca cobertura larga, o rotar a pesos si la visión es de calma cambiaria. Horizonte 1-3 meses; el factor de riesgo es el cierre semestral y el ritmo de compras.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Las compras "todos los días" pueden reflejar más una <strong>oferta estacional del agro</strong> que demanda genuina de pesos; cuando esa oferta se agote, el BCRA podría comprar menos y el spot tensionarse. Las garantías de organismos suman respaldo pero <strong>no son dólares líquidos</strong>: las reservas netas siguen por debajo de las metas. El mejor caso bajista para el peso es un cierre semestral con dolarización de carteras.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Resultado canje TZV26 (18-jun)</span>
+      <span class="wi">Compras diarias BCRA vs. estacionalidad agro</span>
+      <span class="wi">Confirmación apoyos BID / CAF</span>
+      <span class="wi">Dolarización pre cierre semestral</span>
+    </div>
+  </div>
+</div>
+
+<!-- TASAS -->
+<div id="tab-tasas" class="panel">
+  <p class="lead">Semana grande para la deuda en pesos: S&amp;P subió la nota soberana a B- y el Tesoro renovó con rollover de 120% — aunque 1816 plantea que parte fue una inyección de pesos previa para estirar vencimientos al próximo mandato. Más Duales TAMAR a la cancha.</p>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Rating S&amp;P</div><div class="metric-value up">B-</div><div class="metric-sub">desde CCC+ (10-jun)</div><div class="metric-src">Semanal 1816</div></div>
+    <div class="metric"><div class="metric-label">Rollover licitación 10-jun</div><div class="metric-value neu">120,4%</div><div class="metric-sub">financ. neto $1,0 bn</div><div class="metric-src">Especial 1816</div></div>
+    <div class="metric"><div class="metric-label">TAMAR (piso est.)</div><div class="metric-value">~21,5%</div><div class="metric-sub">TNA</div><div class="metric-src">"Más Duales" 1816</div></div>
+    <div class="metric"><div class="metric-label">TEM TZX28 / TXMJ8</div><div class="metric-value">32,5% / 31,6%</div><div class="metric-sub">CER vs Dual TAMAR</div><div class="metric-src">"Más Duales" 1816</div></div>
+    <div class="metric"><div class="metric-label">Duales emitidos</div><div class="metric-value neu">2028-29-30</div><div class="metric-sub">nuevos en la licitación</div><div class="metric-src">Especial 1816</div></div>
+    <div class="metric"><div class="metric-label">TAMAR real breakeven</div><div class="metric-value neu">~0%</div><div class="metric-sub">priceado 2027-28</div><div class="metric-src">"Más Duales" 1816</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Rendimientos comparados — CER vs Dual TAMAR (TEM %)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">TZX28 (CER)</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#378ADD"><span class="bar-val">32,5%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">TXMJ8 (Dual TAMAR)</div><div class="bar-track"><div class="bar-fill" style="width:97%;background:#1D9E75"><span class="bar-val">31,6%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">TAMAR piso (TNA)</div><div class="bar-track"><div class="bar-fill" style="width:66%;background:#F6B40E"><span class="bar-val">~21,5%</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: 1816 "Más Duales a la cancha". El TZX28 parece más atractivo en TEM, pero la duración efectiva del Dual TAMAR es menor — protege más en una corrección (caso TZX26 vs TTJ26 en sep-25: el Dual contuvo la mitad de la caída).</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">Tras el cierre del 10-jun, <strong>S&amp;P Global subió la calificación soberana a B- desde CCC+</strong>, comprimiendo la tasa del GD35. El Tesoro licitó el 10-jun con <strong>rollover de 120,4%</strong> y financiamiento neto de <strong>$1,0 billón</strong>, emitiendo nuevos Duales a 2028, 2029 y 2030. 1816 detectó operaciones espejo por $1,0 bn el mismo día y plantea la hipótesis de que <strong>el Tesoro inyectó pesos previo a la subasta</strong>: el rollover "real" sería ~100% y la operación estiró vencimientos del mandato actual al próximo.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">El upgrade de S&amp;P <strong>baja el piso de tasa exigida</strong> a los Globales y mejora el acceso a mercados. En pesos, la disyuntiva es <strong>CER vs Dual TAMAR</strong>: el TZX28 rinde más en TEM pero el Dual tiene menor duración efectiva y un "piso" de tasa fija que amortigua caídas. El mercado pricea TAMAR real breakeven ~0% para 2027-28, nivel al que el TXMJ8 iguala al TZX28.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Para perfil defensivo, <strong>Dual TAMAR (TXMJ8) sobre CER puro</strong>: similar upside ante compresión de tasa real, pero menos drawdown si hay corrección, gracias a la menor duración y el piso de tasa fija. Para perfil agresivo convencido de desinflación sostenida (IPC &lt;1,8% mensual), el <strong>TZX28 (CER+7%)</strong> captura más. Horizonte 6-12 meses.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Si la hipótesis de 1816 es correcta, el rollover "genuino" es menor al que muestra el número titular y <strong>el Tesoro está pateando vencimientos al próximo mandato</strong> — una señal de fragilidad en la demanda de deuda local que un upgrade de rating no borra. Si la inflación sorprende al alza, el CER vuelve a ganarle al Dual y el TZX28 sería la mejor elección.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Reacción Globales al upgrade S&amp;P</span>
+      <span class="wi">Confirmación hipótesis 1816 (martes post-feriado)</span>
+      <span class="wi">Spread CER vs Dual TAMAR</span>
+      <span class="wi">Próxima licitación del Tesoro</span>
+    </div>
+  </div>
+</div>
+
+<!-- IPC -->
+<div id="tab-ipc" class="panel">
+  <p class="lead">El tema más mencionado de la semana (102 menciones). La inflación de mayo fue 2,1% y perforó las expectativas del consenso; la núcleo marcó mínimos desde sep-25 y las consultoras ya proyectan junio debajo del 2%.</p>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">IPC mayo m/m</div><div class="metric-value up">2,1%</div><div class="metric-sub">abril: 2,6%</div><div class="metric-src">INDEC / Comafi</div></div>
+    <div class="metric"><div class="metric-label">IPC mayo a/a</div><div class="metric-value neu">33,2%</div><div class="metric-sub">2º mes de desaceleración</div><div class="metric-src">Facimex</div></div>
+    <div class="metric"><div class="metric-label">Núcleo m/m</div><div class="metric-value up">1,9%</div><div class="metric-sub">mínimo desde sep-25</div><div class="metric-src">INDEC / Facimex</div></div>
+    <div class="metric"><div class="metric-label">IPC-S (subyacente BCRA)</div><div class="metric-value up">2,0%</div><div class="metric-sub">abril: 2,5%</div><div class="metric-src">Facimex</div></div>
+    <div class="metric"><div class="metric-label">Proy. junio</div><div class="metric-value up">1,8–2,0%</div><div class="metric-sub">Facimex 1,8% / Comafi 2,0%</div><div class="metric-src">Facimex / Comafi</div></div>
+    <div class="metric"><div class="metric-label">Proy. 2026 Facimex</div><div class="metric-value up">27,5%</div><div class="metric-sub">REM: 30,5%</div><div class="metric-src">Facimex</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">IPC mayo — componentes (variación m/m %)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">Estacionales</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#D85A30"><span class="bar-val">+3,5%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Alimentos y beb.</div><div class="bar-track"><div class="bar-fill" style="width:71%;background:#F6B40E"><span class="bar-val">+2,5%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Regulados</div><div class="bar-track"><div class="bar-fill" style="width:69%;background:#378ADD"><span class="bar-val">+2,4%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Núcleo</div><div class="bar-track"><div class="bar-fill" style="width:54%;background:#1D9E75"><span class="bar-val">+1,9%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Carnes</div><div class="bar-track"><div class="bar-fill" style="width:9%;background:#1D9E75"><span class="bar-val">+0,3%</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: INDEC vía Comafi y Facimex. Carnes vuelve a aportar marginalmente por 2º mes, facilitando la convergencia del nivel general hacia la núcleo. El ratio Regulados/Núcleo marcó máximos desde jun-2020.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">La inflación de mayo fue <strong>2,1% m/m</strong> (33,2% a/a), desacelerando 0,5 p.p. frente al 2,6% de abril y ubicándose <strong>por debajo del consenso REM (2,3%)</strong>. La <strong>núcleo cayó a 1,9%</strong> y el IPC-S que mira el BCRA bajó a 2,0% (desde 2,5%), ambos mínimos desde sep/jul-25. Carnes subió apenas 0,3% por segundo mes; los Estacionales (+3,5%) y Regulados (+2,4%) explicaron la presión restante.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">La mejora en la <strong>dinámica subyacente</strong> —no solo en componentes volátiles— es lo que valida proyecciones anuales optimistas (Facimex 27,5% vs REM 30,5%) y sostiene la <strong>compresión de tasas reales y de la curva CER</strong>. Si junio perfora el 2% de forma sostenida, descomprimen las expectativas y se refuerza el atractivo del carry en pesos.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Sesgo a <strong>tasa fija / Lecaps en el tramo corto</strong> aprovechando que la desinflación le gana a la inercia, con algo de CER medio (TZX28) como cobertura ante el catch-up de naftas previsto desde julio. La desinflación consolidando es el driver para mantener duration en pesos. Horizonte 3-6 meses.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Las propias consultoras advierten un posible <strong>"estancamiento" en las próximas lecturas</strong>: la núcleo mantiene inercia y, a partir de julio, el <strong>catch-up de naftas</strong> (paridad internacional, tras la contención de YPF) puede frenar la baja. Perforar el 2% en mayo-junio ya pasó en 2025 y resultó transitorio; una consolidación permanente exige más desaceleración del resto de la núcleo.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Datos alta frecuencia junio (Ferreres / Eco Go)</span>
+      <span class="wi">Catch-up de naftas desde julio</span>
+      <span class="wi">Núcleo: ¿perfora o se estanca?</span>
+      <span class="wi">REM próxima revisión</span>
+    </div>
+  </div>
+</div>
+
+<!-- CREDITO -->
+<div id="tab-credito" class="panel">
+  <p class="lead">La CNV desreguló de raíz el mercado de capitales: se elimina la autorización previa para la gran mayoría de las emisiones. El primario corporativo ya se mueve, con ON de Mastellone y Crédito Directo en cartelera.</p>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Resoluciones CNV</div><div class="metric-value neu">1145–1150</div><div class="metric-sub">Boletín Oficial</div><div class="metric-src">CNV / "Acceso al financiamiento"</div></div>
+    <div class="metric"><div class="metric-label">Autorización previa</div><div class="metric-value up">Eliminada</div><div class="metric-sub">para la mayoría de emisiones</div><div class="metric-src">CNV</div></div>
+    <div class="metric"><div class="metric-label">Techo público general</div><div class="metric-value neu">100mn UVAs</div><div class="metric-sub">~USD 130–140mn</div><div class="metric-src">CNV</div></div>
+    <div class="metric"><div class="metric-label">Inversores calificados</div><div class="metric-value up">Sin límite</div><div class="metric-sub">autorización automática</div><div class="metric-src">CNV</div></div>
+    <div class="metric"><div class="metric-label">Instrumentos cubiertos</div><div class="metric-value neu">ON · Acc · FF · FCIC</div><div class="metric-sub">FCIA totalmente liberados</div><div class="metric-src">CNV</div></div>
+    <div class="metric"><div class="metric-label">Primario activo</div><div class="metric-value neu">Mastellone · Crédito Directo</div><div class="metric-sub">ON en licitación esta semana</div><div class="metric-src">SBS / PPI</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">La CNV publicó <strong>seis resoluciones (1145 a 1150)</strong> que amplían el régimen de <strong>autorización automática</strong>: una empresa que quiera emitir una ON o un fideicomiso financiero solo deberá publicar la documentación en la AIF y podrá operar de inmediato. La autorización automática rige <strong>sin límite de monto para inversores calificados</strong> y con techo de <strong>100mn UVAs (~USD 130–140mn)</strong> para el público general. Los FCI abiertos quedan completamente liberados. En paralelo, el primario ya muestra ON de <strong>Mastellone Hnos (Clases 2 y 3)</strong> y <strong>Crédito Directo (Clase XXXI)</strong>.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">Baja drásticamente el <strong>costo y el tiempo de salir al mercado</strong>, especialmente para PyMEs y el agro, que dependían de un trámite poco ágil. La decisión de cuándo emitir pasa "del expediente al CFO". Para el inversor, implica <strong>más oferta de instrumentos corporativos</strong> (ON, FF) y un mercado primario potencialmente más profundo y frecuente.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Mirar el <strong>primario corporativo de calidad</strong> (emisores con buen perfil crediticio) donde la mayor oferta puede dejar primas atractivas en las primeras colocaciones bajo el nuevo régimen. Selectividad: con autorización automática habrá <strong>más emisores y mayor dispersión de calidad</strong>, así que el análisis crediticio individual gana peso. Horizonte: estructural, construir cartera de ON a 12-24 meses.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">La contracara de la desregulación es <strong>menos filtro previo</strong>: la CNV conserva la fiscalización pero ya no interviene antes de la emisión, lo que traslada todo el riesgo de selección al inversor. En un mercado con apetito creciente, pueden colarse <strong>emisores de baja calidad</strong> con spreads que no compensan el riesgo. La agilidad es buena para el emisor; exige más disciplina del comprador.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Resultado licitación ON Mastellone (cierre 18-jun)</span>
+      <span class="wi">ON Crédito Directo Clase XXXI</span>
+      <span class="wi">Primeras emisiones bajo régimen automático</span>
+      <span class="wi">Spreads corporativos vs soberano</span>
+    </div>
+  </div>
+</div>
+
+<!-- GLOBAL -->
+<div id="tab-global" class="panel">
+  <p class="lead">Risk-on global: Trump confirmó un acuerdo EEUU–Irán para finalizar hostilidades y reabrir el Estrecho de Ormuz. El crudo se desplomó, la renta variable saltó y el VIX se hundió. La Fed toma protagonismo con su decisión de tasas.</p>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Brent</div><div class="metric-value down">~USD 79–81</div><div class="metric-sub">-4,8% en una rueda</div><div class="metric-src">SBS 16-17-jun</div></div>
+    <div class="metric"><div class="metric-label">Nasdaq 100</div><div class="metric-value up">+3,07%</div><div class="metric-sub">tras el anuncio</div><div class="metric-src">SBS 16-jun</div></div>
+    <div class="metric"><div class="metric-label">S&amp;P 500</div><div class="metric-value up">+1,65%</div><div class="metric-sub">risk-on</div><div class="metric-src">SBS 16-jun</div></div>
+    <div class="metric"><div class="metric-label">VIX</div><div class="metric-value down">-8,4%</div><div class="metric-sub">colapso de volatilidad</div><div class="metric-src">SBS 16-jun</div></div>
+    <div class="metric"><div class="metric-label">UST 10 años</div><div class="metric-value neu">~4,4%</div><div class="metric-sub">a la espera de la Fed</div><div class="metric-src">SBS 16-17-jun</div></div>
+    <div class="metric"><div class="metric-label">EM (EMB / EEM)</div><div class="metric-value up">+0,36% / +2,75%</div><div class="metric-sub">bonos / acciones EM</div><div class="metric-src">SBS 16-jun</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Reacción al acuerdo EEUU–Irán (variación de la rueda %)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">Nasdaq 100</div><div class="bar-track"><div class="bar-fill" style="width:62%;background:#1D9E75"><span class="bar-val">+3,07%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">EEM (acc. EM)</div><div class="bar-track"><div class="bar-fill" style="width:56%;background:#378ADD"><span class="bar-val">+2,75%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">S&amp;P 500</div><div class="bar-track"><div class="bar-fill" style="width:33%;background:#1D9E75"><span class="bar-val">+1,65%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Brent</div><div class="bar-track"><div class="bar-fill" style="width:96%;background:#D85A30"><span class="bar-val">-4,8%</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: SBS (16-jun). El acuerdo se firmaría el viernes; Irán confirmó. La caída del crudo es desinflacionaria a nivel global y apoya el sesgo de baja de tasas.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">Durante el fin de semana largo, <strong>Trump confirmó un acuerdo EEUU–Irán</strong> para finalizar las hostilidades y <strong>reabrir el Estrecho de Ormuz</strong> al tráfico comercial; Irán lo ratificó y la firma se espera el viernes. El <strong>Brent cayó 4,8%</strong> en una rueda (a ~USD 79–81), el <strong>Nasdaq saltó 3,07%</strong> y el S&amp;P 1,65%, el <strong>VIX se desplomó 8,4%</strong> y los activos emergentes acompañaron. La <strong>Fed</strong> tomó protagonismo con su decisión de tasas en la semana.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">Un crudo más barato es <strong>desinflacionario global</strong>, lo que refuerza el sesgo de baja de tasas y comprime las UST — un viento de cola para emergentes y para los Globales argentinos. El colapso del VIX abre ventana de <strong>apetito por riesgo</strong>: en este contexto subieron los ADRs de bancos argentinos (corrigieron las energéticas de hidrocarburos).</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Aprovechar la ventana risk-on para <strong>Globales argentinos en el tramo largo (GD35/GD38)</strong>, que combinan el upgrade de S&amp;P con la compresión de UST. En equity local, sesgo a <strong>bancos sobre energía</strong> dado el shock de petróleo a la baja. Horizonte táctico 1-3 meses; depende de que el acuerdo efectivamente se firme.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">El acuerdo <strong>todavía no está firmado</strong>: un traspié geopolítico revierte el rally del crudo y el risk-on en horas. Además, un petróleo más barato <strong>golpea a las energéticas argentinas</strong> (Vaca Muerta, exportaciones) — una pata clave del relato de reservas a mediano plazo. Si la Fed sorprende hawkish, las UST suben y se cierra la ventana para los Globales.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Firma efectiva del acuerdo EEUU–Irán (viernes)</span>
+      <span class="wi">Decisión y tono de la Fed</span>
+      <span class="wi">Brent / Estrecho de Ormuz</span>
+      <span class="wi">ADRs: bancos vs energéticas</span>
+    </div>
+  </div>
+</div>
+
+<!-- RADAR -->
+<div id="tab-radar" class="panel">
+  <p class="lead">El cuadro combina desinflación que consolida, upgrade de S&amp;P y respaldo de organismos, contra una demanda de deuda local que el Tesoro sostiene estirando vencimientos. La política empieza a pesar de cara a octubre.</p>
+
+  <div class="signal-grid">
+    <div class="sig sig-up">
+      <div class="sig-title">Señales alcistas</div>
+      <div class="sig-item">IPC mayo 2,1% por debajo del consenso; núcleo e IPC-S en mínimos</div>
+      <div class="sig-item">S&amp;P sube la nota soberana a B- desde CCC+</div>
+      <div class="sig-item">Banco Mundial: USD 2.000mn en garantías; BID y CAF a seguir</div>
+      <div class="sig-item">BCRA compra todos los días (USD 952mn en junio)</div>
+      <div class="sig-item">Crudo a la baja y risk-on global tras acuerdo EEUU–Irán</div>
+    </div>
+    <div class="sig sig-dn">
+      <div class="sig-title">Señales bajistas</div>
+      <div class="sig-item">1816: rollover "real" ~100%; vencimientos estirados al próximo mandato</div>
+      <div class="sig-item">Demanda de cobertura viva pre cierre semestral</div>
+      <div class="sig-item">Catch-up de naftas desde julio puede frenar la desinflación</div>
+      <div class="sig-item">Petróleo barato golpea a energéticas argentinas</div>
+      <div class="sig-item">Ruido político creciente de cara a octubre</div>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Catalizadores — próximas 4 semanas</div>
+    <div class="watch-items">
+      <span class="wi">Canje dollar-linked TZV26 (18-jun)</span>
+      <span class="wi">Decisión de la Fed</span>
+      <span class="wi">Firma acuerdo EEUU–Irán (viernes)</span>
+      <span class="wi">Cierre licitaciones ON (Mastellone / Crédito Directo)</span>
+      <span class="wi">IPC junio (alta frecuencia &lt;2%)</span>
+      <span class="wi">Pago de Globales (julio)</span>
+      <span class="wi">Confirmación apoyos BID / CAF</span>
+      <span class="wi">Campaña elecciones legislativas octubre</span>
+    </div>
+    <div class="chart-src">La imagen del Presidente se recuperó según las encuestas del Informe de Coyuntura Política; el mercado empieza a mirar octubre como prueba de gobernabilidad para la segunda etapa de reformas.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posiciones core sugeridas</div>
+  </div>
+  <div class="pos-grid">
+    <div class="pos-row"><span class="pos-instr">Lecaps ≤ dic-26</span><span class="pos-dir pos-long">Long</span><span class="pos-desc">Carry en pesos cortos; desinflación le gana a la inercia. Cobertura parcial.</span></div>
+    <div class="pos-row"><span class="pos-instr">Dual TAMAR (TXMJ8)</span><span class="pos-dir pos-long">Long</span><span class="pos-desc">Piso de tasa fija + menor duración: protege en correcciones vs CER puro.</span></div>
+    <div class="pos-row"><span class="pos-instr">Global GD35/GD38</span><span class="pos-dir pos-long">Long</span><span class="pos-desc">Upgrade S&amp;P + compresión UST por crudo barato. Ventana táctica.</span></div>
+    <div class="pos-row"><span class="pos-instr">TZV26 → canje</span><span class="pos-dir pos-neu">Rotar</span><span class="pos-desc">Entrar al canje (TZVD28) si se busca cobertura; rotar a pesos si calma cambiaria.</span></div>
+    <div class="pos-row"><span class="pos-instr">Energéticas hidrocarb.</span><span class="pos-dir pos-short">Underweight</span><span class="pos-desc">Crudo a la baja pesa; preferir bancos en equity local.</span></div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Resultado canje TZV26</span>
+      <span class="wi">Confirmación hipótesis inyección 1816</span>
+      <span class="wi">Fed: decisión y tono</span>
+      <span class="wi">IPC junio alta frecuencia</span>
+      <span class="wi">Crudo / firma EEUU–Irán</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Fuentes (PDFs semana al 17-jun-2026): IPC Nacional may-26 (Comafi) · "Otro gran dato de inflación" (Facimex) · Semanal 1816 (11-jun) · Especial 1816 "¿El Tesoro volvió a inyectar pesos?" · "Más Duales a la cancha" (1816) · "Acceso al financiamiento" (CNV) · Informe de Inflación BCRA mayo · Informe de Coyuntura Política (junio). Mails: SBS (notas diarias 16 y 17-jun, comunicados BCRA/MECON), PPI, Bloomberg Línea. El acuerdo EEUU–Irán, la decisión de la Fed y el upgrade de S&amp;P son eventos posteriores al corte de conocimiento, reportados según los informes y mails citados — no verificados de forma independiente.<br><br>
+  Estructura analítica: Leer · Conectar · Defender. Todas las posiciones son ilustrativas, con su horizonte temporal explícito.<br><br>
+  <strong>Solo con fines informativos. No constituye asesoramiento de inversión.</strong>
+</footer>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
