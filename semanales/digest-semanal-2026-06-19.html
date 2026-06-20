@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly — Economía & Mercados — 19 de junio 2026</title>
+<style>
+:root {
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #aaa;
+  --color-text-tertiary: #555;
+  --color-background-primary: #141414;
+  --color-background-secondary: #1a1a1a;
+  --color-border-tertiary: #2a2a2a;
+  --color-border-secondary: #333;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+html, body { background: #0f0f0f !important; color: var(--color-text-primary); }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-sans);padding:1.25rem;max-width:920px;margin:0 auto;line-height:1.6}
+
+.header{padding-bottom:1rem;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:1.5rem}
+.header-top{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+h1{font-size:20px;font-weight:500}
+.badge{font-size:11px;padding:3px 10px;border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.meta{font-size:12px;color:var(--color-text-tertiary);margin-top:3px}
+.sources{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+.src{font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+.src.official{border-color:#1D9E75;color:#4ade80}
+
+.tabs{display:flex;gap:4px;margin-bottom:1.5rem;flex-wrap:wrap}
+.tab{font-size:13px;padding:7px 14px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);cursor:pointer;background:transparent;color:var(--color-text-secondary);transition:all .15s}
+.tab.active{background:#0d2233;border-color:#3a7aac;color:#74ACDF}
+.panel{display:none}
+.panel.active{display:block}
+
+.lead{font-size:13px;color:var(--color-text-secondary);margin-bottom:1.25rem;line-height:1.6}
+
+.flag{background:rgba(246,180,14,.10);border:0.5px solid #F6B40E;border-radius:var(--border-radius-md);padding:.7rem 1rem;font-size:12.5px;line-height:1.55;color:#F6B40E;margin-bottom:1.25rem}
+
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1.25rem}
+.metric{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.85rem 1rem}
+.metric-label{font-size:11px;color:var(--color-text-secondary);margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px}
+.metric-value{font-size:21px;font-weight:500}
+.metric-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:2px}
+.metric-src{font-size:10px;color:#F6B40E;margin-top:4px}
+.up{color:#4ade80}.down{color:#f87171}.neu{color:#74ACDF}
+
+.chart-box{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem;margin-bottom:1.25rem}
+.chart-title{font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:.75rem}
+.chart-src{font-size:10px;color:#F6B40E;margin-top:.5rem}
+.bar-chart{display:flex;flex-direction:column;gap:7px}
+.bar-row{display:flex;align-items:center;gap:8px}
+.bar-label{font-size:12px;color:var(--color-text-secondary);min-width:96px;text-align:right;flex-shrink:0}
+.bar-track{flex:1;background:var(--color-background-secondary);border-radius:3px;height:22px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px}
+.bar-val{font-size:11px;font-weight:500;color:#fff;white-space:nowrap}
+
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.1rem;margin-bottom:.75rem}
+.card-label{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:.4rem}
+.lc{color:#74ACDF}.lw{color:#F6B40E}.lp{color:#c0c0c0}.la{color:#f87171}
+.card-text{font-size:14px;line-height:1.65}
+.card-text strong{font-weight:500;color:#f0f0f0}
+
+.watch{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.7rem 1rem;margin-top:.75rem}
+.watch-title{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.5px}
+.watch-items{display:flex;flex-wrap:wrap;gap:6px}
+.wi{font-size:11px;padding:3px 8px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+
+.signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.25rem}
+@media(max-width:640px){.signal-grid{grid-template-columns:1fr}}
+.sig{border-radius:var(--border-radius-lg);padding:.85rem 1rem;border:0.5px solid var(--color-border-tertiary)}
+.sig-up{border-left:3px solid #1D9E75}
+.sig-dn{border-left:3px solid #D85A30}
+.sig-title{font-size:12px;font-weight:600;margin-bottom:.5rem;color:#f0f0f0;text-transform:uppercase;letter-spacing:.5px}
+.sig-item{font-size:12.5px;color:var(--color-text-secondary);margin-bottom:.3rem;line-height:1.5}
+.sig-item::before{content:"→ ";color:var(--color-text-tertiary)}
+
+.pos-grid{display:grid;gap:7px;margin-bottom:1rem}
+.pos-row{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);font-size:13px;flex-wrap:wrap}
+.pos-instr{font-weight:500;color:#f0f0f0;min-width:120px}
+.pos-dir{font-size:10.5px;padding:3px 9px;border-radius:10px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+.pos-long{background:#0d2218;color:#4ade80;border:1px solid #1D9E75}
+.pos-short{background:#2a0d0d;color:#f87171;border:1px solid #D85A30}
+.pos-neu{background:#1a1a1a;color:#74ACDF;border:1px solid #3a7aac}
+.pos-desc{color:#aaa;flex:1;font-size:12px;min-width:200px}
+
+footer{margin-top:2rem;padding-top:1.25rem;border-top:0.5px solid var(--color-border-tertiary);font-size:12px;color:var(--color-text-tertiary);line-height:1.6}
+footer strong{color:var(--color-text-secondary)}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <h1>Weekly — Economía &amp; Mercados</h1>
+    <span class="badge">16 – 19 jun 2026</span>
+  </div>
+  <div class="meta">Argentina &amp; Mercados Globales · cierre 19-jun · Datos PDFs + mails brokers</div>
+  <div class="sources">
+    <span class="src">Semanal 1816 (19-jun)</span>
+    <span class="src">J.P. Morgan (18-jun)</span>
+    <span class="src">Bonte 2030 — Bull Market (18-jun)</span>
+    <span class="src">"Como la vemos" (17-jun)</span>
+    <span class="src">Especial Privatizaciones (17-jun)</span>
+    <span class="src">SBS QuickNotes (17–19 jun)</span>
+    <span class="src official">INDEC</span>
+    <span class="src official">BCRA</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="show('dolar',this)">Dólar &amp; BCRA</button>
+  <button class="tab" onclick="show('tasas',this)">Tasas</button>
+  <button class="tab" onclick="show('ipc',this)">IPC</button>
+  <button class="tab" onclick="show('credito',this)">Crédito &amp; Fiscal</button>
+  <button class="tab" onclick="show('global',this)">Global</button>
+  <button class="tab" onclick="show('radar',this)">Radar</button>
+</div>
+
+<!-- DOLAR -->
+<div id="tab-dolar" class="panel active">
+  <p class="lead">El tipo de cambio nominal tocó máximos desde febrero justo cuando las reservas netas reales siguen flacas. El BCRA ya cumplió la meta anual de compras en menos de seis meses, pero las netas dependen de la operación garantizada BM-BID y del rollover de repos. El Central, además, desarmó casi toda su deuda con el BIS.</p>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Compras BCRA 2026</div><div class="metric-value up">USD 10.600mn</div><div class="metric-sub">meta anual cumplida en &lt;6 meses</div><div class="metric-src">"Como la vemos" 17-jun</div></div>
+    <div class="metric"><div class="metric-label">Reservas brutas</div><div class="metric-value neu">USD 47.500mn</div><div class="metric-sub">al 18-jun</div><div class="metric-src">1816 18-jun (BCRA)</div></div>
+    <div class="metric"><div class="metric-label">Reservas netas (mkt)</div><div class="metric-value down">USD 3.700mn</div><div class="metric-sub">valor de mercado, 18-jun</div><div class="metric-src">1816 18-jun</div></div>
+    <div class="metric"><div class="metric-label">Netas c/rollover repos</div><div class="metric-value neu">USD 9.800mn</div><div class="metric-sub">asume renovación 100%</div><div class="metric-src">1816 18-jun</div></div>
+    <div class="metric"><div class="metric-label">Deuda BCRA con BIS</div><div class="metric-value up">USD 600mn</div><div class="metric-sub">desde USD 2.600mn (fin 2025)</div><div class="metric-src">1816 19-jun</div></div>
+    <div class="metric"><div class="metric-label">TC nominal</div><div class="metric-value down">Máx. desde feb</div><div class="metric-sub">ayer, en términos nominales</div><div class="metric-src">1816 19-jun</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Reservas BCRA al 18-jun (USD miles de millones)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">Brutas</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#378ADD"><span class="bar-val">47,5</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Netas (mkt)</div><div class="bar-track"><div class="bar-fill" style="width:8%;background:#D85A30"><span class="bar-val">3,7</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Netas c/repos</div><div class="bar-track"><div class="bar-fill" style="width:21%;background:#1D9E75"><span class="bar-val">9,8</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: 1816 en base a BCRA (18-jun). Las netas a valor de mercado restan todos los pasivos en USD con plazo menor a 1 año; suben a la zona de USD 10.000mn solo si se renuevan los repos y se concreta la operación garantizada BM-BID.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El TC nominal alcanzó <strong>máximos desde febrero</strong>. El BCRA lleva comprados <strong>+USD 10.600mn</strong> en el año, cumpliendo la meta anual en menos de seis meses. Las reservas brutas cerraron en <strong>USD 47.500mn</strong>; las netas a valor de mercado en <strong>USD 3.700mn</strong> (USD 9.800mn asumiendo rollover 100% de repos). El Central canceló casi toda su deuda con el BIS: de <strong>USD 2.600mn (fin 2025) a USD 600mn</strong> en la primera semana de junio.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">El dólar se tensiona en la antesala de la licitación y de los vencimientos dollar-linked. Las netas reales (~3,7 bn) <strong>siguen dependiendo de la operación garantizada BM-BID y del rollover de repos</strong>. El BCRA estuvo vendiendo títulos dollar-linked en el secundario (grandes volúmenes en BYMA PPT T+1) para acotar la volatilidad del TC antes del cierre semestral.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Con el TC en máximos desde febrero y netas reales ~3,7 bn, la cobertura cambiaria está barata: <strong>dollar-linked corto / futuros como hedge táctico</strong> hacia 2027. El carry en pesos sigue vivo pero conviene acortar duration. Horizonte 1-3 meses; el riesgo es un cierre semestral con dolarización de carteras.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">El superávit comercial récord (<strong>USD 3.504mn en mayo</strong>) + superávit energético + liquidación del agro + financiamiento externo le dan poder de fuego al BCRA. Si se concreta la operación BM-BID y una emisión offshore, las netas saltan a ~10 bn y el dólar puede volver a comprimir. El hedge gana solo si aparece ruido electoral.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Licitación 26-jun ($16,2 bn)</span>
+      <span class="wi">Fijación A3500 del TZV26 (jueves)</span>
+      <span class="wi">Operación garantizada BM-BID</span>
+      <span class="wi">Renovación repos USD 6.000mn</span>
+    </div>
+  </div>
+</div>
+
+<!-- TASAS -->
+<div id="tab-tasas" class="panel">
+  <p class="lead">El Tesoro recompra cortos para empujar a los inversores hacia duales largos y descomprimir el spot; la curva de tasa fija se aplanó y la caución a 1 día saltó a 21% TNA. Bull Market argumenta que el Bonte 2030 — "tasa fija solo de nombre" — pierde contra el linker BONCER salvo desinflación muy brusca.</p>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Caución 1 día</div><div class="metric-value neu">21% TNA</div><div class="metric-sub">curva fija aplanada</div><div class="metric-src">1816 19-jun</div></div>
+    <div class="metric"><div class="metric-label">Licitación 26-jun</div><div class="metric-value neu">$16,2 bn</div><div class="metric-sub">vencimientos a renovar</div><div class="metric-src">1816 19-jun</div></div>
+    <div class="metric"><div class="metric-label">Recompra TMF27/TMG27</div><div class="metric-value neu">$1,0 bn</div><div class="metric-sub">previo a la última subasta</div><div class="metric-src">1816 19-jun</div></div>
+    <div class="metric"><div class="metric-label">Bonte 2030 — TIR</div><div class="metric-value">27,55%</div><div class="metric-sub">cierre 17-jun</div><div class="metric-src">Bull Market 18-jun</div></div>
+    <div class="metric"><div class="metric-label">Bonte — yield to put</div><div class="metric-value down">20,09%</div><div class="metric-sub">vs ~26% comparables</div><div class="metric-src">Bull Market 18-jun</div></div>
+    <div class="metric"><div class="metric-label">TZV26 remanente</div><div class="metric-value neu">USD 2.050mn</div><div class="metric-sub">post canje</div><div class="metric-src">1816 19-jun</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Bonte 2030 vs Linker BONCER — rendimiento (%)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">Linker (infl 22,5%)</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#378ADD"><span class="bar-val">29,88%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Bonte TIR</div><div class="bar-track"><div class="bar-fill" style="width:92%;background:#F6B40E"><span class="bar-val">27,55%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Comparables (put)</div><div class="bar-track"><div class="bar-fill" style="width:87%;background:#1D9E75"><span class="bar-val">~26%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Bonte yield to put</div><div class="bar-track"><div class="bar-fill" style="width:67%;background:#D85A30"><span class="bar-val">20,09%</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: Bull Market Brokers "Bonte 2030" (18-jun). Para alcanzar la TIR del Bonte (27,55%) haría falta inflación ~22,5% + tasa real 5-6%; bajo ese mismo escenario el BONCER 09/2028 rinde 29,88%, ganándole. La opción de rescate anticipado (put) no agrega valor: rinde 20,09% vs 26% de comparables.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">La caución a 1 día subió a <strong>21% TNA</strong> y la curva de tasa fija se aplanó. El Mecon buscará renovar <strong>$16,2 billones</strong> en la licitación del 26-jun. El Gobierno recompró <strong>$1,0 billón</strong> entre TMF27 y TMG27 antes de la última subasta (para que algún inversor use esos pesos en duales largos). En el canje del TZV26 se canjearon USD 2.805mn (VN) por USD 2.561mn de Lelink jul-26 + USD 318mn de TZVD8; quedan <strong>USD 2.050mn de TZV26</strong> en circulación.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">La tasa de corte y el % de rollover definen el <strong>costo de fondeo en pesos</strong> y el atractivo del carry. La recompra de cortos empuja la demanda hacia duales largos y descomprime presión sobre el spot. La <strong>curva fija aplanada</strong> indica que el mercado ya descuenta desinflación.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Preferir <strong>CER / linkers (BONCER 2028) sobre tasa fija nominal larga</strong>: el Bonte 2030 rinde 27,55% pero su reinvestment risk es alto y la yield-to-put (20,09%) es pobre frente a comparables (26%) — el linker le gana salvo desinflación muy brusca + tasa real alta. En pesos, <strong>duales largos a tasa de corte</strong> como vehículo de carry con piso TAMAR. Horizonte 6-12 meses.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Si la desinflación se acelera (IPC &lt;2% sostenido), la <strong>tasa fija nominal larga captura toda la compresión</strong> y le gana al CER; el propio Bonte se revaloriza. La fija gana si la inflación rompe a la baja de forma persistente, escenario que las consultoras ya empiezan a priceear.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Tasa de corte y % rollover (26-jun)</span>
+      <span class="wi">Caución 1 día</span>
+      <span class="wi">Aceptación de duales largos</span>
+      <span class="wi">Señales de emisión offshore</span>
+    </div>
+  </div>
+</div>
+
+<!-- IPC -->
+<div id="tab-ipc" class="panel">
+  <p class="lead">La desinflación se profundiza: el IPC de mayo fue 2,1% y la núcleo marcó 1,9%, mínimo desde julio 2025. Junio podría ser el primer mes en casi un año por debajo del 2%, lo que validaría la compresión de tasas y la mejora del salario real.</p>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">IPC mayo m/m</div><div class="metric-value up">2,1%</div><div class="metric-sub">abril: 2,6%</div><div class="metric-src">INDEC vía "Como la vemos"</div></div>
+    <div class="metric"><div class="metric-label">IPC marzo m/m</div><div class="metric-value neu">3,4%</div><div class="metric-sub">referencia</div><div class="metric-src">INDEC</div></div>
+    <div class="metric"><div class="metric-label">Núcleo mayo</div><div class="metric-value up">1,9%</div><div class="metric-sub">mínimo desde jul-25</div><div class="metric-src">INDEC vía "Como la vemos"</div></div>
+    <div class="metric"><div class="metric-label">IPIM mayo m/m</div><div class="metric-value up">2,5%</div><div class="metric-sub">34,5% a/a · desaceleró 2,7pp</div><div class="metric-src">SBS QuickNote 17-jun</div></div>
+    <div class="metric"><div class="metric-label">Proy. junio</div><div class="metric-value up">&lt; 2%</div><div class="metric-sub">posible, 1º en casi un año</div><div class="metric-src">"Como la vemos" 17-jun</div></div>
+    <div class="metric"><div class="metric-label">ICC junio</div><div class="metric-value up">+6,4% m/m</div><div class="metric-sub">2ª suba seguida</div><div class="metric-src">1816 19-jun</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">IPC mensual — desaceleración (% m/m)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">Marzo</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#D85A30"><span class="bar-val">3,4%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Abril</div><div class="bar-track"><div class="bar-fill" style="width:76%;background:#F6B40E"><span class="bar-val">2,6%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Mayo</div><div class="bar-track"><div class="bar-fill" style="width:62%;background:#378ADD"><span class="bar-val">2,1%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Núcleo mayo</div><div class="bar-track"><div class="bar-fill" style="width:56%;background:#1D9E75"><span class="bar-val">1,9%</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: INDEC vía "Como la vemos" (17-jun). La núcleo (excluye regulados y estacionales) en mínimos desde julio 2025 es la señal más relevante: la desinflación es subyacente, no solo de componentes volátiles.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El IPC de mayo fue <strong>2,1%</strong> (vs 2,6% en abril y 3,4% en marzo). La <strong>núcleo cayó a 1,9%</strong>, el menor nivel desde julio 2025. El IPIM mayorista de mayo desaceleró 2,7 p.p. hasta <strong>2,5% m/m (34,5% a/a)</strong>. Las consultoras ya anticipan que junio podría ser el primer mes en casi un año con inflación &lt;2%.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">La desinflación valida la <strong>compresión de tasas</strong> y mejora el salario real → consumo y actividad (el ICC subió 6,4% m/m en junio, 2ª suba seguida). Es el ancla de la narrativa electoral del Gobierno y el principal driver para sostener duration en pesos.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Si la baja se confirma, sesgo a <strong>tasa fija nominal / duales</strong> para capturar compresión; pero una núcleo de 1,9% todavía implica ~25% anualizado, así que los <strong>CER cortos siguen siendo cobertura razonable</strong>. Lectura mes a mes. Horizonte 3-6 meses.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Con el TC en máximos desde febrero, un <strong>salto cambiario podría reintroducir pass-through</strong> y frenar la baja del IPC en jun/jul. Los precios regulados pendientes también presionan. Perforar el 2% ya pasó en 2025 y resultó transitorio.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">IPC junio (INDEC / alta frecuencia)</span>
+      <span class="wi">Inflación núcleo</span>
+      <span class="wi">Pass-through del TC</span>
+      <span class="wi">ICG (lunes próximo)</span>
+    </div>
+  </div>
+</div>
+
+<!-- CREDITO -->
+<div id="tab-credito" class="panel">
+  <p class="lead">Ancla fiscal intacta: mayo cerró con superávit primario por 27º mes de 29 y J.P. Morgan proyecta presupuesto equilibrado para 2026. Con el programa financiero 2027 mayormente cubierto, no parece haber riesgo de impago para encarar el año electoral — la "antifragilidad" que describe JPM.</p>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Primario mayo</div><div class="metric-value up">$1,924 bn</div><div class="metric-sub">US$1,4bn · 27 de 29 meses</div><div class="metric-src">1816 / J.P. Morgan</div></div>
+    <div class="metric"><div class="metric-label">Primario YTD</div><div class="metric-value up">0,8% PBI</div><div class="metric-sub">L12M: 1,4% PBI</div><div class="metric-src">J.P. Morgan 18-jun</div></div>
+    <div class="metric"><div class="metric-label">Headline YTD</div><div class="metric-value up">+0,2% PBI</div><div class="metric-sub">estable vs mes previo</div><div class="metric-src">J.P. Morgan 18-jun</div></div>
+    <div class="metric"><div class="metric-label">Ingresos reales</div><div class="metric-value down">-4,1% oya</div><div class="metric-sub">por efecto base</div><div class="metric-src">J.P. Morgan 18-jun</div></div>
+    <div class="metric"><div class="metric-label">Gap financiero 2027</div><div class="metric-value neu">~US$9bn → 4bn</div><div class="metric-sub">con rollover de repos</div><div class="metric-src">J.P. Morgan 18-jun</div></div>
+    <div class="metric"><div class="metric-label">Privatizaciones</div><div class="metric-value neu">USD 3.179,6mn</div><div class="metric-sub">universo potencial</div><div class="metric-src">Especial 17-jun</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Brecha de financiamiento 2027 (USD bn, J.P. Morgan)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">Sin rollover repos</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#D85A30"><span class="bar-val">~9</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Con rollover repos</div><div class="bar-track"><div class="bar-fill" style="width:44%;background:#1D9E75"><span class="bar-val">~4</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: J.P. Morgan (18-jun), asume 100% de rollover de deuda en pesos. La brecha puede cerrarse con emisión en mercados internacionales (si el Gobierno valida los rendimientos vigentes) o financiamiento alternativo. 1816 estima vencimientos en USD de USD 30.700mn para 2026-27, con ~USD 13.100mn ya cubiertos.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El superávit primario de mayo fue de <strong>$1,924 bn</strong> (US$1,4bn; 27 de 29 meses de la era Milei; 0,7% del PBI acumulado en 5M). JPM: primario YTD <strong>0,8% del PBI</strong>, headline +0,2%, L12M primario 1,4%. Restan pagar <strong>USD 30.700mn</strong> en moneda extranjera (privados/FMI/C. París) en 2026-27; tres factores ya suman ~USD 13.100mn → falta cubrir ~USD 17.600mn. El universo de privatizaciones relevado suma <strong>USD 3.179,6mn</strong>.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">El ancla fiscal sostiene la credibilidad y la <strong>compresión del riesgo país</strong>. Con el programa 2027 casi cerrado, el riesgo de impago baja → soporte directo para los soberanos en USD. JPM proyecta presupuesto equilibrado en 2026 (primario 1,5% PBI alcanza para cubrir intereses).</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text"><strong>Constructivo para soberanos en USD</strong> pese a la compresión ya realizada; preferir el tramo que aún rinde &gt;9% si efectivamente emiten afuera. La venta de activos (privatizaciones, ~0,3% PBI de ingresos 2026 según JPM) es un colchón adicional. Horizonte 6-12 meses.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Los <strong>ingresos reales caen (-4,1% oya)</strong>: la consolidación depende de un rebote de actividad en 2H26 que no está garantizado, y el año electoral presiona el gasto social al alza (nuevos compromisos, financiamiento universitario). La estrategia fiscal tendría que migrar de recorte de gasto a mayor recaudación.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Ejecución de privatizaciones</span>
+      <span class="wi">Ingresos tributarios reales</span>
+      <span class="wi">Gasto social electoral</span>
+      <span class="wi">Operación garantizada BM-BID</span>
+    </div>
+  </div>
+</div>
+
+<!-- GLOBAL -->
+<div id="tab-global" class="panel">
+  <p class="lead">Debut hawkish de Kevin Warsh en la Fed: mantuvo la tasa por unanimidad pero las proyecciones ya no hablan de bajas sino de posibles subas. El acuerdo EEUU–Irán y la reapertura de Ormuz hundieron al Brent a ~USD 80. En lo local, S&amp;P subió a Argentina a B- y el riesgo país tocó mínimos de la era Milei.</p>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Fed funds</div><div class="metric-value neu">3,50–3,75%</div><div class="metric-sub">sin cambios, unánime</div><div class="metric-src">"Como la vemos" 17-jun</div></div>
+    <div class="metric"><div class="metric-label">Sesgo Fed</div><div class="metric-value down">Hawkish</div><div class="metric-sub">proyecta posibles subas</div><div class="metric-src">"Como la vemos" / SBS</div></div>
+    <div class="metric"><div class="metric-label">Brent</div><div class="metric-value down">~USD 80</div><div class="metric-sub">tras acuerdo EEUU–Irán</div><div class="metric-src">"Como la vemos" 17-jun</div></div>
+    <div class="metric"><div class="metric-label">Rating S&amp;P ARG</div><div class="metric-value up">B-</div><div class="metric-sub">desde CCC+ (tras Fitch)</div><div class="metric-src">"Como la vemos" 17-jun</div></div>
+    <div class="metric"><div class="metric-label">Riesgo país</div><div class="metric-value up">~438 pb</div><div class="metric-sub">mínimos era Milei</div><div class="metric-src">"Como la vemos" 17-jun</div></div>
+    <div class="metric"><div class="metric-label">Global 35 (TNA)</div><div class="metric-value up">&lt; 9%</div><div class="metric-sub">venía 9–10,5% por 8 meses</div><div class="metric-src">1816 19-jun</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Global 35 (TNA) — compresión tras el upgrade</div>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">Máx. 8 meses</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#D85A30"><span class="bar-val">10,5%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Mín. 8 meses</div><div class="bar-track"><div class="bar-fill" style="width:86%;background:#F6B40E"><span class="bar-val">9,0%</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">Actual</div><div class="bar-track"><div class="bar-fill" style="width:82%;background:#1D9E75"><span class="bar-val">&lt; 9,0%</span></div></div></div>
+    </div>
+    <div class="chart-src">Fuente: 1816 (19-jun). Comparables B- (Angola, El Salvador, Pakistán, Ecuador, Ghana) rinden menos que el Global 35 a plazos similares → margen de compresión adicional que el Gobierno podría usar para una emisión offshore.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">En su primera reunión, <strong>Kevin Warsh mantuvo la tasa en 3,50%-3,75%</strong> por unanimidad, pero las proyecciones ya no hablan de bajas sino de posibles subas (inflación persistente, PCE &gt;2%). El acuerdo <strong>EEUU–Irán</strong> y la reapertura gradual de Ormuz hundieron al <strong>Brent a ~USD 80</strong>. En lo local, <strong>S&amp;P subió a Argentina de CCC+ a B-</strong> (tras Fitch); el riesgo país cayó a ~438 pb, mínimos de la era Milei.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">Una <strong>Fed hawkish</strong> = dólar fuerte, tasas largas altas y presión sobre EM y renta variable (encarece financiamiento y baja el valor presente de las ganancias). El Brent a USD 80 alivia la inflación global. El <strong>upgrade de S&amp;P abre la ventana</strong> para la emisión offshore argentina.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">La Fed hawkish favorece <strong>calidad/value sobre duración larga</strong> en equity (la propia "Como la vemos" sugiere META, MSFT, MA, PG). En ARG, aprovechar la ventana del upgrade: los comparables B- rinden menos que el Global 35 → <strong>margen de compresión</strong>. Horizonte táctico 1-3 meses.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Si la Fed efectivamente sube, el <strong>costo de emitir afuera para ARG aumenta</strong> y la compresión se frena. Un rebote del crudo (riesgo Ormuz si el acuerdo se traba) reavivaría la inflación global y devolvería a la Fed al modo restrictivo.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Próxima Fed / dato PCE</span>
+      <span class="wi">Estabilidad de Ormuz y Brent</span>
+      <span class="wi">Spreads EM</span>
+      <span class="wi">Emisión offshore ARG</span>
+    </div>
+  </div>
+</div>
+
+<!-- RADAR -->
+<div id="tab-radar" class="panel">
+  <p class="lead">La desinflación que se profundiza y el upgrade de S&amp;P chocan con un dólar en máximos desde febrero y reservas netas reales todavía flacas. El telón de fondo es el armado del programa financiero 2027, con la Fed virando hawkish.</p>
+
+  <div class="signal-grid">
+    <div class="sig sig-up">
+      <div class="sig-title">Señales alcistas</div>
+      <div class="sig-item">Desinflación: IPC 2,1% · núcleo 1,9% (mín. desde jul-25)</div>
+      <div class="sig-item">Superávit comercial récord (USD 3.504mn)</div>
+      <div class="sig-item">Superávit primario 27 de 29 meses Milei</div>
+      <div class="sig-item">Upgrade S&amp;P a B- · riesgo país ~438 pb</div>
+      <div class="sig-item">ICC +6,4% m/m (2ª suba seguida)</div>
+      <div class="sig-item">Financiamiento 2027 mayormente cubierto</div>
+    </div>
+    <div class="sig sig-dn">
+      <div class="sig-title">Señales bajistas</div>
+      <div class="sig-item">TC nominal en máximos desde febrero</div>
+      <div class="sig-item">Reservas netas reales ~USD 3,7 bn</div>
+      <div class="sig-item">Fed hawkish (debut de Warsh)</div>
+      <div class="sig-item">Ingresos fiscales reales cayendo (-4,1% oya)</div>
+      <div class="sig-item">Incertidumbre electoral 2027</div>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Catalizadores — próximas 4 semanas</div>
+    <div class="watch-items">
+      <span class="wi">Licitación 26-jun ($16,2 bn)</span>
+      <span class="wi">Fijación A3500 del TZV26 (jueves)</span>
+      <span class="wi">Posible emisión offshore</span>
+      <span class="wi">IPC junio (¿&lt;2%?)</span>
+      <span class="wi">Operación garantizada BM-BID</span>
+      <span class="wi">Renovación repos USD 6.000mn</span>
+      <span class="wi">Próxima Fed / PCE</span>
+      <span class="wi">ICG (lunes próximo)</span>
+    </div>
+    <div class="chart-src">El armado del programa financiero 2027 ("antifragilidad" según JPM) es el hilo conductor: el Gobierno prepara el año electoral con los menores riesgos posibles, lo que hace probable una emisión offshore en lo que resta del año.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lp">Posiciones core sugeridas</div>
+  </div>
+  <div class="pos-grid">
+    <div class="pos-row"><span class="pos-instr">CER cortos (BONCER 2028)</span><span class="pos-dir pos-long">Long</span><span class="pos-desc">Cobertura ante núcleo aún ~25% anualizado; le gana al Bonte salvo desinflación brusca.</span></div>
+    <div class="pos-row"><span class="pos-instr">Duales largos</span><span class="pos-dir pos-long">Long</span><span class="pos-desc">Carry con piso TAMAR a tasa de corte; vehículo que empuja el Tesoro.</span></div>
+    <div class="pos-row"><span class="pos-instr">Soberanos USD (&gt;9%)</span><span class="pos-dir pos-long">Long</span><span class="pos-desc">Ventana de upgrade S&amp;P + margen vs comparables B-. Selectivo.</span></div>
+    <div class="pos-row"><span class="pos-instr">Dollar-linked corto</span><span class="pos-dir pos-neu">Hedge</span><span class="pos-desc">Cobertura cambiaria barata con TC en máximos; táctico hacia 2027.</span></div>
+    <div class="pos-row"><span class="pos-instr">Bonte 2030</span><span class="pos-dir pos-short">Evitar</span><span class="pos-desc">Reinvestment risk alto y put pobre (20,09%); el linker rinde más.</span></div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Resultado licitación 26-jun</span>
+      <span class="wi">Fijación A3500 TZV26</span>
+      <span class="wi">Fed: tono y PCE</span>
+      <span class="wi">IPC junio alta frecuencia</span>
+      <span class="wi">Señales emisión offshore</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Fuentes (semana al 19-jun-2026): Semanal 1816 "Preparándonos para 2027" (19-jun) · J.P. Morgan "May primary surplus reinforces the fiscal anchor" (18-jun) · Bull Market Brokers "Bonte 2030" (18-jun) · "Como la vemos" (17-jun) · Informe Especial Privatizaciones (17-jun) · SBS QuickNotes (notas 17–19 jun). Datos oficiales: INDEC (IPC), BCRA (reservas). El debut de Kevin Warsh en la Fed, el acuerdo EEUU–Irán y el upgrade de S&amp;P son eventos posteriores al corte de conocimiento del modelo, reportados según los informes y mails citados — no verificados de forma independiente.<br><br>
+  Estructura analítica: Leer · Conectar · Defender. Todas las posiciones son ilustrativas, con su horizonte temporal explícito.<br><br>
+  <strong>Solo con fines informativos. No constituye asesoramiento de inversión.</strong>
+</footer>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
