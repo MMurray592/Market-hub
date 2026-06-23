@@ -6,25 +6,24 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Equity Risk Report — Hub</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Digests · Economía & Mercados</title>
 <style>
 :root {
-  --bg:        #08090d;
-  --bg2:       #0f1117;
-  --bg3:       #161820;
-  --bg4:       #1c1e28;
-  --border:    rgba(255,255,255,0.07);
-  --border2:   rgba(255,255,255,0.12);
-  --text:      #e8eaf0;
-  --muted:     #7a7f96;
-  --accent:    #74ACDF;
-  --green:     #F6B40E;
-  --amber:     #F6B40E;
-  --blue:      #74ACDF;
-  --orange:    #F97316;
-  --mono:      'JetBrains Mono', monospace;
-  --sans:      'DM Sans', sans-serif;
+  --bg:        #0f0f0f;
+  --bg2:       #1a1a1a;
+  --bg3:       #242424;
+  --bg4:       #2e2e2e;
+  --border:    #2e2e2e;
+  --border2:   #3a3a3a;
+  --text:      #e8e8e8;
+  --muted:     #a0a0a0;
+  --accent:    #4fa3e8;
+  --green:     #3dbf8a;
+  --amber:     #e8a83d;
+  --blue:      #4fa3e8;
+  --orange:    #e86f51;
+  --mono:      ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --sans:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,7 +38,7 @@ body {
 
 /* ── Top bar ── */
 .topbar {
-  background: linear-gradient(180deg, #0d0e18 0%, #0a0b14 100%);
+  background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%);
   border-bottom: 1px solid var(--border);
   padding: 16px 28px;
   display: flex;
@@ -74,8 +73,8 @@ body {
   font-size: 11px;
   padding: 4px 12px;
   border-radius: 20px;
-  background: rgba(116,172,223,0.12);
-  border: 1px solid rgba(116,172,223,0.25);
+  background: rgba(79,163,232,0.12);
+  border: 1px solid rgba(79,163,232,0.25);
   color: var(--accent);
 }
 
@@ -94,9 +93,9 @@ body {
   gap: 6px;
   transition: all 0.15s;
 }
-.refresh-btn:hover { color: var(--text); border-color: rgba(116,172,223,0.4); }
+.refresh-btn:hover { color: var(--text); border-color: rgba(79,163,232,0.4); }
 .refresh-btn.spinning .refresh-icon { display: inline-block; animation: spin 0.7s linear infinite; }
-.refresh-btn.ok  { color: var(--green); border-color: rgba(246,180,14,0.3); }
+.refresh-btn.ok  { color: var(--green); border-color: rgba(232,168,61,0.3); }
 .refresh-btn.err { color: #f04070;      border-color: rgba(240,64,112,0.3); }
 @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -127,10 +126,10 @@ body {
   transition: all 0.15s;
 }
 .filter-btn:hover { background: var(--bg3); color: var(--text); }
-.filter-btn.active.all      { background: rgba(116,172,223,0.15); border-color: rgba(116,172,223,0.35); color: var(--accent); }
-.filter-btn.active.semanal  { background: rgba(246,180,14,0.12);  border-color: rgba(246,180,14,0.3);  color: var(--green); }
-.filter-btn.active.diario   { background: rgba(116,172,223,0.12); border-color: rgba(116,172,223,0.3); color: var(--blue); }
-.filter-btn.active.premarket{ background: rgba(249,115,22,0.12);  border-color: rgba(249,115,22,0.3);  color: var(--orange); }
+.filter-btn.active.all      { background: rgba(79,163,232,0.15); border-color: rgba(79,163,232,0.35); color: var(--accent); }
+.filter-btn.active.semanal  { background: rgba(232,168,61,0.12);  border-color: rgba(232,168,61,0.3);  color: var(--green); }
+.filter-btn.active.diario   { background: rgba(79,163,232,0.12); border-color: rgba(79,163,232,0.3); color: var(--blue); }
+.filter-btn.active.premarket{ background: rgba(232,111,81,0.12);  border-color: rgba(232,111,81,0.3);  color: var(--orange); }
 
 /* ── Section header ── */
 .section-hdr {
@@ -198,9 +197,9 @@ body {
   padding: 4px 10px;
   border-radius: 6px;
 }
-.badge-semanal   { background: rgba(246,180,14,0.1);  color: var(--green);  border: 1px solid rgba(246,180,14,0.2); }
-.badge-diario    { background: rgba(116,172,223,0.1); color: var(--blue);   border: 1px solid rgba(116,172,223,0.2); }
-.badge-premarket { background: rgba(249,115,22,0.1);  color: var(--orange); border: 1px solid rgba(249,115,22,0.2); }
+.badge-semanal   { background: rgba(232,168,61,0.1);  color: var(--green);  border: 1px solid rgba(232,168,61,0.2); }
+.badge-diario    { background: rgba(79,163,232,0.1); color: var(--blue);   border: 1px solid rgba(79,163,232,0.2); }
+.badge-premarket { background: rgba(232,111,81,0.1);  color: var(--orange); border: 1px solid rgba(232,111,81,0.2); }
 
 .card-date {
   font-family: var(--mono);
@@ -365,7 +364,7 @@ body {
 .modal-iframe {
   flex: 1;
   border: none;
-  background: white;
+  background: var(--bg);
 }
 
 /* ── Empty section ── */
@@ -376,8 +375,8 @@ body {
 
 <div class="topbar">
   <div class="topbar-left">
-    <div class="topbar-tag">Equity Risk Report</div>
-    <div class="topbar-title">Hub de Reportes</div>
+    <div class="topbar-tag">Economía &amp; Mercados</div>
+    <div class="topbar-title">Hub de Digests</div>
   </div>
   <div class="topbar-right">
     <button class="refresh-btn" id="refresh-btn" onclick="refreshReports()" title="Escanear carpetas y actualizar">
@@ -442,10 +441,10 @@ const REPORTS = [
   {
   "type": "semanal",
   "title": "Digest Semanal — Economía & Mercados",
-  "subtitle": "Semana 11 – 17 jun 2026",
-  "date": "2026-06-17",
-  "dateDisplay": "17 de junio 2026",
-  "snippet": "El BCRA sigue comprando todos los días dentro de la banda. Las compras de junio se acercan a USD 1.000mn y el respaldo del Banco Mundial (USD 2.000mn en garantías) refuerza la pata de reservas. El Tesoro arma un canje para despejar el vencimiento dollar-linked de fin de mes...",
+  "subtitle": "Semana 8 – 12 jun 2026",
+  "date": "2026-06-12",
+  "dateDisplay": "12 de junio 2026",
+  "snippet": "Gran semana para los activos de riesgo locales. El BCRA siguió comprando dentro de la banda y el peso se apreció: el mayorista cerró el viernes en $1.428 (-$4,50) y la demanda de cobertura aflojó, aunque las tasas implícitas cortas subieron...",
   "tags": [
     "Dólar & BCRA",
     "Tasas",
@@ -454,7 +453,7 @@ const REPORTS = [
     "Global",
     "Radar"
   ],
-  "path": "semanales/digest-semanal-2026-06-17.html"
+  "path": "semanales/digest-semanal-2026-06-12.html"
   },
   {
   "type": "semanal",

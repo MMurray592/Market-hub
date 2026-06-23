@@ -22,22 +22,26 @@ Documento de referencia para reciclar el flujo del digest semanal y adaptarlo a 
 2. **Extraer PDFs** con `markitdown` (fallback `pdftotext`). NO usar `Read` directo — output va a `/tmp/digest-pdfs/*.md`. Luego `grep -c` para conteo de keywords y `grep -A 3 -B 1` para extraer contexto puntual.
 3. **Revisar mails brokers (snippet-first):** primero solo subject + snippet. Abrir thread con `get_thread` SOLO si contiene triggers: licitación, IPC, default, Fed, FOMC, halt, calificación, etc. Máximo 8 threads abiertos por run.
 4. **Verificar dato oficial:** máximo 1 fetch oficial por run (BCRA IMD / INDEC / MECON) y solo si hay contradicción entre fuentes. NO hacer web search general.
-5. **Armar análisis por tab** con estructura Leer-Conectar-Defender:
-   - Qué cambió (azul `#74ACDF`)
-   - Por qué le importa al mercado (amarillo `#F6B40E`)
-   - Posición analista (gris `#c0c0c0`)
-   - Contraargumento (rojo `#f87171`)
-6. **Generar HTML standalone** dark mode con 6 tabs:
+5. **Armar análisis por tab** con estructura Leer-Conectar-Defender. Semántica de color FIJA (paleta apunte UADE, ver PASO 6):
+   - Qué cambió → celeste `#4fc3f7`
+   - Por qué le importa al mercado → amarillo `#fbbf24`
+   - Posición analista → verde `#34d399`
+   - Contraargumento → rojo `#f87171`
+6. **Generar HTML standalone en formato dark "apunte UADE" — LAYOUT RICO** (el de métricas + gráficos + cards + señales + posiciones; coherente con el hub y los apuntes). 6 tabs:
    - Dólar & BCRA · Tasas · IPC · Crédito · Global · Radar
-   - Métricas (4 cards) + gráfico de barras horizontales + 4 cards de análisis + watch pills
-   - Radar: señales alcistas/bajistas + posiciones core + catalizadores 4 semanas
+   - **Plantilla/referencia canónica:** `_plantilla-digest-dark.html` (raíz del repo, = último digest) y `Desktop/Digests/digest-semanal-2026-06-20.html`. Lo más simple: copiar el esqueleto y reemplazar contenido.
+   - Variables `--color-*` con valores UADE: body `#0f1115`, `--color-background-primary:#1c212c`, `--color-background-secondary:#232a38`, texto `#e8eaf0/#9aa3b5/#6b7384`, bordes `#2c3444/#3a4458`. Acentos: celeste `#4fc3f7`, amarillo `#fbbf24`, verde `#34d399`, rojo `#f87171`. Fuente `-apple-system`.
+   - `.header` + tabs tipo **píldora** (activa = fondo celeste + texto `#0f1115`).
+   - Por panel: `.lead` · `.flag` (opcional) · `.metrics-grid` (`.metric`) · `.chart-box` (`.bar-chart`) · cards `.card`/`.card-label` con semántica FIJA: `.lc` celeste=Qué cambió, `.lw` amarillo=Por qué importa, `.lp` verde=Posición, `.la` rojo=Contraargumento · `.watch` con chips `.wi`.
+   - Radar: `.signal-grid` (`.sig-up`/`.sig-dn`) + `.pos-grid` (`.pos-row` con `.pos-long`/`.pos-short`/`.pos-neu`).
+   - ⛔ Prohibido el formato light viejo (fondo blanco `#FFFFFF`, header celeste `#75AADB` sólido). Tampoco el layout simple de "callouts": usar SIEMPRE el layout rico.
 7. **Guardar HTML** en: `/Users/mateomurray/Desktop/Digests/Market Analysis/semanales/`
    Nombre obligatorio: `digest-semanal-YYYY-MM-DD.html` (YYYY-MM-DD = viernes de cierre de la semana). El hub `actualizar_hub.py` filtra por `fname.startswith('digest-semanal-')`.
 
 ### Output: integración con el hub
 
 - Hub local: `/Users/mateomurray/Desktop/Digests/Market Analysis/index.html`
-- Hub online: https://mmmarkethub.netlify.app
+- Hub online: https://mmurray592.github.io/Market-hub/ (GitHub Pages; migrado de Netlify el 2026-06-19)
 - Script: `actualizar_hub.py` lee `semanales/`, `digests-diarios/html/`, `Pre-Markets/` y arma el índice.
 - Deploy: `actualizar_y_pushear.sh` empuja a Netlify (~30 seg).
 
@@ -100,6 +104,7 @@ Identificados con Claude Code, pendientes de aplicar:
 
 ## Historial
 
+- **2026-06-23**: convergencia de formato → **dark "apunte UADE", layout rico**. (a) Se restiló el hub (`index.html`) a la paleta/tipografía UADE. (b) Se re-skinearon los 6 digests de `semanales/` (que ya eran dark carbón con acento celeste/amarillo bandera) a tokens UADE vía override CSS antes de `</style>`. (c) Plantilla canónica `_plantilla-digest-dark.html` = layout rico (métricas + gráficos + cards `.lc/.lw/.lp/.la` + señales + posiciones) teñido UADE. (d) Se reescribió el PASO de generación del widget en `SKILL.md` para que los próximos digests usen ese layout rico (antes especificaba el light viejo). El `last_hash` del deploy había quedado adelantado sin commit (estado varado); se forzó el deploy.
 - **2026-05-28**: primer run manual exitoso. Output: `digest-semanal-2026-05-28.html` (semana 22–28 may 2026). Flujo nuevo aplicado: markitdown + mails snippet-first + sin web search. Reducción consumo ~60% vs. versión original.
 - **2026-05-28**: hub publicado en Netlify (https://mmmarkethub.netlify.app).
 - **2026-05-28**: Notion descartado como output (no replica el HTML interactivo).
