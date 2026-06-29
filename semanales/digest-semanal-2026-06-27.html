@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly — Economía & Mercados — 27 de junio 2026</title>
+<style>
+:root {
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #aaa;
+  --color-text-tertiary: #555;
+  --color-background-primary: #141414;
+  --color-background-secondary: #1a1a1a;
+  --color-border-tertiary: #2a2a2a;
+  --color-border-secondary: #333;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+html, body { background: #0f0f0f !important; color: var(--color-text-primary); }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-sans);padding:1.25rem;max-width:920px;margin:0 auto;line-height:1.6}
+
+.header{padding-bottom:1rem;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:1.5rem}
+.header-top{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+h1{font-size:20px;font-weight:500}
+.badge{font-size:11px;padding:3px 10px;border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.meta{font-size:12px;color:var(--color-text-tertiary);margin-top:3px}
+.sources{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+.src{font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+.src.official{border-color:#1D9E75;color:#4ade80}
+
+.tabs{display:flex;gap:4px;margin-bottom:1.5rem;flex-wrap:wrap}
+.tab{font-size:13px;padding:7px 14px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);cursor:pointer;background:transparent;color:var(--color-text-secondary);transition:all .15s}
+.tab.active{background:#0d2233;border-color:#3a7aac;color:#74ACDF}
+.panel{display:none}
+.panel.active{display:block}
+
+.lead{font-size:13px;color:var(--color-text-secondary);margin-bottom:1.25rem;line-height:1.6}
+
+.flag{background:rgba(246,180,14,.10);border:0.5px solid #F6B40E;border-radius:var(--border-radius-md);padding:.7rem 1rem;font-size:12.5px;line-height:1.55;color:#F6B40E;margin-bottom:1.25rem}
+
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1.25rem}
+.metric{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.85rem 1rem}
+.metric-label{font-size:11px;color:var(--color-text-secondary);margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px}
+.metric-value{font-size:21px;font-weight:500}
+.metric-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:2px}
+.metric-src{font-size:10px;color:#F6B40E;margin-top:4px}
+.up{color:#4ade80}.down{color:#f87171}.neu{color:#74ACDF}
+
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.1rem;margin-bottom:.75rem}
+.card-label{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:.4rem}
+.lc{color:#74ACDF}.lw{color:#F6B40E}.lp{color:#c0c0c0}.la{color:#f87171}
+.card-text{font-size:14px;line-height:1.65}
+.card-text strong{font-weight:500;color:#f0f0f0}
+
+.watch{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.7rem 1rem;margin-top:.75rem}
+.watch-title{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.5px}
+.watch-items{display:flex;flex-wrap:wrap;gap:6px}
+.wi{font-size:11px;padding:3px 8px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+
+.signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.25rem}
+@media(max-width:640px){.signal-grid{grid-template-columns:1fr}}
+.sig{border-radius:var(--border-radius-lg);padding:.85rem 1rem;border:0.5px solid var(--color-border-tertiary)}
+.sig-up{border-left:3px solid #1D9E75}
+.sig-dn{border-left:3px solid #D85A30}
+.sig-title{font-size:12px;font-weight:600;margin-bottom:.5rem;color:#f0f0f0;text-transform:uppercase;letter-spacing:.5px}
+.sig-item{font-size:12.5px;color:var(--color-text-secondary);margin-bottom:.3rem;line-height:1.5}
+.sig-item::before{content:"→ ";color:var(--color-text-tertiary)}
+
+.cat-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.85rem 1rem;margin-bottom:1.25rem}
+.cat-title{font-size:11px;font-weight:600;color:var(--color-text-secondary);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.5px}
+
+.pos-grid{display:grid;gap:7px;margin-bottom:1rem}
+.pos-row{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);font-size:13px;flex-wrap:wrap}
+.pos-instr{font-weight:500;color:#f0f0f0;min-width:120px}
+.pos-dir{font-size:10.5px;padding:3px 9px;border-radius:10px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+.pos-long{background:#0d2218;color:#4ade80;border:1px solid #1D9E75}
+.pos-short{background:#2a0d0d;color:#f87171;border:1px solid #D85A30}
+.pos-neu{background:#1a1a1a;color:#74ACDF;border:1px solid #3a7aac}
+.pos-desc{color:#aaa;flex:1;font-size:12px;min-width:200px}
+
+footer{margin-top:2rem;padding-top:1.25rem;border-top:0.5px solid var(--color-border-tertiary);font-size:12px;color:var(--color-text-tertiary);line-height:1.6}
+footer strong{color:var(--color-text-secondary)}
+
+/* ===== UADE-skin: convergencia formato apunte UADE (auto) ===== */
+:root{
+  --color-text-primary:#e8eaf0;--color-text-secondary:#9aa3b5;--color-text-tertiary:#6b7384;
+  --color-background-primary:#1c212c;--color-background-secondary:#232a38;
+  --color-border-tertiary:#2c3444;--color-border-secondary:#3a4458;
+}
+html,body{background:#0f1115!important;}
+.tab{border-radius:20px;}
+.tab.active{background:#4fc3f7;border-color:#4fc3f7;color:#0f1115;font-weight:700;}
+.src.official{border-color:#34d399;color:#34d399;}
+.flag{background:rgba(251,191,36,.10);border-color:#fbbf24;color:#fbbf24;}
+.metric-src{color:#fbbf24;}
+.up{color:#34d399;}.down{color:#f87171;}.neu{color:#4fc3f7;}
+.lc{color:#4fc3f7;}.lw{color:#fbbf24;}.lp{color:#34d399;}.la{color:#f87171;}
+.sig-up{border-left-color:#34d399;}.sig-dn{border-left-color:#f87171;}
+.pos-long{background:rgba(52,211,153,.12);color:#34d399;border-color:#34d399;}
+.pos-short{background:rgba(248,113,113,.10);color:#f87171;border-color:#f87171;}
+.pos-neu{background:rgba(79,195,247,.10);color:#4fc3f7;border-color:#4fc3f7;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <h1>Weekly — Economía &amp; Mercados</h1>
+    <span class="badge">23 – 27 jun 2026</span>
+  </div>
+  <div class="meta">Argentina &amp; Mercados Globales · cierre 26-jun · Datos PDFs + mails brokers</div>
+  <div class="sources">
+    <span class="src">Semanal 1816 "Leve viento de frente" (25-jun)</span>
+    <span class="src">Comafi Weekly #92 (26-jun)</span>
+    <span class="src">"Qué estamos viendo #43" (jun)</span>
+    <span class="src">Galicia Informe Mensual (24-jun)</span>
+    <span class="src">WS Global CIO "Warsh" (26-jun)</span>
+    <span class="src">PPI Cierre Mercados (26-jun)</span>
+    <span class="src">SBS Comentario Diario (26-jun)</span>
+    <span class="src official">MECON / Finanzas</span>
+    <span class="src official">BCRA</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="show('dolar',this)">Dólar &amp; BCRA</button>
+  <button class="tab" onclick="show('tasas',this)">Tasas</button>
+  <button class="tab" onclick="show('ipc',this)">IPC &amp; Actividad</button>
+  <button class="tab" onclick="show('credito',this)">Crédito</button>
+  <button class="tab" onclick="show('global',this)">Global</button>
+  <button class="tab" onclick="show('radar',this)">Radar</button>
+</div>
+
+<!-- ============ DÓLAR ============ -->
+<div id="tab-dolar" class="panel active">
+  <p class="lead">El dólar oficial trepó a máximos nominales ($1.477) con viento de frente externo —commodities abajo, dólar global arriba— y el Gobierno, que desistió del techo rígido, dejó crecer las señales de oferta oficial de cobertura. El BCRA siguió comprando en junio (US$1.346M), pero el salto del interés abierto en futuros y el volumen récord de dólar-linked delatan intervención para amortiguar el movimiento antes del cierre semestral.</p>
+
+  <div class="flag">El USDARS pasó de la zona de 1.400 a 1.480 en pocas semanas, todavía por debajo del techo de la banda. La calma del spot del viernes ($1.477, sin cambios vs jueves) convivió con +US$631M de interés abierto en futuros en la semana — señal de que el techo lo está sosteniendo el Estado, no el mercado.</div>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Dólar oficial spot</div><div class="metric-value down">$1.477</div><div class="metric-sub">+1,1% semanal · máx. nominal</div><div class="metric-src">PPI 26-jun</div></div>
+    <div class="metric"><div class="metric-label">Compras BCRA junio</div><div class="metric-value up">US$1.346M</div><div class="metric-sub">US$240M en la semana</div><div class="metric-src">PPI 26-jun</div></div>
+    <div class="metric"><div class="metric-label">OI futuros (semana)</div><div class="metric-value down">+US$631M</div><div class="metric-sub">+US$153M solo el viernes</div><div class="metric-src">PPI 26-jun</div></div>
+    <div class="metric"><div class="metric-label">Short BCRA futuros (may)</div><div class="metric-value neu">US$193M</div><div class="metric-sub">posición vendida acotada</div><div class="metric-src">1816 25-jun</div></div>
+    <div class="metric"><div class="metric-label">Petróleo desde mayo</div><div class="metric-value down">−28,4%</div><div class="metric-sub">soja −8,0% · viento de frente</div><div class="metric-src">1816 25-jun</div></div>
+    <div class="metric"><div class="metric-label">DXY / USDBRL desde mayo</div><div class="metric-value down">+3,4% / +6,2%</div><div class="metric-sub">dólar global más fuerte</div><div class="metric-src">1816 25-jun</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El dólar oficial cerró en <strong>$1.477 (+1,1% semanal)</strong>, en máximos nominales, tras pasar de la zona de 1.400 a 1.480. El BCRA <strong>compró US$50M en la rueda del viernes</strong>, US$240M en la semana y <strong>US$1.346M en junio</strong>. Pero la calma del spot convivió con <strong>+US$631M de interés abierto en futuros</strong> y un volumen récord en dólar-linked: el Estado está poniendo la oferta de cobertura.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">El Gobierno desistió del techo rígido pero no dejó de amortiguar el movimiento. El TC se tensiona con un <strong>viento de frente externo claro</strong> (petróleo −28,4% y soja −8,0% desde mayo; DXY +3,4% y USDBRL +6,2%). Que el spot frene por intervención en futuros y no por flujo genuino indica que la presión sigue latente de cara al cierre semestral.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Con el TC en máximos nominales y la cobertura todavía relativamente barata, mantengo <strong>dólar-linked / futuros como hedge táctico</strong> hacia ruido electoral 2027. El carry en pesos sigue vivo pero conviene acortar duration. Horizonte 1–3 meses; el catalizador adverso es un cierre semestral con dolarización de carteras.</div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">El <strong>superávit energético LTM ya superó los US$10.000M</strong> (máximos históricos) y la proyección de energía y minería suma ~US$40.000M anuales adicionales hacia adelante. Si entra la liquidación gruesa demorada y se concreta financiamiento externo, las netas mejoran y el dólar puede volver a comprimir. El hedge gana solo si aparece ruido político.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Distancia al techo de la banda</span>
+      <span class="wi">Interés abierto en futuros</span>
+      <span class="wi">Liquidación agro demorada</span>
+      <span class="wi">Cierre semestral / dolarización</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TASAS ============ -->
+<div id="tab-tasas" class="panel">
+  <p class="lead">La licitación del 26-jun dejó la foto del trade-off: el Tesoro convalidó un rollover de 81,26% —no renovó todo— y tasas por encima del secundario para extender duration. En paralelo, la liquidez en pesos se achicó: la caución a un día se desacopló del piso de 20% y operó por encima de 23%, con picos de 30%.</p>
+
+  <div class="flag">Rollover de 81,26%: el Tesoro adjudicó $13,22B sobre vencimientos de $16,3B, dejando ~$3,1B de pesos en el sistema. Convalidó tasas por encima del mercado secundario en casi todo el menú — señal de que prioriza extender plazos aún a costa de pagar más.</div>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Rollover licitación</div><div class="metric-value down">81,26%</div><div class="metric-sub">adjudicó $13,22B / vtos $16,3B</div><div class="metric-src">PPI 26-jun (MECON)</div></div>
+    <div class="metric"><div class="metric-label">Ofertas recibidas</div><div class="metric-value neu">$14,93B</div><div class="metric-sub">demanda &lt; vencimientos</div><div class="metric-src">PPI 26-jun</div></div>
+    <div class="metric"><div class="metric-label">LECAP S13N6 (nov-26)</div><div class="metric-value neu">2,10% TEM</div><div class="metric-sub">28,32% TIR</div><div class="metric-src">PPI 26-jun</div></div>
+    <div class="metric"><div class="metric-label">BONTAMAR TML27</div><div class="metric-value neu">TAMAR +5,40%</div><div class="metric-sub">nuevo a jul-27</div><div class="metric-src">PPI 26-jun</div></div>
+    <div class="metric"><div class="metric-label">Caución 1 día</div><div class="metric-value down">&gt;23%</div><div class="metric-sub">picos 30% · piso repo 20%</div><div class="metric-src">Comafi 26-jun</div></div>
+    <div class="metric"><div class="metric-label">Repo BCRA (miér.)</div><div class="metric-value neu">25,56% TNA</div><div class="metric-sub">inyectó $0,2B</div><div class="metric-src">Comafi 26-jun</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El Tesoro enfrentó vencimientos por <strong>$16,3B</strong> y adjudicó <strong>$13,22B (rollover 81,26%)</strong>, convalidando <strong>tasas por encima del secundario</strong> a lo largo de casi todo el menú (LECAP S13N6 a 2,10% TEM / 28,32% TIR; BONTAMAR a TAMAR+5,40%). En el money market, la <strong>caución se desacopló del piso de 20%</strong> y operó por encima de 23%, con picos de 30%.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">La liquidez del sistema es <strong>cada vez menos holgada</strong>. Comafi lo lee como respuesta del BCRA para elevar el costo del dinero si hace falta. Tasas en pesos más altas presionan el carry y encarecen el crédito, pero también ayudan a sostener la demanda de pesos cuando el dólar tensiona.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">El nuevo <strong>BONTAMAR TML27 (TAMAR+5,40%)</strong> luce atractivo a tasas actuales si la TAMAR se sostiene alta; complementar con <strong>LECAP corta</strong> para carry táctico aprovechando la caución elevada. Acortar duration en CER salvo convicción inflacionaria. Horizonte 1–3 meses.</div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Si la <strong>menor liquidez es estructural</strong> y no un ajuste puntual, las tasas reales altas se mantienen, el carry se encarece de fondear y la actividad —que recién intenta reactivar— se resiente. Un rollover por debajo de 100% repetido obliga al Tesoro a seguir pagando premio, comprimiendo el atractivo de las nuevas colocaciones.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Caución / repo BCRA</span>
+      <span class="wi">Próxima licitación Tesoro</span>
+      <span class="wi">Índice TAMAR</span>
+      <span class="wi">Depósitos del Tesoro en BCRA</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ IPC & ACTIVIDAD ============ -->
+<div id="tab-ipc" class="panel">
+  <p class="lead">El dato fresco de la semana fue de actividad, no de precios: el PBI del 1T26 sorprendió al alza (+0,7% t/t), por encima del EMAE. La recuperación es real pero desigual —energía traccionando, industria y construcción rezagadas— y el mercado ya mira la velocidad de la reactivación como condicionante de la continuidad del programa hacia 2027.</p>
+
+  <div class="flag">No hubo IPC nuevo esta semana (el próximo dato de inflación oficial de INDEC se conoce en julio). Los números de inflación citados acá son de contexto de los informes (referencia abril) — verificar contra el IPC de junio cuando publique INDEC.</div>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">PBI 1T26</div><div class="metric-value up">+0,7% t/t</div><div class="metric-sub">sorprendió al alza</div><div class="metric-src">Galicia 24-jun (INDEC)</div></div>
+    <div class="metric"><div class="metric-label">EMAE (ref.)</div><div class="metric-value neu">+0,3% t/t</div><div class="metric-sub">PBI superó al EMAE</div><div class="metric-src">Galicia 24-jun</div></div>
+    <div class="metric"><div class="metric-label">Salarios abril (m/m)</div><div class="metric-value up">+3,7%</div><div class="metric-sub">vs inflación 2,6% → real +</div><div class="metric-src">Galicia 24-jun (INDEC)</div></div>
+    <div class="metric"><div class="metric-label">Confianza Gobierno (ICG)</div><div class="metric-value up">41,4%</div><div class="metric-sub">recuperó en junio</div><div class="metric-src">1816 25-jun (UTDT)</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El <strong>PBI del 1T26 sorprendió con +0,7% t/t</strong>, superando el +0,3% del EMAE — la actividad muestra tracción. Por el lado de los ingresos, los <strong>salarios subieron 3,7% m/m en abril contra una inflación de 2,6%</strong> (Galicia/INDEC), recuperación real. La confianza en el Gobierno (ICG, UTDT) repuntó a 41,4% en junio.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">El mercado fijó la actividad como el <strong>gran condicionante de la continuidad del programa hacia 2027</strong>: cuanto más rápido y generalizada la reactivación, más probable la continuidad. Pero el rebote es <strong>desigual</strong> — energía y minería lideran mientras industria y construcción siguen rezagadas, lo que limita el "feel" de recuperación.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Una actividad que sorprende al alza con salarios reales positivos sostiene la tesis de <strong>continuidad de desinflación + recuperación</strong>, favorable a soberanos hard-dollar y a equity selectivo (energía). En pesos, prefiero TAMAR sobre CER mientras no aparezca un IPC que reacelere.</div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">El rebote del PBI es de base estadística y concentrado en energía/agro; <strong>industria y construcción rezagadas</strong> implican que el empleo y el consumo masivo todavía no acompañan. Si la reactivación no se generaliza antes de las elecciones, el activo argentino pierde el catalizador de continuidad.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">IPC junio (INDEC, julio)</span>
+      <span class="wi">EMAE alta frecuencia</span>
+      <span class="wi">Industria / construcción</span>
+      <span class="wi">Salario real</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CRÉDITO ============ -->
+<div id="tab-credito" class="panel">
+  <p class="lead">La contracara de la reactivación: la irregularidad del crédito sigue subiendo. La mora de las familias trepó a 12,1% (+0,5 p.p.) y la de empresas a 3,3% (+0,2 p.p.); el total del sector privado llegó a 7,3%. Con la liquidez bancaria menos holgada, el espacio para expandir crédito se achica justo cuando la actividad lo necesita.</p>
+
+  <div class="flag">Ojo con el numerador vs denominador: el crecimiento de la cartera irregular se viene desacelerando desde mediados de 2025, pero como el crédito otorgado (denominador) cae, el coeficiente igual sigue subiendo. El techo de la mora depende de que se recupere el otorgamiento o caigan los préstamos en mora.</div>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Irregularidad familias</div><div class="metric-value down">12,1%</div><div class="metric-sub">+0,5 p.p. vs mar-26</div><div class="metric-src">Galicia 24-jun (BCRA)</div></div>
+    <div class="metric"><div class="metric-label">Total sector privado</div><div class="metric-value down">7,3%</div><div class="metric-sub">+0,3 p.p. m/m</div><div class="metric-src">Galicia 24-jun</div></div>
+    <div class="metric"><div class="metric-label">Mora empresas</div><div class="metric-value neu">3,3%</div><div class="metric-sub">+0,2 p.p.</div><div class="metric-src">Galicia 24-jun</div></div>
+    <div class="metric"><div class="metric-label">Liquidez sistema</div><div class="metric-value neu">Menos holgada</div><div class="metric-sub">caución &gt;23%</div><div class="metric-src">Comafi 26-jun</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El ratio de <strong>irregularidad de las financiaciones a familias subió a 12,1% (+0,5 p.p. vs mar-26)</strong> y el coeficiente de mora del crédito a empresas a <strong>3,3% (+0,2 p.p.)</strong>; el <strong>total del sector privado llegó a 7,3% (+0,3 p.p.)</strong>. La mora de las familias es la que arrastra el deterioro y sigue marcando tendencia ascendente.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">Mora en alza + <strong>liquidez bancaria menos holgada</strong> limitan el espacio para extender crédito al sector privado, justo cuando la actividad necesita financiamiento para consolidar la reactivación. Es el cuello de botella entre el rebote del PBI y una recuperación generalizada.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Selectivo en bancos: el catalizador es que <strong>la mora haga techo</strong>, pero todavía no está confirmado —el coeficiente sube por caída del denominador, no solo por más morosos. Mientras la irregularidad de familias siga en 12%+, prefiero esperar señal de inflexión antes de sumar exposición a equity bancario.</div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">El <strong>numerador (cartera irregular) ya se desacelera desde mediados de 2025</strong>: si la actividad reactiva y el otorgamiento de crédito se recupera, el coeficiente hace techo casi mecánicamente. Los bancos tienen prácticamente toda la cartera con cobertura, lo que acota el riesgo de balance aún con irregularidad elevada.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Mora familias / empresas</span>
+      <span class="wi">Otorgamiento de crédito (denominador)</span>
+      <span class="wi">Vtos externos US$11.300M 2S</span>
+      <span class="wi">Cobertura de cartera</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ GLOBAL ============ -->
+<div id="tab-global" class="panel">
+  <p class="lead">Semana de corrección y rotación afuera. Kevin Warsh debutó hawkish en la Fed —fortaleció el dólar y golpeó equities y oro—, aunque el 10yr igual comprimió por la caída del crudo. El petróleo se desplomó (WTI −10%) al bajar la prima geopolítica de Medio Oriente. Para Argentina, dólar global fuerte + commodities abajo son viento de frente; los Globales, en cambio, sostenidos por el upgrade de mitad de mes.</p>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Nasdaq (semana)</div><div class="metric-value down">−4,6%</div><div class="metric-sub">S&amp;P −2,0% · Dow +0,5%</div><div class="metric-src">PPI 26-jun</div></div>
+    <div class="metric"><div class="metric-label">VIX</div><div class="metric-value down">19 (+12%)</div><div class="metric-sub">volvió a subir</div><div class="metric-src">PPI 26-jun</div></div>
+    <div class="metric"><div class="metric-label">UST 10 años</div><div class="metric-value neu">4,37%</div><div class="metric-sub">−8 bps sem · −30 bps desde may</div><div class="metric-src">PPI 26-jun</div></div>
+    <div class="metric"><div class="metric-label">WTI / Brent</div><div class="metric-value down">US$69 / US$72</div><div class="metric-sub">−10% / −11% semanal</div><div class="metric-src">PPI 26-jun</div></div>
+    <div class="metric"><div class="metric-label">Globales ARG (junio)</div><div class="metric-value up">+1,1% a +3,9%</div><div class="metric-sub">impulsados por el upgrade</div><div class="metric-src">PPI 26-jun</div></div>
+    <div class="metric"><div class="metric-label">Merval USD (semana)</div><div class="metric-value down">−6,6%</div><div class="metric-sub">a US$2.021 · −5,8% vs may</div><div class="metric-src">PPI 26-jun</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">En su <strong>primer briefing como Fed Chair, Kevin Warsh habló duro contra la inflación</strong>: cementó expectativas de suba de tasas, fortaleció el dólar y arrastró abajo oro y equities. Aun así el <strong>10yr ya comprimió −30 bps desde el pico de mayo</strong>. Wall Street cerró mixto (Nasdaq −4,6%) y el <strong>crudo se desplomó (WTI −10% a US$69)</strong> por menor prima geopolítica en Medio Oriente.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">Dólar global fuerte + commodities abajo = <strong>viento de frente para emergentes y para el TC argentino</strong>. Pero la baja del crudo enfría la inflación global y favorece a importadores netos de energía. Los Globales argentinos, en cambio, terminaron la semana casi sin cambios y <strong>junio acumula +1,1% a +3,9% por el upgrade soberano</strong> de mitad de mes.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">En ARG, <strong>mantener soberanos hard-dollar</strong> con duration media: el upgrade les puso piso y aguantaron la corrección global. Cautela táctica con el <strong>Merval tras −6,6% semanal</strong> — esperar estabilización antes de sumar. Afuera, sesgo defensivo mientras Warsh marque el tono.</div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Si Warsh resulta <strong>más ceremonial que hawkish</strong> y el crudo barato enfría la inflación, la Fed puede holdear y reabrir el rally de riesgo — el 10yr ya viene comprimiendo. En ese escenario el dólar global cede, los emergentes y el Merval recuperan, y el viento de frente para Argentina se da vuelta.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">PCE / tono Fed (Warsh)</span>
+      <span class="wi">Crudo y Medio Oriente</span>
+      <span class="wi">DXY</span>
+      <span class="wi">UST 10 años</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ RADAR ============ -->
+<div id="tab-radar" class="panel">
+  <p class="lead">Balance de la semana: rebote de actividad y superávit energético récord del lado positivo; dólar en máximos con intervención, liquidez más ajustada y mora en alza del lado negativo. El upgrade soberano sigue siendo el ancla de los Globales.</p>
+
+  <div class="signal-grid">
+    <div class="sig sig-up">
+      <div class="sig-title">Señales alcistas</div>
+      <div class="sig-item">Superávit energético LTM &gt; US$10.000M, máximos históricos</div>
+      <div class="sig-item">Upgrade soberano sostiene Globales (+1,1% a +3,9% en junio)</div>
+      <div class="sig-item">PBI 1T26 +0,7% t/t, sorprendió al alza</div>
+      <div class="sig-item">BCRA compró US$1.346M en junio</div>
+      <div class="sig-item">Salario real positivo (+3,7% m/m abr vs 2,6%)</div>
+    </div>
+    <div class="sig sig-dn">
+      <div class="sig-title">Señales bajistas</div>
+      <div class="sig-item">Dólar en máximos nominales ($1.477) con intervención en futuros</div>
+      <div class="sig-item">Liquidez en pesos más ajustada, caución &gt;23%</div>
+      <div class="sig-item">Irregularidad familias 12,1% en alza (total SP 7,3%)</div>
+      <div class="sig-item">Rollover de la licitación de solo 81,26%</div>
+      <div class="sig-item">Viento de frente externo: DXY +3,4%, commodities abajo</div>
+    </div>
+  </div>
+
+  <div class="cat-box">
+    <div class="cat-title">Catalizadores — próximas 4 semanas</div>
+    <div class="watch-items">
+      <span class="wi">IPC junio (INDEC)</span>
+      <span class="wi">Próxima licitación del Tesoro</span>
+      <span class="wi">PCE / Fed Warsh</span>
+      <span class="wi">Liquidación agro / cierre semestral</span>
+      <span class="wi">Señales de financiamiento externo</span>
+      <span class="wi">Evolución del crudo</span>
+    </div>
+  </div>
+
+  <div class="cat-title" style="margin:1.25rem 0 .5rem">Posiciones core</div>
+  <div class="pos-grid">
+    <div class="pos-row"><span class="pos-instr">Dólar-linked / futuros</span><span class="pos-dir pos-neu">Hedge</span><span class="pos-desc">Cobertura táctica con TC en máximos; gana con ruido electoral 2027. Horizonte 1–3m.</span></div>
+    <div class="pos-row"><span class="pos-instr">BONTAMAR TML27</span><span class="pos-dir pos-long">Long</span><span class="pos-desc">TAMAR+5,40% atractivo si la TAMAR se sostiene alta. Horizonte 3–6m.</span></div>
+    <div class="pos-row"><span class="pos-instr">LECAP corta</span><span class="pos-dir pos-long">Long</span><span class="pos-desc">Carry táctico aprovechando caución elevada; duration corta. Horizonte 1–3m.</span></div>
+    <div class="pos-row"><span class="pos-instr">Globales hard-dollar</span><span class="pos-dir pos-long">Long</span><span class="pos-desc">Post-upgrade, duration media; aguantaron la corrección global. Horizonte 6–12m.</span></div>
+    <div class="pos-row"><span class="pos-instr">Merval (USD)</span><span class="pos-dir pos-neu">Neutral</span><span class="pos-desc">Tras −6,6% semanal, esperar estabilización antes de sumar. Selectivo en energía.</span></div>
+  </div>
+</div>
+
+<footer>
+  Fuentes (semana al 26-jun-2026): Semanal 1816 "Leve viento de frente" (25-jun) · Comafi Weekly #92 "Menor liquidez: ¿la nueva normalidad?" (26-jun) · "¿Qué estamos viendo?" #43 (jun) · Galicia Informe Mensual "Contando goles" (24-jun) · WS Global CIO Office "Deciphering Kevin Warsh" (26-jun) · PPI Cierre Mercados (26-jun) · SBS Comentario Diario (26-jun). Datos oficiales: MECON/Secretaría de Finanzas (licitación), BCRA, INDEC. El debut de Kevin Warsh en la Fed y los datos de junio son eventos posteriores al corte de conocimiento del modelo, reportados según los informes y mails citados — no verificados de forma independiente. El próximo IPC oficial de INDEC se publica en julio.<br><br>
+  Estructura analítica: Leer · Conectar · Defender. Todas las posiciones son ilustrativas, con su horizonte temporal explícito.<br><br>
+  <strong>Solo con fines informativos. No constituye asesoramiento de inversión.</strong>
+</footer>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
