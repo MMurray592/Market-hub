@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly — Economía & Mercados — 3 de julio 2026</title>
+<style>
+:root {
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #aaa;
+  --color-text-tertiary: #555;
+  --color-background-primary: #141414;
+  --color-background-secondary: #1a1a1a;
+  --color-border-tertiary: #2a2a2a;
+  --color-border-secondary: #333;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+html, body { background: #0f0f0f !important; color: var(--color-text-primary); }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-sans);padding:1.25rem;max-width:920px;margin:0 auto;line-height:1.6}
+
+.header{padding-bottom:1rem;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:1.5rem}
+.header-top{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+h1{font-size:20px;font-weight:500}
+.badge{font-size:11px;padding:3px 10px;border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.meta{font-size:12px;color:var(--color-text-tertiary);margin-top:3px}
+.sources{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+.src{font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+.src.official{border-color:#1D9E75;color:#4ade80}
+
+.tabs{display:flex;gap:4px;margin-bottom:1.5rem;flex-wrap:wrap}
+.tab{font-size:13px;padding:7px 14px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);cursor:pointer;background:transparent;color:var(--color-text-secondary);transition:all .15s}
+.tab.active{background:#0d2233;border-color:#3a7aac;color:#74ACDF}
+.panel{display:none}
+.panel.active{display:block}
+
+.lead{font-size:13px;color:var(--color-text-secondary);margin-bottom:1.25rem;line-height:1.6}
+
+.flag{background:rgba(246,180,14,.10);border:0.5px solid #F6B40E;border-radius:var(--border-radius-md);padding:.7rem 1rem;font-size:12.5px;line-height:1.55;color:#F6B40E;margin-bottom:1.25rem}
+
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1.25rem}
+.metric{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.85rem 1rem}
+.metric-label{font-size:11px;color:var(--color-text-secondary);margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px}
+.metric-value{font-size:21px;font-weight:500}
+.metric-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:2px}
+.metric-src{font-size:10px;color:#F6B40E;margin-top:4px}
+.up{color:#4ade80}.down{color:#f87171}.neu{color:#74ACDF}
+
+.chart-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem 1.1rem;margin-bottom:1.25rem}
+.chart-title{font-size:12px;font-weight:600;color:var(--color-text-secondary);margin-bottom:.85rem;text-transform:uppercase;letter-spacing:.5px}
+.bar-chart{display:flex;flex-direction:column;gap:8px}
+.bar-row{display:flex;align-items:center;gap:10px}
+.bar-label{font-size:11.5px;color:var(--color-text-secondary);min-width:112px;text-align:right}
+.bar-track{flex:1;background:var(--color-background-primary);border-radius:5px;height:22px;position:relative;overflow:hidden}
+.bar-fill{height:100%;border-radius:5px}
+.bar-val{font-size:11px;color:var(--color-text-primary);min-width:64px}
+.chart-src{font-size:10px;color:#F6B40E;margin-top:.7rem}
+
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.1rem;margin-bottom:.75rem}
+.card-label{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:.4rem}
+.lc{color:#74ACDF}.lw{color:#F6B40E}.lp{color:#c0c0c0}.la{color:#f87171}
+.card-text{font-size:14px;line-height:1.65}
+.card-text strong{font-weight:500;color:#f0f0f0}
+
+.watch{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.7rem 1rem;margin-top:.75rem}
+.watch-title{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.5px}
+.watch-items{display:flex;flex-wrap:wrap;gap:6px}
+.wi{font-size:11px;padding:3px 8px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+
+.signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.25rem}
+@media(max-width:640px){.signal-grid{grid-template-columns:1fr}}
+.sig{border-radius:var(--border-radius-lg);padding:.85rem 1rem;border:0.5px solid var(--color-border-tertiary)}
+.sig-up{border-left:3px solid #1D9E75}
+.sig-dn{border-left:3px solid #D85A30}
+.sig-title{font-size:12px;font-weight:600;margin-bottom:.5rem;color:#f0f0f0;text-transform:uppercase;letter-spacing:.5px}
+.sig-item{font-size:12.5px;color:var(--color-text-secondary);margin-bottom:.3rem;line-height:1.5}
+.sig-item::before{content:"→ ";color:var(--color-text-tertiary)}
+
+.cat-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.85rem 1rem;margin-bottom:1.25rem}
+.cat-title{font-size:11px;font-weight:600;color:var(--color-text-secondary);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.5px}
+
+.pos-grid{display:grid;gap:7px;margin-bottom:1rem}
+.pos-row{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);font-size:13px;flex-wrap:wrap}
+.pos-instr{font-weight:500;color:#f0f0f0;min-width:120px}
+.pos-dir{font-size:10.5px;padding:3px 9px;border-radius:10px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+.pos-long{background:#0d2218;color:#4ade80;border:1px solid #1D9E75}
+.pos-short{background:#2a0d0d;color:#f87171;border:1px solid #D85A30}
+.pos-neu{background:#1a1a1a;color:#74ACDF;border:1px solid #3a7aac}
+.pos-desc{color:#aaa;flex:1;font-size:12px;min-width:200px}
+
+footer{margin-top:2rem;padding-top:1.25rem;border-top:0.5px solid var(--color-border-tertiary);font-size:12px;color:var(--color-text-tertiary);line-height:1.6}
+footer strong{color:var(--color-text-secondary)}
+
+/* ===== UADE-skin: convergencia formato apunte UADE (auto) ===== */
+:root{
+  --color-text-primary:#e8eaf0;--color-text-secondary:#9aa3b5;--color-text-tertiary:#6b7384;
+  --color-background-primary:#1c212c;--color-background-secondary:#232a38;
+  --color-border-tertiary:#2c3444;--color-border-secondary:#3a4458;
+}
+html,body{background:#0f1115!important;}
+.tab{border-radius:20px;}
+.tab.active{background:#4fc3f7;border-color:#4fc3f7;color:#0f1115;font-weight:700;}
+.src.official{border-color:#34d399;color:#34d399;}
+.flag{background:rgba(251,191,36,.10);border-color:#fbbf24;color:#fbbf24;}
+.metric-src{color:#fbbf24;}
+.chart-src{color:#fbbf24;}
+.up{color:#34d399;}.down{color:#f87171;}.neu{color:#4fc3f7;}
+.lc{color:#4fc3f7;}.lw{color:#fbbf24;}.lp{color:#34d399;}.la{color:#f87171;}
+.sig-up{border-left-color:#34d399;}.sig-dn{border-left-color:#f87171;}
+.pos-long{background:rgba(52,211,153,.12);color:#34d399;border-color:#34d399;}
+.pos-short{background:rgba(248,113,113,.10);color:#f87171;border-color:#f87171;}
+.pos-neu{background:rgba(79,195,247,.10);color:#4fc3f7;border-color:#4fc3f7;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <h1>Weekly — Economía &amp; Mercados</h1>
+    <span class="badge">30 jun – 4 jul 2026</span>
+  </div>
+  <div class="meta">Argentina &amp; Mercados Globales · cierre 3-jul · Datos PDFs + mails brokers</div>
+  <div class="sources">
+    <span class="src">Semanal 1816 (2-jul)</span>
+    <span class="src">1816 Especial Mora (may · CENDEU)</span>
+    <span class="src">Cohen Weekly #93 (3-jul)</span>
+    <span class="src">Banco CMF Técnico-Fundamental (jul)</span>
+    <span class="src">SBS Nota Diaria (2-3 jul)</span>
+    <span class="src">SBS QuickNote Programa Fin. (6-jul)</span>
+    <span class="src official">MECON / Finanzas</span>
+    <span class="src official">BCRA</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="show('dolar',this)">Dólar &amp; BCRA</button>
+  <button class="tab" onclick="show('tasas',this)">Tasas</button>
+  <button class="tab" onclick="show('ipc',this)">IPC &amp; Actividad</button>
+  <button class="tab" onclick="show('credito',this)">Crédito</button>
+  <button class="tab" onclick="show('global',this)">Global</button>
+  <button class="tab" onclick="show('radar',this)">Radar</button>
+</div>
+
+<!-- ============ DÓLAR ============ -->
+<div id="tab-dolar" class="panel active">
+  <p class="lead">El dólar oficial cerró junio con una depreciación de ~5% (y +1,5% en las últimas cinco ruedas), presionado por la fortaleza global del billete y el giro estacional de utilidades. El BCRA compra menos, pero mantiene saldo positivo el 100% de las ruedas: en vez de vender spot, el Gobierno abastece la demanda de divisas vía dólares del Tesoro. Todo, con la mira puesta en el pago de Bonares y Globales del 9 de julio (~US$4.500M).</p>
+
+  <div class="flag">El fisco tiene depósitos en USD en el BCRA por ~US$3.950M frente a los ~US$4.500M a pagar la semana que viene: hará falta una última compra de dólares del Tesoro al Central (o algún ingreso de divisas) para cubrir el gap. El Gobierno ya ratificó que NO usará los US$6.000M del REPO para ese pago (1816 2-jul · Cohen 3-jul).</div>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Dólar oficial junio</div><div class="metric-value down">−5%</div><div class="metric-sub">+1,5% últimas 5 ruedas</div><div class="metric-src">Cohen #93 3-jul</div></div>
+    <div class="metric"><div class="metric-label">Ruedas con compra BCRA</div><div class="metric-value up">100%</div><div class="metric-sub">saldo positivo, compra menos</div><div class="metric-src">1816 2-jul</div></div>
+    <div class="metric"><div class="metric-label">Depósitos USD Tesoro @BCRA</div><div class="metric-value neu">~US$3.950M</div><div class="metric-sub">vs ~US$4.500M a pagar 9-jul</div><div class="metric-src">1816 2-jul</div></div>
+    <div class="metric"><div class="metric-label">Liquidación agro junio</div><div class="metric-value up">US$3.007M</div><div class="metric-sub">+2% m/m · US$143M/día</div><div class="metric-src">Cohen #93 3-jul (CIARA)</div></div>
+    <div class="metric"><div class="metric-label">Agro 1er semestre</div><div class="metric-value up">US$13.378M</div><div class="metric-sub">ritmo &lt; prom 2014-25 (165M/d)</div><div class="metric-src">Cohen #93 3-jul</div></div>
+    <div class="metric"><div class="metric-label">FAE personas (may)</div><div class="metric-value down">US$1.886M</div><div class="metric-sub">salida sin fines específicos</div><div class="metric-src">Cohen #93 3-jul</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Balance cambiario — flujos clave (US$ M)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><span class="bar-label">Agro liq. junio</span><span class="bar-track"><span class="bar-fill" style="width:67%;background:#34d399"></span></span><span class="bar-val">+3.007</span></div>
+      <div class="bar-row"><span class="bar-label">Salida emp/prov (may)</span><span class="bar-track"><span class="bar-fill" style="width:51%;background:#f87171"></span></span><span class="bar-val">−2.284</span></div>
+      <div class="bar-row"><span class="bar-label">FAE personas (may)</span><span class="bar-track"><span class="bar-fill" style="width:42%;background:#f87171"></span></span><span class="bar-val">−1.886</span></div>
+      <div class="bar-row"><span class="bar-label">Dep. USD Tesoro</span><span class="bar-track"><span class="bar-fill" style="width:88%;background:#4fc3f7"></span></span><span class="bar-val">3.950</span></div>
+      <div class="bar-row"><span class="bar-label">Pago 9-jul (Bon+Glob)</span><span class="bar-track"><span class="bar-fill" style="width:100%;background:#fbbf24"></span></span><span class="bar-val">~4.500</span></div>
+    </div>
+    <div class="chart-src">Cohen #93 (3-jul) y 1816 (2-jul). Escala relativa; el gap dep. Tesoro vs pago se cubre con compra al BCRA.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El oficial acumuló <strong>−5% en junio</strong> (+1,5% en la última semana), todavía por debajo del techo de la banda pero con la distancia recortándose. El cambio de mirada del Gobierno sobre acumular reservas (vs 2025) es tal que el <strong>BCRA sostiene saldo comprador el 100% de las ruedas</strong> aun comprando menos: en lugar de vender spot, abastece la demanda con dólares del Tesoro. El agro liquidó <strong>US$3.007M en junio (+2% m/m)</strong> pero a un ritmo diario (US$143M) por debajo del promedio histórico.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">El <strong>pago del 9 de julio de Bonares y Globales (~US$4.500M)</strong> es el evento que ordena el flujo: con depósitos del fisco en ~US$3.950M, falta una última compra al Central o un ingreso de divisas. Que se descarte el REPO de US$6.000M para ese pago obliga a apoyarse en el buffer de pesos y en compras spot, lo que condiciona el ritmo de acumulación de reservas justo cuando el mercado premia esa acumulación.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Con el TC depreciándose y el pago externo a la vista, mantengo <strong>hedge táctico en dólar-linked / futuros</strong> con duration corta, priorizando cobertura por sobre carry agresivo hasta pasar el 9-jul. Si el pago se ejecuta sin sobresaltos y entra financiamiento, el driver rota a favor de soberanos hard-dollar. Horizonte 1–2 meses.</div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">La depreciación es en buena parte <strong>fortaleza global del dólar</strong> (DXY en máximos desde may-2025), no debilidad idiosincrática: si la Fed vira a un sesgo más laxo tras el mal dato de empleo, el billete global cede y el peso recupera aire. Con el pago del 9-jul ya fondeado por el buffer, el hedge solo rinde si aparece ruido político o externo nuevo.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Pago Bonares/Globales 9-jul</span>
+      <span class="wi">Compras Tesoro→BCRA</span>
+      <span class="wi">Ritmo liquidación agro</span>
+      <span class="wi">Distancia al techo de banda</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TASAS ============ -->
+<div id="tab-tasas" class="panel">
+  <p class="lead">La semana giró en torno a la liquidez en pesos y la licitación. El Tesoro inyectó $1,47B el lunes (operando el viernes en T+1) vía compras de Lecap para evitar que las cauciones overnight se dispararan al 30% antes de licitar. Tras un rollover en torno al 80%, Finanzas liberó ~$3B al sistema. La foto de fondo: la curva de tasa fija se aplanó cerca del 26% TEA y —dato clave— aparecieron las primeras tasas reales positivas desde noviembre de 2025.</p>
+
+  <div class="flag">Riesgo País a 415 puntos, mínimos no vistos desde abril de 2018 (SBS 3-jul). La compresión de tasas cortas ARS acompañó: las cauciones en BYMA y A3 cedieron 90–97 pbs en una sola rueda. La desinflación empieza a validar tasas reales neutrales.</div>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Riesgo País</div><div class="metric-value up">415 pb</div><div class="metric-sub">mínimo desde abr-2018</div><div class="metric-src">SBS 3-jul</div></div>
+    <div class="metric"><div class="metric-label">Inyección Tesoro (lun)</div><div class="metric-value neu">$1,47B</div><div class="metric-sub">compras Lecap, T+1</div><div class="metric-src">1816 2-jul</div></div>
+    <div class="metric"><div class="metric-label">Liberación post-licitación</div><div class="metric-value neu">~$3B</div><div class="metric-sub">rollover ~80% (transitorio)</div><div class="metric-src">Cohen #93 3-jul</div></div>
+    <div class="metric"><div class="metric-label">Curva tasa fija</div><div class="metric-value neu">~26% TEA</div><div class="metric-sub">se aplanó en la previa</div><div class="metric-src">Cohen #93 3-jul</div></div>
+    <div class="metric"><div class="metric-label">TAMAR real (jun)</div><div class="metric-value up">0% a 0,1% TEM</div><div class="metric-sub">1er registro + desde nov-25</div><div class="metric-src">Cohen #93 3-jul</div></div>
+    <div class="metric"><div class="metric-label">Caución overnight (pico)</div><div class="metric-value down">~30%</div><div class="metric-sub">promedió 25% en el squeeze</div><div class="metric-src">Cohen #93 3-jul</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El <strong>Tesoro inyectó $1,47B el lunes vía compras de Lecap</strong>, evitando que las cauciones overnight tocaran el 30% antes de la licitación. La absorción previa de pesos había generado un <strong>liquidity squeeze</strong> (caución promedió 25%, picos de 30%). Tras un rollover de ~80%, Finanzas <strong>liberó ~$3B al sistema</strong>. En simultáneo, el <strong>Riesgo País perforó a 415 pb</strong>, mínimos desde abril 2018, y la <strong>TAMAR real de junio quedó en 0%–0,1% TEM</strong> —primer terreno real positivo desde noviembre 2025.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">El alivio de liquidez es <strong>transitorio</strong>: Cohen advierte que factores estacionales, la precaución bancaria (sobreintegración) y las ventas de dólar-linked del BCRA vuelven a drenar pesos. Que la tasa real cruce a positiva marca una <strong>normalización</strong> del régimen: sostiene la demanda de pesos y comprime el Riesgo País, pero también encarece el fondeo y el crédito en el margen.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Con Riesgo País en mínimos de varios años y tasas reales virando a positivas, el <strong>carry en pesos sigue vivo pero conviene acortar duration</strong> (LECAP corta) para capturar la caución alta sin quedar preso de un nuevo squeeze. La compresión del RP habilita seguir <strong>largo soberanos hard-dollar</strong> apuntando a la vuelta al mercado internacional. Horizonte 1–3 meses.</div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Si la <strong>menor liquidez es estructural</strong> y no un ajuste puntual, las inyecciones del Tesoro son parches y las tasas overnight volverán a saltar en cada previa de licitación, lastimando el carry por el costo de fondeo. Y un Riesgo País en 415 ya descuenta bastante buenas noticias: cualquier traspié en el pago del 9-jul o en el frente político electoral puede revertir la compresión rápido.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Próxima licitación ($ bajos vtos)</span>
+      <span class="wi">Caución / overnight</span>
+      <span class="wi">Riesgo País (¿sostiene &lt;415?)</span>
+      <span class="wi">TAMAR real</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ IPC & ACTIVIDAD ============ -->
+<div id="tab-ipc" class="panel">
+  <p class="lead">La expectativa de precios siguió mejorando: según varias mediciones, la inflación de junio habría perforado el 2%, y el mercado de bonos ya descuenta que continuará bajando hasta la zona de 1,4% en el 4T. La contracara fiscal enciende una luz amarilla: la recaudación tributaria real cayó en junio y podría ser el tercer mes con déficit primario del año.</p>
+
+  <div class="flag">El dato oficial de IPC de junio (INDEC) aún no se publicó. Los valores de esta sección son estimaciones de mercado / breakeven de Lecap (1816, Cohen, CMF) — verificar contra el número de INDEC cuando se difunda en julio.</div>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Inflación junio (est.)</div><div class="metric-value up">&lt; 2%</div><div class="metric-sub">"habría perforado el 2%"</div><div class="metric-src">1816 2-jul (varias med.)</div></div>
+    <div class="metric"><div class="metric-label">Breakeven Lecap 4T</div><div class="metric-value up">~1,4%</div><div class="metric-sub">sendero de desinflación</div><div class="metric-src">1816 2-jul</div></div>
+    <div class="metric"><div class="metric-label">Inflación jun (rango CMF/Cohen)</div><div class="metric-value neu">1,8–2,0%</div><div class="metric-sub">habilita tasa real +</div><div class="metric-src">Cohen #93 / CMF jul</div></div>
+    <div class="metric"><div class="metric-label">Impacto nafta en IPC</div><div class="metric-value down">+0,65 pp</div><div class="metric-sub">si corrige relación nafta/Brent</div><div class="metric-src">1816 2-jul</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">La inflación de junio <strong>habría perforado el 2%</strong> según varias mediciones privadas, y el mercado de bonos ve el sendero <strong>bajando hacia 1,4% en el 4T</strong> (breakeven Lecap). El riesgo latente es de precios relativos: durante meses la nafta estuvo más barata de lo que correspondía según Brent y A3500, y una corrección de esa relación tendría un <strong>impacto directo de +0,65 pp en el IPC</strong> (sin contar efecto indirecto). En lo fiscal, la <strong>recaudación real cayó en junio</strong>.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">Una inflación con "1" adelante consolida la tesis de <strong>desinflación + tasas reales positivas</strong>, que es exactamente lo que está comprimiendo el Riesgo País y sosteniendo la demanda de pesos. Pero la caída de la recaudación real presiona el ancla fiscal —el activo argentino de esta etapa— y el sobreprecio pendiente de la nafta es un riesgo alcista puntual para el próximo IPC.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Mientras la desinflación siga su curso, prefiero <strong>tasa fija / TAMAR sobre CER</strong>: el breakeven ya descuenta una baja agresiva y el CER solo gana si hay una sorpresa inflacionaria (nafta). El combo desinflación + superávit sostenido favorece a los soberanos hard-dollar. Horizonte 1–3 meses.</div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Si se corrige el atraso de la nafta y/o el TC más alto pasa a precios, el <strong>IPC puede reacelerar por encima del breakeven</strong>, y ahí la tasa fija pierde contra el CER. Sumado a una recaudación real en caída y un posible tercer mes de déficit primario, el mercado podría empezar a cuestionar la solidez del ancla fiscal antes de las elecciones.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">IPC junio (INDEC, julio)</span>
+      <span class="wi">Corrección precio nafta</span>
+      <span class="wi">Recaudación / resultado primario</span>
+      <span class="wi">Breakeven Lecap</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CRÉDITO ============ -->
+<div id="tab-credito" class="panel">
+  <p class="lead">La contracara del ajuste sigue en el crédito: la irregularidad volvió a subir en mayo. La mora de familias trepó a 12,7% (desde 12,1% en abril), la de empresas a 3,5% y el total del sector privado a 7,7%. Es la decimonovena suba mensual consecutiva de la mora de hogares, que no para de batir récords. El vice del BCRA, Werning, afirmó que "la mora tocó pico en el 2T26".</p>
+
+  <div class="flag">La mora de familias era de solo 2,5% en octubre 2024 y hoy está en 12,7%: se quintuplicó en año y medio. El dato es de CENDEU (metodología &gt;90 días, "Situación 3" en adelante); el Informe de Bancos oficial de mayo que lo confirma se publica recién a fines de julio y puede ajustar marginalmente las cifras.</div>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Mora familias (may)</div><div class="metric-value down">12,7%</div><div class="metric-sub">desde 12,1% en abril</div><div class="metric-src">1816 Especial (CENDEU)</div></div>
+    <div class="metric"><div class="metric-label">Mora empresas (may)</div><div class="metric-value neu">3,5%</div><div class="metric-sub">desde 3,3%</div><div class="metric-src">1816 Especial (CENDEU)</div></div>
+    <div class="metric"><div class="metric-label">Total sector privado</div><div class="metric-value down">7,7%</div><div class="metric-sub">desde 7,3%</div><div class="metric-src">1816 Especial (CENDEU)</div></div>
+    <div class="metric"><div class="metric-label">Suba consecutiva familias</div><div class="metric-value down">19 meses</div><div class="metric-sub">era 2,5% en oct-24</div><div class="metric-src">1816 Especial</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Irregularidad del crédito — abril vs mayo 2026 (%)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><span class="bar-label">Familias abr</span><span class="bar-track"><span class="bar-fill" style="width:95%;background:#6b7384"></span></span><span class="bar-val">12,1%</span></div>
+      <div class="bar-row"><span class="bar-label">Familias may</span><span class="bar-track"><span class="bar-fill" style="width:100%;background:#f87171"></span></span><span class="bar-val">12,7%</span></div>
+      <div class="bar-row"><span class="bar-label">Total SP abr</span><span class="bar-track"><span class="bar-fill" style="width:57%;background:#6b7384"></span></span><span class="bar-val">7,3%</span></div>
+      <div class="bar-row"><span class="bar-label">Total SP may</span><span class="bar-track"><span class="bar-fill" style="width:61%;background:#fbbf24"></span></span><span class="bar-val">7,7%</span></div>
+      <div class="bar-row"><span class="bar-label">Empresas abr</span><span class="bar-track"><span class="bar-fill" style="width:26%;background:#6b7384"></span></span><span class="bar-val">3,3%</span></div>
+      <div class="bar-row"><span class="bar-label">Empresas may</span><span class="bar-track"><span class="bar-fill" style="width:28%;background:#4fc3f7"></span></span><span class="bar-val">3,5%</span></div>
+    </div>
+    <div class="chart-src">1816 en base a CENDEU/BCRA (mora &gt;90 días). Escala relativa al máximo (familias 12,7%).</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">Según los datos de CENDEU, la <strong>mora de familias subió de 12,1% a 12,7% en mayo</strong>, la de empresas de 3,3% a 3,5% y el <strong>total del sector privado de 7,3% a 7,7%</strong>. En hogares es la <strong>19ª suba mensual consecutiva</strong>, batiendo récords (venía de 2,5% en oct-2024). El vice del BCRA, Werning, sostuvo que <strong>"la mora ha tocado pico en el 2T26"</strong>, de modo que junio y julio serán clave para validar esa lectura.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">La irregularidad récord de familias, con la <strong>liquidez del sistema menos holgada</strong>, limita el espacio para expandir crédito justo cuando la actividad lo necesita. Es el cuello de botella entre el ajuste y una recuperación generalizada del consumo. Para el equity bancario, el catalizador es que la mora efectivamente haga techo como anticipa el BCRA.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text"><strong>Selectivo y cauto en bancos</strong> hasta ver la inflexión que promete Werning: la afirmación de "pico en 2T26" es una hipótesis a confirmar con los datos de junio-julio, no un hecho. Con familias todavía en 12,7% y subiendo, prefiero esperar la señal antes de sumar exposición. Horizonte 3–6 meses.</div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Si la desinflación y las tasas reales positivas <strong>reactivan el otorgamiento de crédito</strong>, el coeficiente de mora hace techo casi mecánicamente (el denominador crece) y la lectura de Werning se valida. Los bancos operan con alta cobertura de cartera, lo que acota el riesgo de balance aun con irregularidad elevada; una sorpresa positiva en junio dispararía el re-rating del sector.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">¿Mora hace pico? (jun-jul)</span>
+      <span class="wi">Informe de Bancos may (fin jul)</span>
+      <span class="wi">Otorgamiento de crédito</span>
+      <span class="wi">Cobertura de cartera</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ GLOBAL ============ -->
+<div id="tab-global" class="panel">
+  <p class="lead">Semana de dos tiempos afuera. Primero, un sesgo hawkish de la Fed revalorizó el dólar global y llevó al DXY a máximos desde mayo de 2025, depreciando a las monedas de la región. Después, un mercado laboral de EE.UU. mucho más débil de lo esperado (apenas 57.000 empleos en junio) alivió la presión sobre la Fed y comprimió los rendimientos del Tesoro. Los metales preciosos y el bitcoin siguen cayendo: renovada preferencia por el dólar.</p>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Empleo EE.UU. junio</div><div class="metric-value down">+57.000</div><div class="metric-sub">fuerte desaceleración</div><div class="metric-src">SBS 2-jul</div></div>
+    <div class="metric"><div class="metric-label">DXY (dólar global)</div><div class="metric-value up">máx. desde may-25</div><div class="metric-sub">sesgo hawkish Fed</div><div class="metric-src">Cohen #93 3-jul</div></div>
+    <div class="metric"><div class="metric-label">UST (rendimientos)</div><div class="metric-value up">a la baja</div><div class="metric-sub">tras dato de empleo débil</div><div class="metric-src">SBS 2-jul</div></div>
+    <div class="metric"><div class="metric-label">Metales / Bitcoin</div><div class="metric-value down">en caída</div><div class="metric-sub">preferencia por el dólar</div><div class="metric-src">CMF jul</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">Un <strong>sesgo hawkish de la Fed</strong> revalorizó al dólar a nivel global (<strong>DXY en máximos desde mayo 2025</strong>) y depreció las monedas emergentes. Pero el <strong>dato de empleo de junio decepcionó fuerte: apenas 57.000 nóminas</strong>, lo que alivió la presión sobre la Fed para subir tasas y <strong>bajó los rendimientos de los Treasuries</strong>. En paralelo, oro, plata y bitcoin no dejaron de caer, una señal —según CMF— de renovada preferencia por el dólar como reserva a falta de alternativa viable.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">Para Argentina el efecto es <strong>ambiguo</strong>: dólar global fuerte + commodities/metales abajo son viento de frente para el TC y los emergentes, pero un mercado laboral débil que fuerza a la Fed a un tono más laxo comprime tasas largas y reabre el apetito por riesgo. La caída de los Treasuries es, en el margen, favorable para los soberanos hard-dollar argentinos.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Afuera, sesgo <strong>constructivo con duration en Treasuries</strong> si la desaceleración laboral se confirma. En ARG, la baja de tasas globales + compresión de Riesgo País refuerza la tesis <strong>largo soberanos hard-dollar</strong> con duration media. Cautela con el dólar global fuerte mientras no se despeje el rumbo de la Fed. Horizonte 3–6 meses.</div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Un solo dato de empleo no hace tendencia: si la Fed <strong>mantiene el sesgo hawkish</strong> priorizando la inflación por sobre el empleo, el DXY sigue firme, los emergentes quedan bajo presión y el viento de frente para Argentina persiste. La caída de metales y bitcoin también puede leerse como aversión al riesgo, no solo como fortaleza del dólar —y eso rara vez es bueno para el activo argentino.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Datos macro EE.UU. / tono Fed</span>
+      <span class="wi">DXY</span>
+      <span class="wi">UST 10 años</span>
+      <span class="wi">Oro / commodities</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ RADAR ============ -->
+<div id="tab-radar" class="panel">
+  <p class="lead">Balance de la semana: desinflación que valida tasas reales positivas y Riesgo País en mínimos de años del lado positivo; mora récord, recaudación real en caída y un pago externo grande a la vista del lado negativo. El programa financiero 2026/2027 y la renovación de repos a 2028 despejan parte del ruido de corto.</p>
+
+  <div class="signal-grid">
+    <div class="sig sig-up">
+      <div class="sig-title">Señales alcistas</div>
+      <div class="sig-item">Riesgo País a 415 pb, mínimos desde abril 2018</div>
+      <div class="sig-item">Inflación junio habría perforado el 2% (breakeven → 1,4% 4T)</div>
+      <div class="sig-item">1er registro de tasa real positiva desde nov-2025 (TAMAR)</div>
+      <div class="sig-item">BCRA con saldo comprador el 100% de las ruedas</div>
+      <div class="sig-item">Empleo débil en EE.UU. alivia presión sobre la Fed</div>
+    </div>
+    <div class="sig sig-dn">
+      <div class="sig-title">Señales bajistas</div>
+      <div class="sig-item">Mora de familias récord 12,7% (19ª suba consecutiva)</div>
+      <div class="sig-item">Recaudación real cayó en junio; ¿3er mes de déficit primario?</div>
+      <div class="sig-item">Pago Bonares/Globales 9-jul (~US$4.500M) con buffer justo</div>
+      <div class="sig-item">Dólar global (DXY) en máximos desde mayo 2025</div>
+      <div class="sig-item">Liquidez en pesos menos holgada; squeeze de caución (picos 30%)</div>
+    </div>
+  </div>
+
+  <div class="cat-box">
+    <div class="cat-title">Catalizadores — próximas 4 semanas</div>
+    <div class="watch-items">
+      <span class="wi">Pago Bonares/Globales 9-jul</span>
+      <span class="wi">IPC junio (INDEC)</span>
+      <span class="wi">Informe de Bancos may (fin jul)</span>
+      <span class="wi">Próxima licitación del Tesoro</span>
+      <span class="wi">Tono Fed / DXY</span>
+      <span class="wi">¿Mora hace pico? (Werning)</span>
+    </div>
+  </div>
+
+  <div class="cat-title" style="margin:1.25rem 0 .5rem">Posiciones core</div>
+  <div class="pos-grid">
+    <div class="pos-row"><span class="pos-instr">Globales hard-dollar</span><span class="pos-dir pos-long">Long</span><span class="pos-desc">Riesgo País en mínimos + Treasuries a la baja; duration media apuntando a vuelta al mercado. Horizonte 6–12m.</span></div>
+    <div class="pos-row"><span class="pos-instr">LECAP corta</span><span class="pos-dir pos-long">Long</span><span class="pos-desc">Carry con caución alta y tasa real virando a positiva; duration corta para esquivar squeeze. Horizonte 1–3m.</span></div>
+    <div class="pos-row"><span class="pos-instr">TAMAR</span><span class="pos-dir pos-long">Long</span><span class="pos-desc">Preferida sobre CER mientras la desinflación siga su curso. Horizonte 3–6m.</span></div>
+    <div class="pos-row"><span class="pos-instr">Dólar-linked / futuros</span><span class="pos-dir pos-neu">Hedge</span><span class="pos-desc">Cobertura táctica hasta pasar el pago del 9-jul y despejar el rumbo de la Fed. Horizonte 1–2m.</span></div>
+    <div class="pos-row"><span class="pos-instr">Bancos (equity)</span><span class="pos-dir pos-neu">Neutral</span><span class="pos-desc">Esperar confirmación del pico de mora antes de sumar; alta cobertura acota el riesgo. Selectivo.</span></div>
+  </div>
+</div>
+
+<footer>
+  Fuentes (semana al 3-jul-2026): Semanal 1816 (2-jul) · 1816 Informe Especial "Otro aumento de mora en mayo" (CENDEU) · Cohen Weekly #93 (3-jul) · Banco CMF "Técnicamente Fundamentalista" (jul) · SBS Nota Diaria / Comentario Diario (2-3 jul) · SBS QuickNote "Programa financiero 2026 y 2027" (6-jul). Datos oficiales de referencia: MECON/Secretaría de Finanzas, BCRA (CENDEU), INDEC. Los datos de junio-julio y las declaraciones citadas (Werning, programa financiero, empleo EE.UU.) son posteriores al corte de conocimiento del modelo y se reportan según los informes y mails citados — no verificados de forma independiente. El IPC oficial de junio de INDEC aún no se había publicado al cierre; las cifras de inflación de junio son estimaciones privadas / breakeven de mercado.<br><br>
+  Estructura analítica: Leer · Conectar · Defender. Todas las posiciones son ilustrativas, con su horizonte temporal explícito.<br><br>
+  <strong>Solo con fines informativos. No constituye asesoramiento de inversión.</strong>
+</footer>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
