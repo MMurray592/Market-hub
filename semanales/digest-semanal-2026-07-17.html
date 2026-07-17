@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly — Economía & Mercados — 17 de julio 2026</title>
+<style>
+:root {
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #aaa;
+  --color-text-tertiary: #555;
+  --color-background-primary: #141414;
+  --color-background-secondary: #1a1a1a;
+  --color-border-tertiary: #2a2a2a;
+  --color-border-secondary: #333;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+html, body { background: #0f0f0f !important; color: var(--color-text-primary); }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-sans);padding:1.25rem;max-width:920px;margin:0 auto;line-height:1.6}
+
+.header{padding-bottom:1rem;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:1.5rem}
+.header-top{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+h1{font-size:20px;font-weight:500}
+.badge{font-size:11px;padding:3px 10px;border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.meta{font-size:12px;color:var(--color-text-tertiary);margin-top:3px}
+.sources{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+.src{font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+.src.official{border-color:#1D9E75;color:#4ade80}
+
+.tabs{display:flex;gap:4px;margin-bottom:1.5rem;flex-wrap:wrap}
+.tab{font-size:13px;padding:7px 14px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);cursor:pointer;background:transparent;color:var(--color-text-secondary);transition:all .15s}
+.tab.active{background:#0d2233;border-color:#3a7aac;color:#74ACDF}
+.panel{display:none}
+.panel.active{display:block}
+
+.lead{font-size:13px;color:var(--color-text-secondary);margin-bottom:1.25rem;line-height:1.6}
+
+.flag{background:rgba(246,180,14,.10);border:0.5px solid #F6B40E;border-radius:var(--border-radius-md);padding:.7rem 1rem;font-size:12.5px;line-height:1.55;color:#F6B40E;margin-bottom:1.25rem}
+
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1.25rem}
+.metric{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.85rem 1rem}
+.metric-label{font-size:11px;color:var(--color-text-secondary);margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px}
+.metric-value{font-size:21px;font-weight:500}
+.metric-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:2px}
+.metric-src{font-size:10px;color:#F6B40E;margin-top:4px}
+.up{color:#4ade80}.down{color:#f87171}.neu{color:#74ACDF}
+
+.chart-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem 1.1rem;margin-bottom:1.25rem}
+.chart-title{font-size:12px;font-weight:600;color:var(--color-text-secondary);margin-bottom:.85rem;text-transform:uppercase;letter-spacing:.5px}
+.bar-chart{display:flex;flex-direction:column;gap:8px}
+.bar-row{display:flex;align-items:center;gap:10px}
+.bar-label{font-size:11.5px;color:var(--color-text-secondary);min-width:112px;text-align:right}
+.bar-track{flex:1;background:var(--color-background-primary);border-radius:5px;height:22px;position:relative;overflow:hidden}
+.bar-fill{height:100%;border-radius:5px}
+.bar-val{font-size:11px;color:var(--color-text-primary);min-width:64px}
+.chart-src{font-size:10px;color:#F6B40E;margin-top:.7rem}
+
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.1rem;margin-bottom:.75rem}
+.card-label{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:.4rem}
+.lc{color:#74ACDF}.lw{color:#F6B40E}.lp{color:#c0c0c0}.la{color:#f87171}
+.card-text{font-size:14px;line-height:1.65}
+.card-text strong{font-weight:500;color:#f0f0f0}
+
+.watch{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.7rem 1rem;margin-top:.75rem}
+.watch-title{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.5px}
+.watch-items{display:flex;flex-wrap:wrap;gap:6px}
+.wi{font-size:11px;padding:3px 8px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+
+.signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.25rem}
+@media(max-width:640px){.signal-grid{grid-template-columns:1fr}}
+.sig{border-radius:var(--border-radius-lg);padding:.85rem 1rem;border:0.5px solid var(--color-border-tertiary)}
+.sig-up{border-left:3px solid #1D9E75}
+.sig-dn{border-left:3px solid #D85A30}
+.sig-title{font-size:12px;font-weight:600;margin-bottom:.5rem;color:#f0f0f0;text-transform:uppercase;letter-spacing:.5px}
+.sig-item{font-size:12.5px;color:var(--color-text-secondary);margin-bottom:.3rem;line-height:1.5}
+.sig-item::before{content:"→ ";color:var(--color-text-tertiary)}
+
+.cat-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.85rem 1rem;margin-bottom:1.25rem}
+.cat-title{font-size:11px;font-weight:600;color:var(--color-text-secondary);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.5px}
+
+.pos-grid{display:grid;gap:7px;margin-bottom:1rem}
+.pos-row{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);font-size:13px;flex-wrap:wrap}
+.pos-instr{font-weight:500;color:#f0f0f0;min-width:120px}
+.pos-dir{font-size:10.5px;padding:3px 9px;border-radius:10px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+.pos-long{background:#0d2218;color:#4ade80;border:1px solid #1D9E75}
+.pos-short{background:#2a0d0d;color:#f87171;border:1px solid #D85A30}
+.pos-neu{background:#1a1a1a;color:#74ACDF;border:1px solid #3a7aac}
+.pos-desc{color:#aaa;flex:1;font-size:12px;min-width:200px}
+
+footer{margin-top:2rem;padding-top:1.25rem;border-top:0.5px solid var(--color-border-tertiary);font-size:12px;color:var(--color-text-tertiary);line-height:1.6}
+footer strong{color:var(--color-text-secondary)}
+
+/* ===== UADE-skin: convergencia formato apunte UADE (auto) ===== */
+:root{
+  --color-text-primary:#e8eaf0;--color-text-secondary:#9aa3b5;--color-text-tertiary:#6b7384;
+  --color-background-primary:#1c212c;--color-background-secondary:#232a38;
+  --color-border-tertiary:#2c3444;--color-border-secondary:#3a4458;
+}
+html,body{background:#0f1115!important;}
+.tab{border-radius:20px;}
+.tab.active{background:#4fc3f7;border-color:#4fc3f7;color:#0f1115;font-weight:700;}
+.src.official{border-color:#34d399;color:#34d399;}
+.flag{background:rgba(251,191,36,.10);border-color:#fbbf24;color:#fbbf24;}
+.metric-src{color:#fbbf24;}
+.chart-src{color:#fbbf24;}
+.up{color:#34d399;}.down{color:#f87171;}.neu{color:#4fc3f7;}
+.lc{color:#4fc3f7;}.lw{color:#fbbf24;}.lp{color:#34d399;}.la{color:#f87171;}
+.sig-up{border-left-color:#34d399;}.sig-dn{border-left-color:#f87171;}
+.pos-long{background:rgba(52,211,153,.12);color:#34d399;border-color:#34d399;}
+.pos-short{background:rgba(248,113,113,.10);color:#f87171;border-color:#f87171;}
+.pos-neu{background:rgba(79,195,247,.10);color:#4fc3f7;border-color:#4fc3f7;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <h1>Weekly — Economía &amp; Mercados</h1>
+    <span class="badge">14 – 17 jul 2026</span>
+  </div>
+  <div class="meta">Argentina &amp; Mercados Globales · cierre 17-jul · Datos PDFs + mails brokers</div>
+  <div class="sources">
+    <span class="src">Facimex "El esquema monetario funcionando" (17-jul)</span>
+    <span class="src">1816 Semanal (17-jul)</span>
+    <span class="src">Cohen Weekly #94 (17-jul)</span>
+    <span class="src">Balanz "Déficit en junio" (16-jul)</span>
+    <span class="src">SBS QuickNote / Nota Diaria (15-17 jul)</span>
+    <span class="src">PPI Daily Mercados (15-17 jul)</span>
+    <span class="src">BDI JPMorgan 2Q26 (16-jul)</span>
+    <span class="src official">INDEC · IPC junio</span>
+    <span class="src official">MECON / BCRA</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="show('dolar',this)">Dólar &amp; BCRA</button>
+  <button class="tab" onclick="show('tasas',this)">Tasas &amp; Licitación</button>
+  <button class="tab" onclick="show('ipc',this)">IPC</button>
+  <button class="tab" onclick="show('fiscal',this)">Fiscal</button>
+  <button class="tab" onclick="show('global',this)">Global</button>
+  <button class="tab" onclick="show('radar',this)">Radar</button>
+</div>
+
+<!-- ============ DÓLAR ============ -->
+<div id="tab-dolar" class="panel active">
+  <p class="lead">Semana redonda para el frente cambiario. El BCRA volvió a comprar en el MULC —una rueda récord de US$532M— y las reservas brutas se acercan a los US$40.000M, mientras el tipo de cambio se apreció de la zona de $1.490-1.495 hacia $1.470. La contracara es que esa apreciación vino de la mano de presiones de liquidez en pesos que empujaron la tasa overnight hacia el piso del 24,5%. El esquema —bandas + piso de 20% a la overnight— viene funcionando: el Central acumula sin intervenir spot en el techo.</p>
+
+  <div class="flag">El BCRA fija un piso de 20% a la tasa overnight vía REPO. Esta semana la overnight retornó a la zona de 24,5% a medida que crecían las presiones de liquidez, y en paralelo el TC se apreció ~1,5% hacia $1.470. Compra de dólares + apretón de pesos es la combinación que está ordenando el mercado (Facimex 17-jul).</div>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Compra BCRA (rueda récord)</div><div class="metric-value up">US$532M</div><div class="metric-sub">"compra récord en el MULC"</div><div class="metric-src">SBS/PPI 15-jul</div></div>
+    <div class="metric"><div class="metric-label">Reservas brutas</div><div class="metric-value up">~US$40.000M</div><div class="metric-sub">1ª vez post-cierre de cepo</div><div class="metric-src">1816 17-jul</div></div>
+    <div class="metric"><div class="metric-label">Tipo de cambio</div><div class="metric-value up">~$1.470</div><div class="metric-sub">desde $1.490-1.495 (apreció)</div><div class="metric-src">Facimex 17-jul</div></div>
+    <div class="metric"><div class="metric-label">Tasa REPO overnight</div><div class="metric-value neu">~24,5%</div><div class="metric-sub">piso 20% que fija el BCRA</div><div class="metric-src">Facimex 17-jul</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Frente cambiario — la semana (escala relativa)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><span class="bar-label">Compra BCRA (rueda)</span><span class="bar-track"><span class="bar-fill" style="width:53%;background:#34d399"></span></span><span class="bar-val">+US$532M</span></div>
+      <div class="bar-row"><span class="bar-label">Reservas brutas</span><span class="bar-track"><span class="bar-fill" style="width:100%;background:#4fc3f7"></span></span><span class="bar-val">~US$40.000M</span></div>
+      <div class="bar-row"><span class="bar-label">Dep. USD Tesoro @BCRA</span><span class="bar-track"><span class="bar-fill" style="width:58%;background:#4fc3f7"></span></span><span class="bar-val">ARS 5,8B</span></div>
+      <div class="bar-row"><span class="bar-label">TC (apreciación sem.)</span><span class="bar-track"><span class="bar-fill" style="width:35%;background:#34d399"></span></span><span class="bar-val">→ $1.470</span></div>
+    </div>
+    <div class="chart-src">Facimex (17-jul), 1816 (17-jul), PPI/SBS (15-jul). Barras a escala relativa, no comparables entre sí en unidad.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">Volvieron las <strong>compras del BCRA en el MULC</strong>, con una rueda récord de <strong>US$532M</strong> (15-jul), y las <strong>reservas brutas se acercan a US$40.000M</strong> por primera vez desde la salida del cepo. En simultáneo, el <strong>oficial se apreció</strong> de la zona de $1.490-1.495 a ~$1.470, pero no por debilidad de la demanda: fue una <strong>restricción de liquidez en pesos</strong> la que empujó la tasa overnight de vuelta al 24,5% y le quitó presión al dólar. El esquema de bandas con piso del 20% a la overnight está haciendo su trabajo.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">Que el BCRA compre <strong>sin intervenir en el techo de la banda</strong> es la mejor noticia posible para la tesis de acumulación de reservas, el driver que el mercado premia hoy. Pero la mecánica tiene un costo: la apreciación se sostiene con <strong>tasa en pesos alta</strong>, y ese apretón de liquidez es el mismo que tensiona las cauciones y el fondeo bancario. Es un equilibrio delicado entre juntar dólares y no ahogar la actividad.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Con el Central comprador y reservas subiendo, el <strong>carry en pesos sigue atractivo</strong> mientras la tasa real se mantenga positiva; prefiero capturarlo con <strong>duration corta</strong> para no quedar preso de un nuevo squeeze de liquidez. La cobertura dólar-linked la mantengo <strong>chica y táctica</strong>: el flujo de corto favorece al peso. Horizonte 1–2 meses.</div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">La apreciación depende de una <strong>tasa alta que no es gratis</strong>: si el BCRA relaja la liquidez para no lastimar el crédito, el dólar puede volver a tensionar rápido. Y las compras récord conviven con <strong>reservas netas todavía negativas</strong> y vencimientos grandes en moneda dura por delante; una rueda buena no cambia que el margen sigue siendo fino si se corta el financiamiento externo.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Ritmo de compras BCRA</span>
+      <span class="wi">Reservas ¿perforan US$40.000M?</span>
+      <span class="wi">Tasa overnight / caución</span>
+      <span class="wi">Distancia al piso de banda</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TASAS & LICITACIÓN ============ -->
+<div id="tab-tasas" class="panel">
+  <p class="lead">El evento de la semana fue la licitación del Tesoro del 15-jul. Con vencimientos acotados (~$4,2B) frente a depósitos del Tesoro en el BCRA por $5,8B, Finanzas colocó $5,44B y logró un rollover altísimo (~130%) sin convalidar premio sobre el secundario. La demanda superó los $8B y quedaron sin adjudicar más de $2B. El plato fuerte: el debut del AO29, nuevo bono hard-dollar con cupón 6% y amortización bullet, que cortó en torno al 8,3% TNA.</p>
+
+  <div class="flag">El menú no obligó a extender duration: Finanzas ofreció una LECAP corta (4 meses) junto a duales TAMAR y el nuevo AO29. Con el bajo nivel de vencimientos, el Tesoro pudo priorizar precio sobre plazo y absorber liquidez neta del sistema (Cohen #94 / 1816 17-jul).</div>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Adjudicado</div><div class="metric-value neu">$5,44B</div><div class="metric-sub">vs vencimientos ~$4,2B</div><div class="metric-src">Cohen #94 17-jul</div></div>
+    <div class="metric"><div class="metric-label">Rollover</div><div class="metric-value up">~130%</div><div class="metric-sub">"altísimo", sin premio</div><div class="metric-src">1816 17-jul</div></div>
+    <div class="metric"><div class="metric-label">Demanda total</div><div class="metric-value up">&gt;$8B</div><div class="metric-sub">quedó sin adjudicar &gt;$2B</div><div class="metric-src">Cohen #94 17-jul</div></div>
+    <div class="metric"><div class="metric-label">AO29 (debut) corte</div><div class="metric-value neu">~8,3% TNA</div><div class="metric-sub">cupón 6% · bullet · hard-dollar</div><div class="metric-src">Cohen #94 17-jul</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Licitación 15-jul — pesos (ARS billones)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><span class="bar-label">Demanda total</span><span class="bar-track"><span class="bar-fill" style="width:100%;background:#34d399"></span></span><span class="bar-val">&gt;8,0</span></div>
+      <div class="bar-row"><span class="bar-label">Adjudicado</span><span class="bar-track"><span class="bar-fill" style="width:68%;background:#4fc3f7"></span></span><span class="bar-val">5,44</span></div>
+      <div class="bar-row"><span class="bar-label">Vencimientos</span><span class="bar-track"><span class="bar-fill" style="width:53%;background:#fbbf24"></span></span><span class="bar-val">~4,2</span></div>
+      <div class="bar-row"><span class="bar-label">Sin adjudicar</span><span class="bar-track"><span class="bar-fill" style="width:25%;background:#6b7384"></span></span><span class="bar-val">&gt;2,0</span></div>
+    </div>
+    <div class="chart-src">Cohen Weekly #94 (17-jul) y 1816 (17-jul). Rollover ~130% = adjudicado / vencimientos.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El Tesoro enfrentó <strong>vencimientos acotados (~$4,2B)</strong> con un colchón cómodo (depósitos por $5,8B en el BCRA) y aprovechó para colocar <strong>$5,44B</strong>, un <strong>rollover de ~130%</strong> que absorbe pesos del sistema. La demanda de <strong>&gt;$8B</strong> permitió <strong>no convalidar premio</strong> sobre el mercado secundario y dejar sin adjudicar &gt;$2B. Debutó el <strong>AO29</strong> (cupón 6%, bullet, hard-dollar), que cortó cerca del <strong>8,3% TNA</strong>, más una LECAP corta y duales TAMAR.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">Un rollover alto sin pagar premio es la señal de que <strong>el Tesoro tiene poder de fijación de precio</strong>: no necesita seducir con tasa porque los vencimientos son chicos y el peso escasea. Eso <strong>ancla la curva en pesos</strong> y valida la compresión. El debut del AO29 abre una <strong>ventana de financiamiento local en dólares</strong> —vía Bonares/hard-dollar— que descomprime la dependencia del mercado externo para cubrir vencimientos.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Con el Tesoro absorbiendo y la curva anclada, <strong>LECAP corta</strong> sigue siendo mi vehículo para el carry, esquivando el riesgo de squeeze. El <strong>AO29 es interesante para el tramo hard-dollar local</strong>: cupón 6% + bullet a un corte de ~8,3% ofrece devengamiento decente con menor exposición a la curva soberana externa. Horizonte 1–3 meses.</div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">El rollover cómodo es <strong>hijo de vencimientos chicos</strong>: cuando lleguen los meses pesados, el Tesoro va a tener que convalidar más tasa o extender duration a la fuerza, y ahí la foto cambia. Además, financiarse en dólares localmente vía AO29 <strong>suma deuda hard-dollar</strong> justo cuando las reservas netas siguen en terreno negativo; es alivio de corto que no resuelve la restricción externa de fondo.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Curva pesos post-licitación</span>
+      <span class="wi">Volumen REPO / liquidez</span>
+      <span class="wi">Demanda secundaria AO29</span>
+      <span class="wi">Perfil vencimientos próximos</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ IPC ============ -->
+<div id="tab-ipc" class="panel">
+  <p class="lead">Dato oficial: el IPC de junio (INDEC) marcó 1,9% mensual, sostiene el sendero de desinflación con "1" adelante. El núcleo desaceleró a 1,6% —la señal más limpia—, mientras los regulados (2,3%) y sobre todo los estacionales (3,4%, empujados por verduras) explicaron el diferencial hacia arriba. En el acumulado 2026 la inflación suma 16,8% y la interanual bajó a 33,5%.</p>
+
+  <div class="flag">La foto de junio es la de una desinflación que se apoya en el núcleo (1,6%) pero que todavía convive con presiones puntuales: estacionales al 3,4% (verduras) y regulados al 2,3% (electricidad y transporte público). El componente núcleo es el que más importa para el sendero de tasas reales.</div>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">IPC junio (nivel general)</div><div class="metric-value up">1,9%</div><div class="metric-sub">mensual · sigue con "1"</div><div class="metric-src">INDEC jun-26</div></div>
+    <div class="metric"><div class="metric-label">IPC Núcleo</div><div class="metric-value up">1,6%</div><div class="metric-sub">la señal más limpia</div><div class="metric-src">INDEC jun-26</div></div>
+    <div class="metric"><div class="metric-label">Acumulado 2026</div><div class="metric-value neu">16,8%</div><div class="metric-sub">ene-jun</div><div class="metric-src">INDEC jun-26</div></div>
+    <div class="metric"><div class="metric-label">Interanual</div><div class="metric-value up">33,5%</div><div class="metric-sub">sigue cediendo</div><div class="metric-src">INDEC jun-26</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">IPC junio 2026 — variación mensual por categoría / división (%)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><span class="bar-label">Estacionales</span><span class="bar-track"><span class="bar-fill" style="width:100%;background:#f87171"></span></span><span class="bar-val">3,4%</span></div>
+      <div class="bar-row"><span class="bar-label">Salud (división)</span><span class="bar-track"><span class="bar-fill" style="width:85%;background:#fbbf24"></span></span><span class="bar-val">2,9%</span></div>
+      <div class="bar-row"><span class="bar-label">Regulados</span><span class="bar-track"><span class="bar-fill" style="width:68%;background:#fbbf24"></span></span><span class="bar-val">2,3%</span></div>
+      <div class="bar-row"><span class="bar-label">Nivel general</span><span class="bar-track"><span class="bar-fill" style="width:56%;background:#4fc3f7"></span></span><span class="bar-val">1,9%</span></div>
+      <div class="bar-row"><span class="bar-label">Núcleo</span><span class="bar-track"><span class="bar-fill" style="width:47%;background:#34d399"></span></span><span class="bar-val">1,6%</span></div>
+      <div class="bar-row"><span class="bar-label">Alimentos y beb.</span><span class="bar-track"><span class="bar-fill" style="width:38%;background:#34d399"></span></span><span class="bar-val">1,3%</span></div>
+      <div class="bar-row"><span class="bar-label">Comunicación</span><span class="bar-track"><span class="bar-fill" style="width:26%;background:#34d399"></span></span><span class="bar-val">0,9%</span></div>
+      <div class="bar-row"><span class="bar-label">Prendas y calzado</span><span class="bar-track"><span class="bar-fill" style="width:12%;background:#34d399"></span></span><span class="bar-val">0,4%</span></div>
+    </div>
+    <div class="chart-src">INDEC, IPC junio 2026. Categorías (Núcleo/Regulados/Estacionales) y divisiones se muestran juntas para comparar; barras a escala del máximo (3,4%).</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">El <strong>IPC de junio fue 1,9% mensual</strong>, con el <strong>núcleo desacelerando a 1,6%</strong>. La brecha hacia arriba la explican los <strong>estacionales (3,4%, verduras)</strong> y los <strong>regulados (2,3%, electricidad y transporte público)</strong>. Por divisiones, Salud (2,9%) fue la de mayor suba y Prendas (0,4%) la menor. En el acumulado del año la inflación llega a <strong>16,8%</strong> y la <strong>interanual bajó a 33,5%</strong>. Alimentos y bebidas subió 1,3%, por debajo del nivel general.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">Un <strong>núcleo en 1,6%</strong> es lo que valida el régimen de <strong>tasas reales positivas</strong> y sostiene la demanda de pesos: es el ancla nominal detrás de la compresión de la curva y del apretón de liquidez que aprecia el dólar. Mientras el núcleo siga cediendo, el Tesoro puede colocar sin premio y el carry en pesos rinde. Los estacionales y regulados son ruido de corto que no cambia la tendencia.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Con el núcleo por debajo del 2% prefiero <strong>tasa fija / TAMAR sobre CER</strong>: el sendero de desinflación ya está descontado y el CER solo gana con una sorpresa inflacionaria. El combo <strong>desinflación + reservas subiendo</strong> favorece a los soberanos hard-dollar. Horizonte 1–3 meses.</div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Si los <strong>regulados aceleran</strong> (siguen los ajustes de tarifas de electricidad y transporte) o el TC más apreciado se revierte y pasa a precios, el <strong>nivel general puede quedar pegado en torno al 2%</strong> aunque el núcleo baje, y ahí la tasa fija pierde brillo frente al CER. La desinflación del núcleo no garantiza que el headline siga cayendo al mismo ritmo.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Regulados (tarifas jul)</span>
+      <span class="wi">Breakeven CER/tasa fija</span>
+      <span class="wi">Núcleo próximo IPC</span>
+      <span class="wi">Precios mayoristas / IPIM</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FISCAL ============ -->
+<div id="tab-fiscal" class="panel">
+  <p class="lead">Junio rompió la racha: el sector público registró déficit primario y financiero por la fuerte estacionalidad del gasto (aguinaldo) y de la recaudación (IIGG). El primario base caja marcó un rojo de $696.843M y, con intereses por $328.049M, el financiero cerró en torno a −$1,0B. Aun así, el acumulado del semestre sigue en azul: superávit primario de 0,6% del PBI (0,5% ex-privatizaciones) y financiero de 0,1%.</p>
+
+  <div class="flag">El déficit de junio es estacional, no un cambio de régimen: aguinaldo por el lado del gasto e Impuesto a las Ganancias por el lado de los ingresos distorsionan el mes. Balanz mantiene su proyección de superávit primario de 1,3% del PBI para 2026, pero advierte que alcanzarla exige control estricto del gasto no indexado (Balanz 16-jul).</div>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">Resultado primario junio</div><div class="metric-value down">−$696.843M</div><div class="metric-sub">base caja · aguinaldo + IIGG</div><div class="metric-src">SBS QuickNote 16-jul</div></div>
+    <div class="metric"><div class="metric-label">Intereses netos junio</div><div class="metric-value neu">$328.049M</div><div class="metric-sub">→ financiero ~−$1,0B</div><div class="metric-src">SBS QuickNote 16-jul</div></div>
+    <div class="metric"><div class="metric-label">Sup. primario 1er sem.</div><div class="metric-value up">0,6% PBI</div><div class="metric-sub">0,5% ex-privatizaciones</div><div class="metric-src">Balanz 16-jul</div></div>
+    <div class="metric"><div class="metric-label">Sup. primario 12m móvil</div><div class="metric-value up">1,2% PBI</div><div class="metric-sub">proy. Balanz 2026: 1,3%</div><div class="metric-src">Balanz 16-jul</div></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Resultado fiscal — semestre y proyección (% del PBI)</div>
+    <div class="bar-chart">
+      <div class="bar-row"><span class="bar-label">Primario 1S25</span><span class="bar-track"><span class="bar-fill" style="width:69%;background:#6b7384"></span></span><span class="bar-val">0,9%</span></div>
+      <div class="bar-row"><span class="bar-label">Primario 1S26</span><span class="bar-track"><span class="bar-fill" style="width:46%;background:#fbbf24"></span></span><span class="bar-val">0,6%</span></div>
+      <div class="bar-row"><span class="bar-label">Primario 12m móvil</span><span class="bar-track"><span class="bar-fill" style="width:92%;background:#4fc3f7"></span></span><span class="bar-val">1,2%</span></div>
+      <div class="bar-row"><span class="bar-label">Financiero 1S26</span><span class="bar-track"><span class="bar-fill" style="width:8%;background:#34d399"></span></span><span class="bar-val">0,1%</span></div>
+      <div class="bar-row"><span class="bar-label">Proy. primario 2026</span><span class="bar-track"><span class="bar-fill" style="width:100%;background:#34d399"></span></span><span class="bar-val">1,3%</span></div>
+    </div>
+    <div class="chart-src">Balanz Research (16-jul) en base a MECON. 1S26 primario 0,6% (0,5% ex-privatizaciones).</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">Junio arrojó <strong>déficits primario y financiero</strong>: el primario base caja fue de <strong>−$696.843M</strong> y, sumados intereses por <strong>$328.049M</strong>, el financiero quedó en torno a <strong>−$1,0B</strong>. La causa es <strong>estacional</strong> —aguinaldo en el gasto, Ganancias en los ingresos—. El <strong>superávit primario del semestre bajó a 0,6% del PBI</strong> (0,5% ex-privatizaciones) desde 0,9% en el mismo período de 2025, mientras el <strong>12m móvil se mantiene en 1,2%</strong>.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">El <strong>ancla fiscal es el activo central</strong> de esta etapa: sostiene la compresión del Riesgo País y la credibilidad del programa. Un déficit estacional aislado no la mueve, pero la <strong>caída del superávit semestral de 0,9% a 0,6%</strong> es un dato a vigilar: en año electoral, cualquier deterioro del resultado alimenta dudas sobre la sostenibilidad y presiona a los soberanos.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Leo el rojo de junio como <strong>ruido estacional, no como quiebre</strong>: mientras el 12m móvil siga cerca de 1,2% y el gobierno defienda el gasto no indexado, la tesis de <strong>largo soberanos hard-dollar</strong> se mantiene. Vigilo el cumplimiento de la meta de 1,3% como termómetro de disciplina fiscal. Horizonte 3–6 meses.</div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">Si la <strong>erosión del superávit no es solo estacional</strong> —y en año electoral la tentación de gastar aumenta—, el mercado podría empezar a descontar un ancla fiscal más débil justo cuando el Riesgo País ya descuenta bastante buenas noticias. Alcanzar 1,3% "requiere control estricto del gasto no indexado" (Balanz): es una meta condicional, no un hecho.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Recaudación julio</span>
+      <span class="wi">Gasto primario real</span>
+      <span class="wi">Cumplimiento meta 1,3% PBI</span>
+      <span class="wi">Señales de gasto electoral</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ GLOBAL ============ -->
+<div id="tab-global" class="panel">
+  <p class="lead">Afuera, tres frentes. Arrancó la temporada de balances de bancos en EE.UU.: JPMorgan reportó un resultado neto récord de US$21,2MM (+41% a/a), aunque el titular exagera —descontando partidas extraordinarias fueron US$16,9MM y un EPS de US$6,14, igual por encima del consenso (+9,8%)—. En lo geopolítico, volvieron los bombardeos cruzados EEUU-Irán. Y un dato de inflación mayorista más moderado en EE.UU. dio soporte a las bolsas antes de un jueves turbulento por selloff tech.</p>
+
+  <div class="flag">JPMorgan: resultado neto reportado US$21,2MM, pero incluye una ganancia extraordinaria de ~US$4,6MM. Base "limpia": US$16,9MM y EPS de US$6,14 (vs consenso US$5,59). ROE 24%, CET1 14,1%. El número es sólido, pero el titular de "récord" sobrevende (BDI 16-jul).</div>
+
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">JPM 2Q26 — neto reportado</div><div class="metric-value up">US$21,2MM</div><div class="metric-sub">+41% a/a · US$16,9MM ex-part.</div><div class="metric-src">BDI JPM 16-jul</div></div>
+    <div class="metric"><div class="metric-label">JPM EPS (ex-partidas)</div><div class="metric-value up">US$6,14</div><div class="metric-sub">vs consenso US$5,59 (+9,8%)</div><div class="metric-src">BDI JPM 16-jul</div></div>
+    <div class="metric"><div class="metric-label">JPM ROE / CET1</div><div class="metric-value neu">24% / 14,1%</div><div class="metric-sub">precio obj. US$372 vs US$349</div><div class="metric-src">BDI JPM 16-jul</div></div>
+    <div class="metric"><div class="metric-label">Inflación mayorista EE.UU.</div><div class="metric-value up">más moderada</div><div class="metric-sub">dio soporte a bolsas</div><div class="metric-src">SBS 15-jul</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lc">Qué cambió</div>
+    <div class="card-text">Abrió la <strong>temporada de balances bancarios en EE.UU.</strong>: <strong>JPMorgan reportó un neto récord de US$21,2MM (+41% a/a)</strong>, aunque ex-partidas fueron US$16,9MM y un <strong>EPS de US$6,14 que igual superó el consenso (+9,8%)</strong>, con ROE del 24% y CET1 del 14,1%. Wells Fargo también batió estimaciones (EPS +25,3%). En paralelo, un <strong>dato de inflación mayorista más moderado</strong> impulsó el optimismo, aunque el jueves 16 Wall Street cerró a la baja por un <strong>selloff en tecnología</strong>. En lo geopolítico, <strong>nuevos bombardeos cruzados EEUU-Irán</strong>.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lw">Por qué le importa al mercado</div>
+    <div class="card-text">Balances bancarios sólidos + inflación mayorista moderada <strong>refuerzan el escenario de aterrizaje suave</strong> y alimentan el apetito por riesgo, favorable para emergentes y para los soberanos argentinos. Pero el <strong>selloff tech y la tensión con Irán</strong> son recordatorios de que la volatilidad global sigue latente: un shock de riesgo externo pega directo sobre el activo argentino, que cotiza con beta alta al humor global.</div>
+  </div>
+  <div class="card">
+    <div class="card-label lp">Posición analista</div>
+    <div class="card-text">Escenario base <strong>constructivo</strong>: inflación cediendo afuera + bancos saludables sostienen el risk-on. En ARG refuerza la tesis <strong>largo soberanos hard-dollar</strong> con duration media. En equity global, JPM sólido pero <strong>ya cerca del precio objetivo</strong> (US$349 vs US$372): poco upside, preferible mantener antes que sumar. Horizonte 3–6 meses.</div>
+  </div>
+  <div class="card">
+    <div class="card-label la">Contraargumento</div>
+    <div class="card-text">El <strong>selloff tech puede ser el primer aviso</strong> de una corrección más amplia si las valuaciones se recalibran, y la <strong>escalada con Irán</strong> es un riesgo de cola sobre el petróleo y el apetito por riesgo. Un "récord" bancario inflado por partidas extraordinarias tampoco es tan sólido como el titular sugiere. Si el humor global gira, Argentina —beta alta— es de los primeros en sufrirlo.</div>
+  </div>
+
+  <div class="watch">
+    <div class="watch-title">Watch — próxima semana</div>
+    <div class="watch-items">
+      <span class="wi">Resto de balances bancos EE.UU.</span>
+      <span class="wi">Tono Fed / datos de inflación</span>
+      <span class="wi">Tech / Nasdaq</span>
+      <span class="wi">Escalada EEUU-Irán / petróleo</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ RADAR ============ -->
+<div id="tab-radar" class="panel">
+  <p class="lead">Balance de la semana: BCRA comprador con reservas cerca de US$40.000M, IPC de junio con núcleo en 1,6% y una licitación con rollover altísimo sin premio del lado positivo; déficit fiscal estacional en junio, apreciación sostenida con tasa alta y volatilidad global (selloff tech, Irán) del lado a vigilar. El esquema monetario —bandas + piso a la overnight— viene funcionando.</p>
+
+  <div class="signal-grid">
+    <div class="sig sig-up">
+      <div class="sig-title">Señales alcistas</div>
+      <div class="sig-item">BCRA con compra récord (US$532M) y reservas hacia US$40.000M</div>
+      <div class="sig-item">IPC junio 1,9% con núcleo desacelerando a 1,6%</div>
+      <div class="sig-item">Licitación: rollover ~130% sin convalidar premio</div>
+      <div class="sig-item">Debut AO29: nueva ventana de financiamiento local en dólares</div>
+      <div class="sig-item">Balances bancarios EE.UU. sólidos + inflación mayorista moderada</div>
+    </div>
+    <div class="sig sig-dn">
+      <div class="sig-title">Señales a vigilar</div>
+      <div class="sig-item">Déficit primario y financiero en junio (estacional)</div>
+      <div class="sig-item">Superávit primario semestral bajó de 0,9% a 0,6% del PBI</div>
+      <div class="sig-item">Apreciación del peso sostenida con tasa/liquidez apretada</div>
+      <div class="sig-item">Reservas netas todavía negativas pese a las compras</div>
+      <div class="sig-item">Selloff tech en Wall Street y escalada EEUU-Irán</div>
+    </div>
+  </div>
+
+  <div class="cat-box">
+    <div class="cat-title">Catalizadores — próximas 4 semanas</div>
+    <div class="watch-items">
+      <span class="wi">Recaudación julio / resultado fiscal</span>
+      <span class="wi">Ritmo compras BCRA y reservas</span>
+      <span class="wi">Próxima licitación del Tesoro</span>
+      <span class="wi">Balances bancos EE.UU. / tono Fed</span>
+      <span class="wi">Regulados en el próximo IPC</span>
+      <span class="wi">Frente electoral</span>
+    </div>
+  </div>
+
+  <div class="cat-title" style="margin:1.25rem 0 .5rem">Posiciones core</div>
+  <div class="pos-grid">
+    <div class="pos-row"><span class="pos-instr">Globales hard-dollar</span><span class="pos-dir pos-long">Long</span><span class="pos-desc">Reservas subiendo + risk-on global; duration media apuntando a la vuelta al mercado. Horizonte 6–12m.</span></div>
+    <div class="pos-row"><span class="pos-instr">LECAP corta</span><span class="pos-dir pos-long">Long</span><span class="pos-desc">Carry con tasa real positiva y curva anclada por el Tesoro; duration corta para esquivar squeeze. Horizonte 1–3m.</span></div>
+    <div class="pos-row"><span class="pos-instr">AO29 (hard-dollar local)</span><span class="pos-dir pos-long">Long</span><span class="pos-desc">Cupón 6% + bullet a corte ~8,3%; devengamiento con menor beta a la curva externa. Horizonte 6–12m.</span></div>
+    <div class="pos-row"><span class="pos-instr">TAMAR</span><span class="pos-dir pos-long">Long</span><span class="pos-desc">Preferida sobre CER mientras el núcleo siga cediendo. Horizonte 3–6m.</span></div>
+    <div class="pos-row"><span class="pos-instr">Dólar-linked / futuros</span><span class="pos-dir pos-neu">Hedge</span><span class="pos-desc">Cobertura chica y táctica; el flujo de corto favorece al peso. Horizonte 1–2m.</span></div>
+  </div>
+</div>
+
+<footer>
+  Fuentes (semana al 17-jul-2026): Facimex Valores "El esquema monetario funcionando" (17-jul) · Semanal 1816 (17-jul) · Cohen Weekly #94 (17-jul) · Balanz Research "La estacionalidad del gasto llevó a un déficit en junio" (16-jul) · SBS QuickNote / Nota Diaria (15-17 jul) · PPI Daily Mercados (15-17 jul) · BDI JPMorgan 2Q26 (16-jul). Datos oficiales de referencia: INDEC (IPC junio), MECON/Secretaría de Finanzas, BCRA. Las cifras y declaraciones de julio son posteriores al corte de conocimiento del modelo y se reportan según los informes y mails citados — no verificados de forma independiente. Los datos de rollover, cortes de licitación y balance de JPMorgan provienen de los informes de brokers; las cifras de IPC junio son oficiales de INDEC según el informe difundido.<br><br>
+  Estructura analítica: Leer · Conectar · Defender. Todas las posiciones son ilustrativas, con su horizonte temporal explícito.<br><br>
+  <strong>Solo con fines informativos. No constituye asesoramiento de inversión.</strong>
+</footer>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
